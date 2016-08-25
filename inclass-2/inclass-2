@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pizza Guys Order Form</title>
+</head>
+<body>
+<form method="get"  id="myForm" >
+  Name: <input type="text" name="Name" id="name" placeholder="your name" required><br>
+  <br>
+  Address: ####: Street Name: <input type="text" name="Address" id="address" placeholder="delivery address" pattern="[0-9]+\s[A-Za-z]+\s[A-Za-z]+" required><br>
+  <br>
+  Phone Number: 123-123-1234: <input type="text" name="PhoneNumber" id="phoneNumber" placeholder="123-123-1234" pattern="\d\d\d-\d\d\d-\d\d\d\d" required><br>
+  <br>
+  <br>
+  Pizza Size: 
+  <input type="radio" name="large" value="large" > Large
+  <input type="radio" name="large" value="medium"> Medium
+  <input type="radio" name="large" value="small"> Small <br>
+  <br>
+  <br>
+  Pizza Toppings:
+  <input type="checkbox" name="Sausage" value="Sausage"> Sausage
+  <input type="checkbox" name="Sausage" value="Pepperoni" > Pepperoni
+  <input type="checkbox" name="Sausage" value="Olives" > Olives
+  <input type="checkbox" name="Sausage" value="Anchovies" > Anchovies
+  <input type="checkbox" name="Sausage" value="Onions" > Onions
+  <br>
+  <br>
+
+ <input type="submit" value="Place Order">
+ <input type="button" onclick="myFunction()" value="Reset form">
+</form>
+
+<script>
+function myFunction() {
+    document.getElementById("myForm").reset();
+}
+</script>
+
+</body>
+
+</html>
