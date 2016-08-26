@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<form>
+  Account Name:<br>
+  <input type="text" id="account_name" required>
+  <br>
+  Display Name<br>
+  <input type="text" id="display_name">
+  <br>
+  Email Address:<br>
+  <input type="text" id="email_address" required>
+  <br>
+  Phone number:<br>
+  <input type="text" id="phone_number" required>
+  <br>
+  Date of Birth:<br>
+  <input type="text" id="date_of_birth" required>
+  <br>
+  Zipcode:<br>
+  <input type="text" id="zipcode" required>
+  <br>
+  Password:<br>
+  <input type="text" id="password" required>
+  <br>
+  Password Confirmation:<br>
+  <input type="text" id="password_confirmation" required>
+  <br>
+</form>
+
+</body>
+
+
+</html>
