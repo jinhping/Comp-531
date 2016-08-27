@@ -3,7 +3,7 @@
 
 <body>
 
-<form>
+<form method="get" id="myForm">
   Account Name:<br>
   <input type="text" id="account_name" required>
   <br>
@@ -28,9 +28,16 @@
   Password Confirmation:<br>
   <input type="text" id="password_confirmation" required>
   <br>
+  <input type="button" id="clear_button" value="Clear" onclick="clearFunction()">
 </form>
 
 </body>
 
+
+<script>
+	function clearFunction() {
+		document.getElementById("myForm").reset();
+	}
+</script>
 
 </html>
