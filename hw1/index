@@ -3,7 +3,7 @@
 
 <body>
 
-<form method="get" id="myForm">
+<form method="GET" id="myForm" onsubmit="myFunction()">
   Account Name:<br>
   <input type="text" id="account_name" required>
   <br>
@@ -11,10 +11,10 @@
   <input type="text" id="display_name">
   <br>
   Email Address:<br>
-  <input type="text" id="email_address" required>
+  <input type="text" id="email_address" pattern="[A-Za-z0-9]+\@[A-Za-z0-9]+\.[A-Za-z0-9]+" required>
   <br>
-  Phone number:<br>
-  <input type="text" id="phone_number" required>
+  Phone number: xxx-xxx-xxxx<br>
+  <input type="text" id="phone_number" pattern="\d\d\d-\d\d\d-\d\d\d\d" required>
   <br>
   Date of Birth:<br>
   <input type="text" id="date_of_birth" required>
@@ -28,6 +28,10 @@
   Password Confirmation:<br>
   <input type="text" id="password_confirmation" required>
   <br>
+  <input type="hidden" id="time_stamp" value="default">
+  <br>
+  <br>
+  <input type="submit" id="submit_button" value="Submit">
   <input type="button" id="clear_button" value="Clear" onclick="clearFunction()">
 </form>
 
@@ -37,6 +41,11 @@
 <script>
 	function clearFunction() {
 		document.getElementById("myForm").reset();
+	}
+
+	function myFunction() {
+		var x = event.time_stamp;
+		document.getElementById("time_stamp").value = n;
 	}
 </script>
 
