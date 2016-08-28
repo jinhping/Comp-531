@@ -5,50 +5,41 @@
 </head>
 <body>
 
-<form method="GET" id="myForm" onsubmit="myFunction()">
+<form method="GET" id="myForm">
   Account Name:<br>
-  <input type="text" id="account_name" pattern="[A-Za-z]+[0-9A-Za-z]*" required>
+  <input type="text" id="account_name" name="Account_Name" pattern="[A-Za-z]+[0-9A-Za-z]*" required>
   <br>
   Display Name (optional):<br>
-  <input type="text" id="display_name">
+  <input type="text" id="display_name" name="Display_Name">
   <br>
   Email Address:<br>
-  <input type="text" id="email_address" pattern="[A-Za-z0-9]+\@[A-Za-z0-9]+\.[A-Za-z0-9]+" required>
+  <input type="text" id="email_address" name="Email" pattern="[A-Za-z0-9]+\@[A-Za-z0-9]+\.[A-Za-z0-9]+" required>
   <br>
   Phone number: xxx-xxx-xxxx<br>
-  <input type="text" id="phone_number" pattern="\d\d\d-\d\d\d-\d\d\d\d" required>
+  <input type="text" id="phone_number" name="Phone" pattern="\d\d\d-\d\d\d-\d\d\d\d" required>
   <br>
   Date of Birth:<br>
-  <input type="date" id="birthday" value="" required>
+  <input type="date" id="birthday" name="DOB" value="" required>
   <br>
   Zipcode (5 digits): <br>
-  <input type="text" id="zipcode" pattern="\d\d\d\d\d" required>
+  <input type="text" id="zipcode" name="Zipcode" pattern="\d\d\d\d\d" required>
   <br>
   Password:<br>
-  <input type="password" id="password" required>
+  <input type="password" id="password" name="Pass" required>
   <br>
   Password Confirmation:<br>
-  <input type="password" id="password_confirmation" required>
+  <input type="password" id="password_confirmation" name="PassComf" required>
   <br>
-  <input type="hidden" id="time_stamp" value="default">
+  <input type="hidden" id="time_stamp" name="Time_stamp">
   <br>
   <br>
   <input type="submit" id="submit_button" value="Submit" onclick="return checkValidation()">
   <input type="button" id="clear_button" value="Clear" onclick="clearFunction()">
 </form>
 
-
-</body>
-
-
 <script>
 	function clearFunction() {
 		document.getElementById("myForm").reset();
-	}
-
-	function myFunction() {
-		var x = event.time_stamp;
-		document.getElementById("time_stamp").value = n;
 	}
 
 	function checkValidation() {
@@ -96,5 +87,5 @@
 		return true;
 	}
 </script>
-
+</body>
 </html>
