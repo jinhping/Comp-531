@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang=“en-us”>
 <head>
+	<meta charset="utf-8">
 	<meta name=“author” content=“Jinhao Ping”>
 </head>
 <body>
 
-<form method="GET" id="myForm" action="formProcessor.html">
+<form action="formProcessor.html" id="myForm"  method="GET">
   Account Name:<br>
   <input type="text" id="account_name" name="Account_Name" pattern="[A-Za-z]+[0-9A-Za-z]*" required>
   <br>
@@ -45,6 +46,9 @@
 	function checkValidation() {
 
 		var ok = true;
+		//give timestamp time
+		var d = new Date();
+		document.getElementById("time_stamp").value = d.getTime();
 		//check password match or not
 		var pw1 = document.getElementById("password").value;
 		var pw2 = document.getElementById("password_confirmation").value;
@@ -68,18 +72,18 @@
 
 
 		if (year - _year < 18) {
-			alert("age year is too young!");
+			alert("You need to be 18 years old to register!");
 			return false;
 		}
 		if ( year - 18 == _year) {
 			if (month < _month) {
-				alert("age month is too young!");
+				alert("You need to be 18 years old to register!");
 				return false;
 			} else if (_month > month) {
 				return true;
 			} else {
 				if (day < _day) {
-				    alert("age day is too young!");
+				    alert("You need to be 18 years old to register!");
 					return false;
 				}
 			}
