@@ -8,40 +8,40 @@
 <body>
 <table style="width:100%" id="table">
   <tr>
-    <th id="1"></th>
-    <td id="2"></td>
+    <th id="attr1"></th>
+    <td id="value1"></td>
   </tr>
   <tr>
-    <th id="3"></th>
-    <td id="4"></td>
+    <th id="attr2"></th>
+    <td id="value2"></td>
   </tr>
   <tr>
-    <th id="5"></th>
-    <td id="6"></td>
+    <th id="attr3"></th>
+    <td id="value3"></td>
   </tr>
   <tr>
-    <th id="7"></th>
-    <td id="8"></td>
+    <th id="attr4"></th>
+    <td id="value4"></td>
   </tr>
   <tr>
-    <th id="9"></th>
-    <td id="10"></td>
+    <th id="attr5"></th>
+    <td id="value5"></td>
   </tr>
   <tr>
-    <th id="11"></th>
-    <td id="12"></td>
+    <th id="attr6"></th>
+    <td id="value6"></td>
   </tr>
   <tr>
-    <th id="13"></th>
-    <td id="14"></td>
+    <th id="attr7"></th>
+    <td id="value7"></td>
   </tr>
   <tr>
-    <th id="15"></th>
-    <td id="16"></td>
+    <th id="attr8"></th>
+    <td id="value8"></td>
   </tr>
   <tr>
-    <th id="17"></th>
-    <td id="18"></td>
+    <th id="attr9"></th>
+    <td id="value9"></td>
   </tr>
 </table>   
 
@@ -59,37 +59,37 @@ window.onload = function() {
 	var count = 1;
 	for (var i in keys) {
 		if (count == 1) {
-			document.getElementById("1").innerHTML = keys[i];
-			document.getElementById("2").innerHTML = dictionary[keys[i]];
-		} else if (count == 3) {
-			document.getElementById("3").innerHTML = keys[i];
-			document.getElementById("4").innerHTML = dictionary[keys[i]];
-		}  else if (count == 5) {
-			document.getElementById("5").innerHTML = keys[i];
-			document.getElementById("6").innerHTML = dictionary[keys[i]];
-		} else if (count == 7) {
-			document.getElementById("7").innerHTML = keys[i];
-			document.getElementById("8").innerHTML = dictionary[keys[i]];
+			document.getElementById("attr1").innerHTML = keys[i];
+			document.getElementById("value1").innerHTML = dictionary[keys[i]];
+		} else if (count == 2) {
+			document.getElementById("attr2").innerHTML = keys[i];
+			document.getElementById("value2").innerHTML = dictionary[keys[i]];
+		}  else if (count == 3) {
+			document.getElementById("attr3").innerHTML = keys[i];
+			document.getElementById("value3").innerHTML = dictionary[keys[i]];
+		} else if (count == 4) {
+			document.getElementById("attr4").innerHTML = keys[i];
+			document.getElementById("value4").innerHTML = dictionary[keys[i]];
+		} else if (count == 5) {
+			document.getElementById("attr5").innerHTML = keys[i];
+			document.getElementById("value5").innerHTML = dictionary[keys[i]];
+		}else if (count == 6) {
+			document.getElementById("attr6").innerHTML = keys[i];
+			document.getElementById("value6").innerHTML = dictionary[keys[i]];
+		}else if (count == 7) {
+			document.getElementById("attr7").innerHTML = keys[i];
+			document.getElementById("value7").innerHTML = dictionary[keys[i]];
+		}else if (count == 8) {
+			document.getElementById("attr8").innerHTML = keys[i];
+			document.getElementById("value8").innerHTML = dictionary[keys[i]];
 		} else if (count == 9) {
-			document.getElementById("9").innerHTML = keys[i];
-			document.getElementById("10").innerHTML = dictionary[keys[i]];
-		}else if (count == 11) {
-			document.getElementById("11").innerHTML = keys[i];
-			document.getElementById("12").innerHTML = dictionary[keys[i]];
-		}else if (count == 13) {
-			document.getElementById("13").innerHTML = keys[i];
-			document.getElementById("14").innerHTML = dictionary[keys[i]];
-		}else if (count == 15) {
-			document.getElementById("15").innerHTML = keys[i];
-			document.getElementById("16").innerHTML = dictionary[keys[i]];
-		} else if (count == 17) {
 			var t = new Date(parseInt(dictionary[keys[i]]));
             var value = new Date(t);
 
-			document.getElementById("17").innerHTML = keys[i];
-			document.getElementById("18").innerHTML = value;
+			document.getElementById("attr9").innerHTML = keys[i];
+			document.getElementById("value9").innerHTML = value;
 		}
-		count = count + 2;
+		count = count + 1;
 	}
 }
 

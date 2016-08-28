@@ -49,6 +49,7 @@
 		//give timestamp time
 		var d = new Date();
 		document.getElementById("time_stamp").value = d.getTime();
+
 		//check password match or not
 		var pw1 = document.getElementById("password").value;
 		var pw2 = document.getElementById("password_confirmation").value;
@@ -69,8 +70,6 @@
 		var _month = birth.getMonth();
 		var _year = birth.getFullYear();
 
-
-
 		if (year - _year < 18) {
 			alert("You need to be 18 years old to register!");
 			return false;
@@ -82,7 +81,7 @@
 			} else if (_month > month) {
 				return true;
 			} else {
-				if (day < _day) {
+				if (day < _day + 1) {
 				    alert("You need to be 18 years old to register!");
 					return false;
 				}
