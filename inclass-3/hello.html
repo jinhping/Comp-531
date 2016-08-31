@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>inclass-1</title>
+</head>
+<body onload="setTimeout(timeOut, 5000)">
+
+<h1>Name: Jinhao Ping</h1>
+<img src="myphoto.jpg">
+<p>Story of my last trip: I went to Key West last spring break. I did scuba diving for the first time and it was fun, I love it</p>
+
+<a href="https://www.facebook.com/jinhao.ping.9">Stalk me on Facebook</a>
+<br>
+<br>
+<textarea rows="4" cols="50" id="comment" name="comment" form="comment" placeholder="Leave me some comments here !!!!"></textarea>
+<br>
+<br>
+<form>
+  <input type="submit">
+
+  <input type="button" id="clear_button" value="Clear" onclick="clearFunction()">
+
+</form>
+<br>
+<br>
+<p>Count Down: <span id="indicator"></span></p><br>
+<button onclick="pause()">pause</button>
+<button onclick="resume()">resume</button>
+
+</body>
+
+<script>
+	function clearFunction() {
+		document.getElementById("comment").value = "";
+	}
+
+	var isCount = true;
+
+	function pause() {
+		isCount = false;
+	}
+
+	function resume() {
+		isCount = true;
+	}
+
+	function timeOut() {
+		alert("Redirect page if count down equals 0");
+		start();
+	}
+
+	function start() {
+		var n = 15;
+		document.getElementById("indicator").innerHTML = n;
+		var stop = setInterval(function () {
+			if (isCount) {
+				n--;
+			}
+			document.getElementById("indicator").innerHTML = n;
+			if (n == 0) {
+				clearInterval(stop);
+				window.location = "https://www.clear.rice.edu/comp431/sample/hello.html"
+			}
+		},1000)
+	}
+
+	
+</script>
+</html>
