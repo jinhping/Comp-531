@@ -1,3 +1,7 @@
+
+/* 
+  First check validation
+*/
 function update() {
 	var valid = checkValid();
 	if (valid){
