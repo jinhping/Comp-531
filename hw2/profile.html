@@ -3,10 +3,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name=“author” content=“Jinhao Ping”>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+
 </head>
 
 <body>
 <h1>User Profile</h1>
+<div class="input">
 Display Name:
 <input type="text" id="display_name">
 <span id="s_display_name">Jinhao Ping</span>
@@ -30,9 +33,12 @@ Password:
 Password Confirmation:
 <input type="password" id="password2">
 <br><br>
+</div>
+<div class="button">
 <button type="button" id="submit" onclick="update()">Submit Changes</button>
+</div>
 <br><br>
-<p><a href="main.html">Main Page</p>
+<p id="redirectMain"><a href="main.html">Main Page</p>
 </body>
 
 <script src="profile.js"></script>
