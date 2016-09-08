@@ -2,12 +2,11 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
-    border: 2px solid black;
-
+    border-radius: 25px;
+    background: cornflowerblue;
 }
 
 td {
-    border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
 }
@@ -22,12 +21,9 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
 	text-indent: 50px;
 	word-spacing: 10px;
-	color: blue;
+	color: white;
 }
 
-/*
-give box-shadow
-*/
 .card {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -82,6 +78,7 @@ h1 {
 	font-family: "Times New Roman"
 	font-style: italic;
 	font-size: 50px;
+    color: white;
 }
 
 input[type=text], input[type=password] {
@@ -95,11 +92,43 @@ input[type=text], input[type=password] {
     font-size: 20px;
 }
 
+/*
+generate card looking for main.html text
+*/
+h3 {
+    border: 1px solid black;
+    outline-color: red;
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+    border-radius: 25px;
+    background: gray;
+}
+
+/*
+generate card looking for main.html images
+*/
+.card-image {
+    border: 1px solid black;
+    outline-color: red;
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+    border-radius: 25px;
+    background: gray;
+
+}
 
 .input {
-    border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
+    border-radius: 25px;
+}
+
+body {
+    background-color: cornflowerblue;
 }
 
 .button {
