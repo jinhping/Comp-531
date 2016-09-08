@@ -21,11 +21,14 @@ var mapBtn2Start = {};
 var mapBtn2Time = {};
 var mapBtn2Image = {};
 
-
+/*
+when function onloads, start to setIntervals initially.
+*/
 window.onload = function() {
 	init()
 	map()
 }
+
 
 function init() {
 	var j = 0;
@@ -36,6 +39,9 @@ function init() {
 	}
 }
 
+/*
+three hash tables used to match image id and their time and start variable
+*/
 function map() {
 	var i = 0;
 	while (i < 5) {
@@ -46,6 +52,9 @@ function map() {
 	}
 }
 
+/*
+check which state it is for this particular click
+*/
 function checkValid(id) {
 		if (document.getElementById(id).innerHTML == "Stop" ) {
 			Stop(mapBtn2Start[id]);
@@ -62,7 +71,10 @@ function checkValid(id) {
 function Stop(x) {
 	clearInterval(x);
 }
- 
+
+/*
+rotate images in the same order. Always show the image next to the current image
+*/
 function changeImage(param1, param2){
 	var i = 0
 	while (i < 5) {
