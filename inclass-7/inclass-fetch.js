@@ -43,15 +43,11 @@
     }
 
     function countWordsSafe(url) {
-        return fetch(url).then(r => r.json()).then(r => {
-            var dict = {}
-            json.articles.forEach(function(object){
-                dict[object.id] = object.text.split(" ").length
-            });
-            return dict
-
-          }) 
-          .catch(e => {return {}} )     
+       return fetch(url)
+            .then(r => r.json())
+            .then(json => id2NumWords(json))
+        
+        .catch(e => {return {}} )     
     }
 
     function getLargest(url) {
