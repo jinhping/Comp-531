@@ -33,7 +33,7 @@ describe('Particle Functionality', () => {
 
     it('should update the velocity by the acceleration', () => {
         const p = particle({ position: [1, 1], velocity: [0.5, -0.5], acceleration: [1, 2] })
-        const { velocity } = update(p, 1.0) // dt is different here
+        const { velocity } = update(p, 1.0)
         expect(velocity[0]).to.be.closeTo(1.5, 0.0001)
         expect(velocity[1]).to.be.closeTo(1.5, 0.0001)
 
@@ -44,10 +44,10 @@ describe('Particle Functionality', () => {
         // of the canvas area.  update() should
         // bring the particle back inside
         // check all four sides
-        const p = particle({ position: [900, 900]})
+        const p = particle({ position: [1000, 1000]})
         const { position } = update(p, 1.0) 
-        expect(position[0]).to.be.closeTo(400, 0.0001)
-        expect(position[1]).to.be.closeTo(400, 0.0001)
+        expect(position[0]).to.be.closeTo(500, 0.0001)
+        expect(position[1]).to.be.closeTo(500, 0.0001)
 
     })
 

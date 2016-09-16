@@ -20,10 +20,10 @@ const update = ({acceleration, velocity, position, mass}, delta, canvas) => {
 	
 
 	if(position[0]>800 || position[0]<0){
-		position[0] = 400;
+		position[0] = 500;
 	}
 	if(position[1]>800 || position[1]<0){
-		position[1] = 400;
+		position[1] = 500;
 	} 
 
     return { mass, acceleration, velocity, position }
