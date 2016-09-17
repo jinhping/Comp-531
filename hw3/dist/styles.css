@@ -1,0 +1,21 @@
+body {
+   background-color: cornflowerblue;
+
+}
+
+.card_index {
+	text-align: center;
+	font: 30px arial, sans-serif;
+}
+
+.form_index {
+	width: 49%;
+    float: left;
+    text-align: center;
+}
+
+.index_login { 
+	width: 49%;
+	text-align: center;
+	float: right;
+}

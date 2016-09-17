@@ -3,38 +3,47 @@
 <head>
 	<meta charset="utf-8">
 	<meta name=“author” content=“Jinhao Ping”>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
 </head>
 <body>
 
-<div class="card">
-  <img src="http://staff.rice.edu/uploadedImages/Staff/Public_Affairs/Rice_Brand/RiceLogo_TMCMYK300DPI.jpg" style="width:100%">
+<div class="card_index">
   <div class="container">
     <h1><b>Welcome to RiceBook</b></h1> 
   </div>
 </div>
 
+<div class="form_index">
 <form action="main.html" id="myForm"  method="GET">
-  <h4><b>Register</b></h4>
+  <h4>Register</h4>
   Account Name:<br>
   <input type="text" id="account_name" name="Account_Name" pattern="[A-Za-z]+[0-9A-Za-z]*" required>
+  <br>
   <br>
   Display Name (optional):<br>
   <input type="text" id="display_name" name="Display_Name">
   <br>
+  <br>
   Email Address:    xyz@abc.ijk<br>
   <input type="text" id="email_address" name="Email" pattern="[A-Za-z0-9]+\@[A-Za-z0-9]+\.[A-Za-z0-9]+" required>
+  <br>
   <br>
   Phone number:     xxx-xxx-xxxx<br>
   <input type="text" id="phone_number" name="Phone" pattern="\d\d\d-\d\d\d-\d\d\d\d" required>
   <br>
+  <br>
   Date of Birth:<br>
   <input type="date" id="birthday" name="DOB" required>
+  <br>
   <br>
   Zipcode (5 digits): <br>
   <input type="text" id="zipcode" name="Zipcode" pattern="\d\d\d\d\d" required>
   <br>
+  <br>
   Password:<br>
   <input type="password" id="password" name="Pass" required>
+  <br>
   <br>
   Password Confirmation:<br>
   <input type="password" id="password_confirmation" name="PassComf" required>
@@ -43,13 +52,16 @@
   <br>
   <input type="submit" id="submit_button" value="Register" onclick="return checkValidation()">
   <input type="button" id="clear_button" value="Clear" onclick="clearFunction()">
+  
 </form>
+</div>
 
 
-<div class="index_card" action="main.html">
+<div class="index_login" action="main.html">
     <h4><b>Login</b></h4>
     Account Name:<br>
     <input type="text" id="account_name_login" name="Account_Name">
+    <br>
     <br>
     Password Confirmation:<br>
     <input type="password" id="password_login" name="PassComf">
