@@ -23,18 +23,18 @@
   Display Name (optional):<br>
   <input type="text" id="display_name" name="Display_Name">
   <br>
-  Email Address:    xyz@abc.ijk<br>
-  <input type="text" id="email_address" name="Email" pattern="[A-Za-z0-9]+\@[A-Za-z0-9]+\.[A-Za-z0-9]+" required>
+  Email Address:<br>
+  <input type="email" name="Email" placeholder="Email" required>
   <br>
-  Phone number:     xxx-xxx-xxxx<br>
-  <input type="text" id="phone_number" name="Phone" pattern="\d\d\d-\d\d\d-\d\d\d\d" required>
+  Phone number:<br>
+  <input type="text" id="phone_number" name="Phone" placeholder="ddd-ddd-dddd"  pattern="\d\d\d-\d\d\d-\d\d\d\d" required>
   <br>
   Date of Birth:<br>
   <input type="date" id="birthday" name="DOB" required>
   <br>
   <br>
-  Zipcode (5 digits): <br>
-  <input type="text" id="zipcode" name="Zipcode" pattern="\d\d\d\d\d" required>
+  Zipcode: <br>
+  <input type="text" id="zipcode" name="Zipcode" placeholder="ddddd" pattern="\d\d\d\d\d" required>
   <br>
   Password:<br>
   <input type="password" id="password" name="Pass" required>
@@ -49,19 +49,16 @@
 </form>
 </div>
 
- <h4><b>Login</b></h4>
+<h4><b>Login</b></h4>
 <div class="index_login" action="main.html">
     Account Name:<br>
-    <input type="text" id="account_name_login" name="Account_Name">
+    <input type="text" id="account_name_login" name="Account_Name" placeholder="Required" >
     <br>
     Password Confirmation:<br>
-    <input type="password" id="password_login" name="PassComf">
+    <input type="password" id="password_login" name="PassComf" placeholder="Required" >
     <br>
     <button id="btn_login" onclick="loginFunction()">Login</button>
  </div>
-
-
-<script src="index.js"></script>
-
 </body>
+<script src="index.js"></script>
 </html>

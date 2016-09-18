@@ -3,7 +3,6 @@ function clearFunction() {
 }
 
 function checkValidation() {
-
 	var ok = true;
 	//give timestamp time
 	var d = new Date();
@@ -60,6 +59,4 @@ function loginFunction() {
 		return false;
 	}
 	window.location = 'main.html'; 
-
-
 }

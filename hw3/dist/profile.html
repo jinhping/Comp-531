@@ -7,53 +7,48 @@
 </head>
 
 <body id="body">
-	<h1>User Profile</h1>
 	<p id="redirectMain"><a href="main.html">Main Page</a></p><br><br>
+	<h1>User Profile</h1>
 
 	<div class="current_info">
-		<img src="http://i.imgur.com/jrqPj.png" id="user_img">
+		<img src="http://i.imgur.com/jrqPj.png" id="user_img"><br><br>
+		<input type="file" name="img" id="add_img"><br><br>
 		<button type="button" id="btn_update_new_picture">Upload new picture</button>
 		<br><br>
 		<h2>Current Information</h2>
 		<div class="currect_values">
-			<span id="s_display_name">Jinhao Ping</span><br><br>
+			<span id="s_display_name">Ash Ketchum</span><br><br>
 			<span id="s_email">jp64@rice.edu</span><br><br>
 			<span id="s_phone_number">123-123-1234</span><br><br>
+			<span id="s_dob">July 4th, 1994</span><br><br>
 			<span id="s_zipcode">77030</span>
 		</div>
 	</div>
 
-
-		<div class="input">
-			<h2>Update Information</h2>
-			Display Name:
-			<input type="text" id="display_name">
-			<br><br>
-			Email Address:
-			<input type="text" id="email" pattern="[A-Za-z0-9]+\@[A-Za-z0-9]+\.[A-Za-z0-9]+" placeholder="abc@xyz.ijk">
-			<br><br>
-			Phone number: 
-			<input type="text" id="phone_number" pattern="\d\d\d-\d\d\d-\d\d\d\d" placeholder="ddd-ddd-dddd">
-			<br><br>
-			Zipcode:
-			<input type="text" id="zipcode" pattern="\d\d\d\d\d" placeholder="ddddd">
-			<br><br>
-			Password:
-			<input type="password" id="password">
-			<!-- <span id="s_password" display:none>xxxxxxxx</span> -->
-			<br><br>
-			Password Confirmation:
-			<input type="password" id="password2">
-			<br><br>
-			<div class="button">
-				<button type="button" id="submit" onclick="update()">Submit Changes</button>
-			</div>
+	<div class="input">
+		<h2>Update Information</h2>
+		Display Name:
+		<input type="text" id="display_name">
+		<br><br>
+		Email Address:
+		<input type="email" name="Email" placeholder="Email" id="email">
+		<br><br>
+		Phone number: 
+		<input type="text" id="phone_number" pattern="\d\d\d-\d\d\d-\d\d\d\d" placeholder="ddd-ddd-dddd">
+		<br><br>
+		Zipcode:
+		<input type="text" id="zipcode" pattern="\d\d\d\d\d" placeholder="ddddd">
+		<br><br>
+		Password:
+		<input type="password" id="password">
+		<br><br>
+		Password Confirmation:
+		<input type="password" id="password2">
+		<br><br>
+		<div class="button">
+			<button type="button" id="submit" onclick="update()">Submit Changes</button>
 		</div>
-
-		
-		
-
-	
+	</div>
 </body>
 
 <script src="profile.js"></script>

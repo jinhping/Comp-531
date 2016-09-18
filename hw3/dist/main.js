@@ -1,4 +1,4 @@
-
+//clear text articles in the add new articles section
 function clearTextarea() {
 	document.getElementById("textarea").value = "";
 }

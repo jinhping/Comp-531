@@ -82,10 +82,8 @@ function updatePhone() {
 	var edit_phone = document.getElementById("phone_number")
 	if (edit_phone.value != "") {
 		if (edit_phone.value === old_phone.innerHTML) {
-		
 			edit_phone.value = ""
 		} else {
-
 			old_phone.innerHTML = edit_phone.value
 			edit_phone.value = ""
 		}
@@ -97,10 +95,8 @@ function updateZipcode() {
 	var edit_zip = document.getElementById("zipcode")
 	if (edit_zip.value != "") {
 		if (edit_zip.value === old_zip.innerHTML) {
-			
 			edit_zip.value = ""
 		} else {
-	
 			old_zip.innerHTML = edit_zip.value
 			edit_zip.value = ""
 		}
@@ -112,9 +108,9 @@ function updatePassword() {
 	var password2 = document.getElementById("password2")
 	if (password.value != "" || password2.value != "") {
 		if (password.value == password2.value) {
-			alert("Password updated successfully!")
-			password.value = ""
-			password2.value = ""
+			var tmp = password.value;
+			password.value = password2.value;
+			password2.value = tmp;
 		} else {
 			alert("Passwords are not the same")
 		}
