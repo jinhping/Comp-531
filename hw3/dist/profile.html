@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang=“en-us”>
+<head>
+	<meta charset="utf-8">
+	<meta name=“author” content=“Jinhao Ping”>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body id="body">
+	<h1>User Profile</h1>
+
+		<div class="input">
+			Display Name:
+			<input type="text" id="display_name">
+			<span id="s_display_name">Jinhao Ping</span>
+			<br><br>
+			Email Address:
+			<input type="text" id="email" pattern="[A-Za-z0-9]+\@[A-Za-z0-9]+\.[A-Za-z0-9]+">
+			<span id="s_email">jp64@rice.edu</span>
+			<br><br>
+			Phone number: 
+			<input type="text" id="phone_number" pattern="\d\d\d-\d\d\d-\d\d\d\d">
+			<span id="s_phone_number">123-123-1234</span>
+			<br><br>
+			Zipcode:
+			<input type="text" id="zipcode" pattern="\d\d\d\d\d">
+			<span id="s_zipcode">77030</span>
+			<br><br>
+			Password:
+			<input type="password" id="password">
+			<span id="s_password" display:none>xxxxxxxx</span>
+			<br><br>
+			Password Confirmation:
+			<input type="password" id="password2">
+			<br><br>
+		</div>
+
+		<div class="button">
+			<button type="button" id="submit" onclick="update()">Submit Changes</button>
+		</div>
+		
+		<br><br>
+	<p id="redirectMain"><a href="main.html">Main Page</p>
+</body>
+
+<script src="profile.js"></script>
+</html>
