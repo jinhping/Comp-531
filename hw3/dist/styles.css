@@ -1,5 +1,5 @@
 body {
-   background-color: cornflowerblue;
+   background-color: #3b5998;
 
 }
 
@@ -41,7 +41,7 @@ table {
 /*
 give background color to even rows of the table
 */
-tr:nth-child(even) {
+/*tr:nth-child(even) {
     background-color: white;
 }
 
@@ -50,7 +50,7 @@ tr:nth-child(odd) {
 	word-spacing: 10px;
 	color: white;
     background-color: white;
-}
+}*/
 
 .card {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -87,6 +87,7 @@ img{
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    float: left;
 } 
 
 #redirectMain{
@@ -157,4 +158,69 @@ input[type=text], input[type=password] {
 
 .button {
 	text-align: center;
+}
+
+#search_box {
+    width: 720px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('http://findicons.com/files/icons/1389/g5_system/32/toolbar_find.png');
+    float:right;
+    background-position: 10px 6px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+}
+
+#btn_search {
+    width: 100px;
+    height: 50px;
+    border: 3px solid #73AD21;
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    float:right;
+    color:white;
+}
+
+.search_area {
+    border: 1px solid black;
+    outline-color: red;
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+    border-radius: 25px;
+    float: right;
+    background-color: #8b9dc3;
+}
+
+
+.add_stuff {
+    width: 820px;
+    border: 1px solid black;
+    outline-color: red;
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 70px;
+    padding-left: 80px;
+    border-radius: 25px;
+    float: right;
+    background-color: #8b9dc3;
+}
+
+#btn_cancel_post {
+    position:absolute; 
+    right:400px; 
+}
+
+#btn_post {
+    position:absolute; 
+    right:250px; 
 }

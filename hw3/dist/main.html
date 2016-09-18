@@ -9,7 +9,26 @@
 
 <body>
 
+<p id="redirect"><a href="profile.html">Profile Page</a></p>
+<p id="redirect"><a href="index.html">Log Out</a></p>
+
+<div class="add_stuff">
+  Add Image: <input type="file" name="img">
+  <textarea rows="4" cols="50" placeholder="Your Post Here" id="textarea"></textarea><br>
+  <button type="button" id="btn_cancel_post" onclick="clearTextarea()">Cancel</button>
+  <button type="button" id="btn_post">Post</button>
+</div>
+
 <table id="table">
+
+<tr>
+  <div class = "search_area">
+  <form id="searchBox">
+    <input type="submit" id="btn_search" value="Search">
+    <input type="text" id="search_box" name="search" placeholder="Search Posts">
+  </form>
+  </div>
+</tr>
 
 <tr>
   <div class="card">
@@ -208,9 +227,6 @@
   </div>
 </tr>
 </table>   
-
-<p id="redirect"><a href="profile.html">Profile Page</a></p>
-<p id="redirect"><a href="index.html">Log Out</a></p>
 
 </body>
 <script src="main.js"></script>
