@@ -17,6 +17,16 @@ body {
 	font: 20px arial, sans-serif;
 }
 
+#btn_submit {
+    position:absolute; 
+    left:200px; 
+}
+
+#btn_clear {
+    position:absolute; 
+    left:400px; 
+}
+
 #register_title {
 	font: 30px arial, sans-serif;
 	width: 49%;
@@ -35,22 +45,6 @@ table {
     border-radius: 25px;
     background: cornflowerblue;
 }
-
-
-
-/*
-give background color to even rows of the table
-*/
-/*tr:nth-child(even) {
-    background-color: white;
-}
-
-tr:nth-child(odd) {
-	text-indent: 50px;
-	word-spacing: 10px;
-	color: white;
-    background-color: white;
-}*/
 
 .card {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
