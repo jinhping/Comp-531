@@ -1,5 +1,11 @@
 
 function clearTextarea() {
-	console.log("sdadasd")
 	document.getElementById("textarea").value = "";
+}
+
+function updateNewStatus() {
+	var new_status_msg = document.getElementById("new_status").value;
+	if (new_status_msg != "") {
+		document.getElementById("status").innerHTML = new_status_msg;
+	}
 }
