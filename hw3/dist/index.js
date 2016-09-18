@@ -47,9 +47,8 @@ function checkValidation() {
 	}
 	return true;
 }
-
-//for return user login: check whether account name or password is empty
-//if not empty, return to main page
+/*for return user login: check whether account name or password is empty
+if not empty, return to main page*/
 function loginFunction() {
 	if (document.getElementById("account_name_login").value == "") {
 		alert("Account Name is empty!");

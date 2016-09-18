@@ -154,7 +154,7 @@ input[type=text], input[type=password], input[type=email], input[type=date]{
 
 
 .add_stuff {
-    /*width: 50%;*/
+
     border: 1px solid black;
     outline-color: red;
     padding-top: 50px;
