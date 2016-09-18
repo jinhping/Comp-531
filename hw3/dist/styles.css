@@ -3,11 +3,6 @@ body {
 
 }
 
-.card_index {
-	text-align: center;
-	font: 30px arial, sans-serif;
-}
-
 .form_index {
 	width: 49%;
     float: left;
@@ -35,33 +30,33 @@ h4 {
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 60%;
+    float: right;
     border-radius: 25px;
     background: cornflowerblue;
 }
 
-td {
-    text-align: left;
-    padding: 8px;
-}
+
 
 /*
 give background color to even rows of the table
 */
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: white;
 }
 
 tr:nth-child(odd) {
 	text-indent: 50px;
 	word-spacing: 10px;
 	color: white;
+    background-color: white;
 }
 
 .card {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 40%;
+    width: 60%;
+    float: right;
     border-radius: 5px;
 }
 
@@ -80,18 +75,32 @@ img{
     border-radius: 5px 5px 0 0;
 }
 
-#redirectProfile{
+#redirect{
     width: 80px;
     height: 20px;
     border: 3px solid #73AD21;
-    background-color: yellow;
+    background-color: #4CAF50;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 } 
 
 #redirectMain{
     width: 70px;
     height: 20px;
     border: 3px solid #73AD21;
-    background-color: yellow;
+    background-color: #4CAF50;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 } 
 
 button {
@@ -111,7 +120,7 @@ h1 {
 	text-align: center;
 	font-family: "Times New Roman"
 	font-style: italic;
-	font-size: 50px;
+	font-size: 60px;
     color: white;
 }
 
@@ -126,10 +135,9 @@ input[type=text], input[type=password] {
     font-size: 20px;
 }
 
-/*
-generate card looking for main.html text
-*/
-h3 {
+
+
+.card_combo {
     border: 1px solid black;
     outline-color: red;
     padding-top: 50px;
@@ -137,22 +145,8 @@ h3 {
     padding-bottom: 50px;
     padding-left: 80px;
     border-radius: 25px;
-    background: gray;
-}
-
-/*
-generate card looking for main.html images
-*/
-.card-image {
-    border: 1px solid black;
-    outline-color: red;
-    padding-top: 50px;
-    padding-right: 30px;
-    padding-bottom: 50px;
-    padding-left: 80px;
-    border-radius: 25px;
-    background: gray;
-
+    float: right;
+    background-color: white;
 }
 
 .input {
