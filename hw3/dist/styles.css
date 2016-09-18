@@ -120,7 +120,7 @@ h1 {
 }
 
 input[type=text], input[type=password] {
-    width: 80%;
+    width: 70%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -144,15 +144,6 @@ input[type=text], input[type=password] {
     background-color: white;
 }
 
-.input {
-    background-color: #f2f2f2;
-    padding: 20px;
-    border-radius: 25px;
-}
-
-.button {
-	text-align: center;
-}
 
 #search_box {
   /*  width: 500px;*/
@@ -232,3 +223,40 @@ input[type=text], input[type=password] {
 .follower img {
     width: 300px;
 }
+
+.current_info {
+    width: 30%;
+    float:left;
+    border: 1px solid black;
+    outline-color: red;
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 70px;
+    padding-left: 80px;
+    border-radius: 25px;
+    background-color: #8b9dc3;
+}
+
+.current_info img {
+    width: 150px;
+    height:250px;
+}
+
+.input {
+    width:55%;
+    background-color: #8b9dc3;
+    padding: 20px;
+    border-radius: 25px;
+    border: 1px solid black;
+    float: right;
+}
+
+.button {
+    text-align: center;
+}
+
+.currect_values span{ 
+    font-style: italic;
+    font-size: 25px;
+    color: #3b5998;
+ }

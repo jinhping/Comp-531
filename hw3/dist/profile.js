@@ -56,10 +56,8 @@ function updateName() {
 	var edit_name = document.getElementById("display_name")
 	if (edit_name.value != "") {
 		if (edit_name.value === old_name.innerHTML) {
-			alert("Display Name is the same as old one. No change is made !");
 			edit_name.value = ""
 		} else {
-			alert("Display Name is going to be changed from " + old_name.innerHTML + " to " + edit_name.value )
 			old_name.innerHTML = edit_name.value;
 			edit_name.value = ""
 		}
@@ -71,10 +69,8 @@ function updateEmail() {
 	var edit_email = document.getElementById("email")
 	if (edit_email.value != "") {
 		if (edit_email.value === old_email.innerHTML) {
-			alert("New Email entered is the same as old one. No changes is made !")
 			edit_email.value = ""
 		} else {
-			alert("Email is going to be changed from " + old_email.innerHTML + " to " + edit_email.value)
 			old_email.innerHTML = edit_email.value
 			edit_email.value = ""
 		}
@@ -86,10 +82,10 @@ function updatePhone() {
 	var edit_phone = document.getElementById("phone_number")
 	if (edit_phone.value != "") {
 		if (edit_phone.value === old_phone.innerHTML) {
-			alert("Phone number is unchanged!")
+		
 			edit_phone.value = ""
 		} else {
-			alert("Phone number is going to be changed from " + old_phone.innerHTML + " to " + edit_phone.value)
+
 			old_phone.innerHTML = edit_phone.value
 			edit_phone.value = ""
 		}
@@ -101,10 +97,10 @@ function updateZipcode() {
 	var edit_zip = document.getElementById("zipcode")
 	if (edit_zip.value != "") {
 		if (edit_zip.value === old_zip.innerHTML) {
-			alert("Zipcode is unchanged !")
+			
 			edit_zip.value = ""
 		} else {
-			alert("Zipcode is going to be changed from " + old_zip.innerHTML + " to " + edit_zip.value)
+	
 			old_zip.innerHTML = edit_zip.value
 			edit_zip.value = ""
 		}
