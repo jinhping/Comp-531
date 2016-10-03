@@ -1,0 +1,100 @@
+#canvas {
+   	border: 1px solid black;
+   	width: 500px;
+   	height: 700px;
+    margin: 0 auto;
+    vertical-align: middle;
+
+}
+
+#game {
+	width: 70%;
+	float: right;
+}
+
+#metrics {
+	text-align: center;
+	width: 30%;
+	float: left;
+}
+
+#score {
+	text-align: center;
+	font-size: 60px;
+}
+
+#time {
+	font-size: 30px;
+	text-align: center;
+
+}
+
+#average {
+	font-size: 30px;
+	text-align: center;
+
+}
+
+button {
+	background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 50%;
+}
+
+#buttons {
+	width: 30%;
+	float: left;
+	text-align: center;
+
+}
+
+body {
+	background-color: #8b9dc3;
+}
+
+#details {
+	font-family: "Times New Roman"
+	font-style: italic;
+	font-size: 30px;
+    color: white;
+}
+
+#characters {
+	text-align: center;
+	width: 30%;
+	float: left;
+}
+
+#welcome {
+	text-align: center;
+	font-size: 40px;
+}
+
+#redirect {
+	background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 32px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 20%;
+
+}
+
+#operations {
+	font-family: "Times New Roman"
+	font-style: italic;
+    color: white;
+}

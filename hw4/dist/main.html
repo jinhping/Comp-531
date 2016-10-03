@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang=“en-us”>
+<head>
+	<meta charset="utf-8">
+	<meta name=“author” content=“Jinhao Ping”>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+
+<div id="buttons">
+	<h1>Select a difficulty level to start the game!</h1><br>
+	<button id="easy" value="2" onclick="changeLevelE()">Easy</button><br>
+	<button id="medium" value="5" onclick="changeLevelM()">Medium</button><br>
+	<button id="hard" value="10" onclick="changeLevelH()">Hard</button><br>
+</div>
+
+<div id="game">
+	<div id="score">Score: 0</div>
+	<br>
+	<div id="canvas">
+		<canvas id="car" width="500" height="700"></canvas>
+	</div>
+</div>
+
+<div id="metrics">
+	<br>
+	<h1>Game Metrics: </h1>
+	<div id="details"> 
+		<span id="time">Time Spent in seconds</span><br>
+		<span id="average">Score / Time</span><br>
+		Escaped from <span id="cats">0 </span>cats
+	</div>	
+</div>
+
+<div id="characters">
+	<br>
+	<h1>Our Characters & Operations: </h1>
+	<img id="tom" width="100" height="100" src="images/tom2.jpg">
+	<img id="jerry" width="100" height="100" src="images/jerry.jpg"><br><br>
+	<div id ="operations">
+	<p>left: left arrow key</p>
+	<p>right: right arrow key</p>
+	<p>slow down (half scores): up arrow key </p>
+	<p>speed up (double scores): downarrow key</p>
+	</div>
+</div>
+
+
+
+
+</body>
+<script src="main.js"></script>
+</html>
