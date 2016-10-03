@@ -34,6 +34,9 @@ var number_cats = 0;
 var vary_speed = 0 ;
 var button_click_count = 0;
 
+
+var gap = 500;
+
 function changeLevelE() {
 	button_click_count++;
 	if (button_click_count != 1) {
@@ -64,6 +67,7 @@ function changeLevelH() {
 	setTimeout(myfunction, tmp_speed);
 }
 
+
 function myfunction() {
 	d2 = new Date();
 	n2 = d2.getTime();
@@ -72,15 +76,22 @@ function myfunction() {
 	average = Math.round(final_score / Math.round(total_time))
 	document.getElementById("average").innerHTML = average + " points / second" ;
 	document.getElementById("cats").innerHTML = number_cats + "  sets of " ;
+
+
 	moveblock();
 	scorePoints();
 	if (gameOver == true) {
-		
 		return;
 	}
-
 	s += vary_speed;
-	if (s % 500 == 0) {
+	gap = 500;
+	if (total_time > 15 && total_time <= 30) {
+		gap = 400
+	} else if (total_time > 30) {
+		gap = 300;
+	}	
+
+	if (s % gap == 0) {
 		var block1 = Math.random() < 0.5 ? 0 : 1;
 		var block2 = Math.random() < 0.5 ? 0 : 1;
 		var block3 = Math.random() < 0.5 ? 0 : 1;
@@ -95,6 +106,7 @@ function myfunction() {
 	}
 	setTimeout(myfunction, tmp_speed);
 }
+
 function moveblock() {
 	for (var i = 0; i < blocks.length; i++) {
 		for (var j = 0; j < blocks[0].length; j++) {
