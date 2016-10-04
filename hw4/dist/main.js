@@ -156,6 +156,8 @@ function scorePoints() {
 }
 
 function start() {
+	d = new Date();
+	n = d.getTime();
 	tmp_speed = gameSpeed
 	document.onkeyup = function() {
 		tmp_speed = gameSpeed
