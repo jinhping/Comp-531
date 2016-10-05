@@ -38,6 +38,33 @@ var button_click_count = 0;
 var gap = 500;
 
 
+var carLeft = car.offsetLeft
+var carTop = car.offsetTop
+var elements = [];
+
+car.addEventListener('click', function(event) {
+    var x = event.pageX - carLeft,
+        y = event.pageY - carTop;
+
+  	if (x > startingPostion.x) {
+			if (startingPostion.x < 400) {
+				cxt.clearRect(startingPostion.x, startingPostion.y, 100, 100);
+				img = document.getElementById("jerry");
+				cxt.drawImage(img, startingPostion.x + 100, startingPostion.y, 100, 100);
+				startingPostion.x = startingPostion.x + 100;
+			} 
+		} else if (x <= startingPostion.x) {  // move to the left
+			if (startingPostion.x >  0) {
+				cxt.clearRect(startingPostion.x, startingPostion.y, 100, 100);
+				img = document.getElementById("jerry");
+				cxt.drawImage(img,startingPostion.x - 100, startingPostion.y, 100, 100);
+				startingPostion.x = startingPostion.x -  100;
+			}
+		} 
+
+}, false);
+
+
 function changeLevelE() {
 	button_click_count++;
 	if (button_click_count != 1) {
@@ -158,10 +185,15 @@ function scorePoints() {
 		}
 }
 
+
+
+
+
 function start() {
 	d = new Date();
 	n = d.getTime();
 	tmp_speed = gameSpeed
+
 	document.onkeyup = function() {
 		tmp_speed = gameSpeed
 	}

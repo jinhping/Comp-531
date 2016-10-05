@@ -20,17 +20,17 @@
 
 #score {
 	text-align: center;
-	font-size: 30px;
+	font-size: 20px;
 }
 
 #time {
-	font-size: 30px;
+	font-size: 20px;
 	text-align: center;
 
 }
 
 #average {
-	font-size: 30px;
+	font-size: 20px;
 	text-align: center;
 
 }
@@ -63,7 +63,7 @@ body {
 #details {
 	font-family: "Times New Roman"
 	font-style: italic;
-	font-size: 30px;
+	font-size: 20px;
     color: white;
 }
 
