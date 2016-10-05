@@ -37,6 +37,7 @@ var button_click_count = 0;
 
 var gap = 500;
 
+
 function changeLevelE() {
 	button_click_count++;
 	if (button_click_count != 1) {
@@ -107,6 +108,7 @@ function myfunction() {
 	setTimeout(myfunction, tmp_speed);
 }
 
+//move blocks down via add distance to y coordinates
 function moveblock() {
 	for (var i = 0; i < blocks.length; i++) {
 		for (var j = 0; j < blocks[0].length; j++) {
@@ -120,6 +122,7 @@ function moveblock() {
 	}
 }
 
+//once block is reaching 700 px in distance, it means jerry scores, scores points is based on its speed
 function scorePoints() {
 		if (blocks[0][0].y_coordinate >= 700) {
 			if (tmp_speed == gameSpeed) {

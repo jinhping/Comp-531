@@ -20,7 +20,7 @@
 
 #score {
 	text-align: center;
-	font-size: 60px;
+	font-size: 30px;
 }
 
 #time {
@@ -71,6 +71,7 @@ body {
 	text-align: center;
 	width: 30%;
 	float: left;
+	display: none;
 }
 
 #welcome {

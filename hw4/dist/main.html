@@ -10,24 +10,28 @@
 
 <div id="buttons">
 	<h1>Select a difficulty level to start the game!</h1>
-	<p>Different difficulty levels have different speed for falling block rows. Difficulty will also increase via decreasing the gap distances between two falling block rows every 15 seconds.</p><br>
+	<p>Different difficulty levels have different speed for falling block rows. Difficulty will also increase by every 15 seconds via decreasing gap distances between two coming rows. 20 points for each escaping row. 40 points if you speed up while you escaping. 10 points if you slow down while you escaping.</p>
+	<div id ="operations">
+	<p>left: left arrow key</p>
+	<p>right: right arrow key</p>
+	<p>slow down (half scores): up arrow key </p>
+	<p>speed up (double scores): down arrow key</p>
+	</div>
 	<button id="easy" value="2" onclick="changeLevelE()">Easy</button><br>
 	<button id="medium" value="5" onclick="changeLevelM()">Medium</button><br>
 	<button id="hard" value="10" onclick="changeLevelH()">Hard</button><br>
 </div>
 
 <div id="game">
-	<div id="score">Score: 0</div>
-	<br>
 	<div id="canvas">
-		<canvas id="car" width="500" height="700"></canvas>
+		<canvas id="car" width="500" height="700"  tabindex="1"></canvas>
 	</div>
 </div>
 
 <div id="metrics">
-	<br>
 	<h1>Game Metrics: </h1>
 	<div id="details"> 
+		<div id="score">Score: 0</div>
 		<span id="time">Time Spent in seconds</span><br>
 		<span id="average">Score / Time</span><br>
 		Escaped from <span id="cats">0 </span>cats
@@ -36,19 +40,10 @@
 
 <div id="characters">
 	<br>
-	<h1>Our Characters & Operations: </h1>
+	<h1>Our Characters: </h1>
 	<img id="tom" width="100" height="100" src="images/tom2.jpg">
 	<img id="jerry" width="100" height="100" src="images/jerry.jpg"><br><br>
-	<div id ="operations">
-	<p>left: left arrow key</p>
-	<p>right: right arrow key</p>
-	<p>slow down (half scores): up arrow key </p>
-	<p>speed up (double scores): downarrow key</p>
-	</div>
 </div>
-
-
-
 
 </body>
 <script src="main.js"></script>
