@@ -26,31 +26,26 @@ describe('Test Dummy Server Example Page', () => {
         // verify the headline is updated
         // .sendKeys(the old headline message)
         // verify the headline is updated
-        let headline_input;
-        findId('message').getText().then(text => {
-            headline_input = text;
-        })
-
-       
-        findId('newHeadline').sendKeys("test new headline")
+        let new_headline = "test new headline"
+        findId('newHeadline').sendKeys(new_headline)
         .then(findId('headline').click())
-        sleep(1000)
+        .then(sleep(1000))
 
         .then(findId('message').getText().then(
             text => {
                 expect(text.substring(text.indexOf('"'))).to.equal('"test new headline"')
             })
         )
-        sleep(1000)
+        .then(findId('newHeadline').clear())
 
-
-        .then(() => findId('newHeadline').sendKeys(headline_input))
+        .then(findId('newHeadline').sendKeys("TEST"))
         .then(findId('headline').click())
-        sleep(1000)
+        .then(sleep(1000))
 
-        .then(findId('message').getText().then(
+        .then(findId('message').getText()
+            .then(
             text => {
-                expect(text.substring(text.indexOf('"'))).to.equal('"test new headline"')
+                expect(text.substring(text.indexOf('"'))).to.equal('"TEST"')
             })
         )
         .then(done)

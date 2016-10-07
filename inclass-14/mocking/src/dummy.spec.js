@@ -71,15 +71,32 @@ describe('Validate login', () => {
 	})
 
 	it('should update the headline', (done) => {
-		const div = createDOM('user', 'pass', 'hello')
+			const div = createDOM('user', 'pass', 'hello')
 		expect(div.innerHTML).to.eql('hello')
 
-		// IMPLEMENT ME
-		//   * mock the AJAX request to PUT headline
-		//   * update the headline by calling updateHeadline(...)
-		//   * Verify the new value of the headline in div.innerHTML
+		mock(`${url}/login`, { 
+			method: 'POST',
+			headers: {'Content-Type': 'application/json'}
+		})
+		mock(`${url}/headlines`, {
+			headers: {'Content-Type': 'application/json'},
+			json: {
+				headlines: [{username: 'hi', headline:'ok'}]
+			}
+		})
 
-		done(new Error('not implemented'))
+		mock(`${url}/headline`, {
+			method: 'PUT',
+			headers: {'Content-Type': 'application/json'},
+			json: {
+				username: 'hi',
+				headline: 'test update'
+			}
+		})
+
+		login().then(_ => {expect(div.innerHTML).to.eql('you are logged in as hi "ok"')})
+
+		updateHeadline('test update').then(_ => {expect(div.innerHTML).to.eql('you are logged in as hi "test update"')}).catch(done).then(done)
 	})
 
 })

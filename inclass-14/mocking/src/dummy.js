@@ -64,12 +64,19 @@ const toggle = (show) => {
   ['#logout', '#headline', '#newHeadline'].forEach(toggleElement(!show));
 }
 
+
 const updateHeadline = (headline) => {
-  resource('PUT', 'headline', { headline }).then((response) => {
-    console.log(`New headline ${response.headline}`)
+
+
+  return resource('PUT', 'headline', { headline }).then((response) => {
+    //console.log(`New headline ${response.headline}`)
     // IMPLEMENT ME
-    //   * Update the headline shown in the #message box
-    // FYI response.headline = { username, headline }
+    // Update the headline shown on the screen.  Be sure to not
+    // repeat yourself (DRY) => you will want to refactor some code.
+      const box = document.querySelector("#message")
+
+     box.innerHTML = `you are logged in as ${response.username} "${response.headline}"`
+
   })
 }
 
