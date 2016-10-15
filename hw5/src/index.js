@@ -17,7 +17,7 @@ const store = createStore(Reducer, applyMiddleware(logger))
 
 render(
     <Provider store={store}>
-        <App />
+       <App />
     </Provider>,
     document.getElementById('app')
 )
