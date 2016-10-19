@@ -242,9 +242,8 @@ input[type=text], input[type=password], input[type=email], input[type=date]{
     background-color: #8b9dc3;
 }
 
-
-#follower img {
-     width: 150px;
+.followingImage {
+    width: 150px;
     height:200px;
 }
 

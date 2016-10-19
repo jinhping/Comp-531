@@ -6,41 +6,20 @@ class Headline extends Component {
 
     render() { return (
         <div>
-            <div className="row">
-                <div className="col-sm-12">
-                    <div className="text-center">
-                        <h4 id="username">{ this.props.username }</h4>
-                    </div>
-                </div>
-            </div>
-
-            <div className="row">
-                <div className="col-sm-2"></div>
-                <div className="col-sm-8">
-                    <img width="100%" src={ this.props.avatar }/>
-                </div>
-                <div className="col-sm-2"></div>
-            </div>
-
-            <div className="row">
-                <div className="col-sm-12">
-                    <div className="text-center">
-                        <h4 id="headline">{ this.props.headline }</h4>
-                    </div>
-                </div>
-            </div>
-
-            <div className="row">
-                <div className="col-sm-12">
-                    <input className="form-control" id="headline" type="text"
+        
+            <div id="user_info">
+                <img src={ this.props.avatar } id="user_img"/>
+                <h2>{ this.props.username }</h2>
+                <span id="status">{ this.props.headline }</span><br/>
+                  
+                <input id="new_status" type="text"
                         placeholder="update your headline"
                         ref={ (node) => { this.newHeadline = node }}
                         onChange={() => this.forceUpdate()} />
-                </div>
 
             { !(this.newHeadline && this.newHeadline.value.length > 0) ? '' :
-                <div className="col-sm-12">
-                    <input className="btn btn-primary"
+                <div>
+                    <input id="btn_update_user_info"
                         type="button" value="Update your Headline"
                         onClick={() => {
                             this.props.dispatch(updateHeadline(this.newHeadline.value))
@@ -49,9 +28,11 @@ class Headline extends Component {
                 </div>
             }
             </div>
+
         </div>
     )}
 }
+
 export default connect(
     (state) => {
         return {
@@ -61,9 +42,3 @@ export default connect(
         }
     }
 )(Headline)
-
-
-
-/** WEBPACK FOOTER **
- ** ./src/components/main/headline.js
- **/

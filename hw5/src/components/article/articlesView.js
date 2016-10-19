@@ -9,21 +9,19 @@ import { searchKeyword } from './articleActions'
 const ArticlesView = ({username, articles, dispatch}) => {  
   let keyword = ''
   return (
-    <div className="col-sm-9" >
+    <div>
 
       <NewArticle/>
 
-      <div className="row">&nbsp;</div>
 
-      <div className="row">
-        <div className="col-sm-7">
-          <input className="form-control" type="text" placeholder="search your feed"
+        <div id="search_area">
+          <input id="search_box" type="text" placeholder="search your feed"
             ref={(node) => keyword = node }
             onChange={() => { dispatch(searchKeyword(keyword.value)) }}/>
         </div>
-      </div>
 
 
+      <div id = "card">
       { articles.sort((a,b) => {
         if (a.date < b.date)
           return 1
@@ -35,7 +33,7 @@ const ArticlesView = ({username, articles, dispatch}) => {
           date={article.date} text={article.text} img={article.img} avatar={article.avatar}
           comments={article.comments}/>
       )}
-
+      </div>
     </div>
   )
 }
@@ -72,8 +70,3 @@ export default connect(
 
 export { ArticlesView as PureArticlesView }
 
-
-
-/** WEBPACK FOOTER **
- ** ./src/components/article/articlesView.js
- **/

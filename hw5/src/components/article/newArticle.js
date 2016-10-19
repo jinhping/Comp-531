@@ -20,26 +20,23 @@ class NewArticle extends Component {
     }
 
     render() { return (
-        <div>
+        <div id="add_stuff">
             <div className="row">
-                <div className="col-sm-12">
                     <div>Say something...</div>
-                    <textarea class="newPostBody"
-                      cols="80" rows="4" placeholder="share what's new..."
+                    <textarea  id="textarea"
+                      cols="50" rows="4" placeholder="share what's new..."
                       value={ this.message }
                       onChange={(e) => {
                         this.message = e.target.value
                         this.forceUpdate();
                     }}>
                     </textarea>
-                </div>
             </div>
 
             <div className="row">
-                <div className="col-sm-5">
-                    Add a picture
-                    <input type="file" id="articleImage" accept="image/*" onChange={(e) => this.handleImageChange(e)}/>
-                </div>
+                Add a picture
+                <input type="file" id="add_img" accept="image/*" onChange={(e) => this.handleImageChange(e)}/>
+           
             { !this.file && !this.message ? '' :
                 <div className="col-sm-2">
                     <div className="text-right">
@@ -70,8 +67,3 @@ class NewArticle extends Component {
 
 export default connect()(NewArticle)
 
-
-
-/** WEBPACK FOOTER **
- ** ./src/components/article/newArticle.js
- **/
