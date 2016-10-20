@@ -29,7 +29,3 @@ export default connect((state) => {
 })(App)
 
 
-
-/** WEBPACK FOOTER **
- ** ./src/components/app.js
- **/

@@ -37,8 +37,3 @@ ContentEditable.propTypes = {
 
 export default ContentEditable
 
-
-
-/** WEBPACK FOOTER **
- ** ./src/components/article/contentEditable.js
- **/

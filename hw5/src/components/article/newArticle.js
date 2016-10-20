@@ -38,7 +38,7 @@ class NewArticle extends Component {
                 <input type="file" id="add_img" accept="image/*" onChange={(e) => this.handleImageChange(e)}/>
            
             { !this.file && !this.message ? '' :
-                        <input className="btn btn-primary" type="button" value="Publish it"
+                        <input type="button" value="Publish it"
                             onClick={() => {
                                 this.props.dispatch(uploadArticle(this.message, this.file))
                                 this.message = ''

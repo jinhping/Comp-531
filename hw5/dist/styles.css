@@ -1,36 +1,4 @@
 
-
-.newPostBody {
-    border: 1pt solid gray;
-    max-width: 60%;
-    min-width: 250px;
-}
-
-/*.followingImage {
-     width: 48px;
-     max-width: 48px;
-}*/
-
-.jumbotron {
-    padding:50px 20px 50px 20px;
-    margin:10px auto;
-    opacity: 0.9;
-}
-
-.well{
-    opacity: 0.9;
-}
-
-.navbar.navbar-default.navbar-fixed-top {
-    opacity: 0.9;
-}
-
-/*#app {
-    background: url('http://hdlatestwallpapers.com/wp-content/uploads/2014/09/Free-Backgrounds-For-Web-Design-e1409631478302.jpeg') no-repeat center center fixed; 
-    background-size: cover;
-    -webkit-background-size: cover;
-}
-*/
 span[contenteditable='true']:hover {
     background: #e6e6e6;
 }
@@ -68,7 +36,7 @@ h4 {
 #card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 58%;
+    width: 50%;
     float: right;
     border-radius: 5px;
 }
@@ -193,7 +161,7 @@ input[type=text], input[type=password], input[type=email], input[type=date]{
 
 
 #add_stuff {
-    width:50%;
+    width:40%;
     border: 1px solid black;
     outline-color: red;
     padding-top: 50px;
@@ -225,7 +193,7 @@ input[type=text], input[type=password], input[type=email], input[type=date]{
 }
 
 #following {
-    width: 33%;
+    width: 30%;
     border: 1px solid black;
     outline-color: red;
     padding-top: 50px;

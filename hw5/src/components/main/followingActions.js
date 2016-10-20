@@ -48,9 +48,3 @@ export function fetchFollowers(method, name) {
         })
     }
 }
-
-
-
-/** WEBPACK FOOTER **
- ** ./src/components/main/followingActions.js
- **/
