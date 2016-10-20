@@ -1,10 +1,4 @@
-.postImage {
-    max-width: 150px;
-    max-height: 150px;
-    float: left;
-    padding: 0.1em;
-    margin: 0.5em;    
-}
+
 
 .newPostBody {
     border: 1pt solid gray;
@@ -12,10 +6,10 @@
     min-width: 250px;
 }
 
-.followingImage {
+/*.followingImage {
      width: 48px;
      max-width: 48px;
-}
+}*/
 
 .jumbotron {
     padding:50px 20px 50px 20px;
@@ -167,6 +161,7 @@ input[type=text], input[type=password], input[type=email], input[type=date]{
     border-radius: 25px;
     float: right;
     background-color: white;
+    width:100%;
 }
 
 
@@ -198,13 +193,13 @@ input[type=text], input[type=password], input[type=email], input[type=date]{
 
 
 #add_stuff {
-
+    width:50%;
     border: 1px solid black;
     outline-color: red;
     padding-top: 50px;
     padding-right: 30px;
     padding-bottom: 70px;
-    padding-left: 20px;
+    padding-left: 130px;
     border-radius: 25px;
     float: right;
     background-color: #8b9dc3;
@@ -225,7 +220,7 @@ input[type=text], input[type=password], input[type=email], input[type=date]{
 }
 
 #user_info img {
-    width: 150px;
+    width: 200px;
     height:250px;
 }
 
@@ -243,9 +238,10 @@ input[type=text], input[type=password], input[type=email], input[type=date]{
 }
 
 .followingImage {
-    width: 150px;
-    height:200px;
+    width: 200px;
+    height:250px;
 }
+
 
 #current_info {
     width: 33%;
@@ -307,3 +303,55 @@ input[type=text], input[type=password], input[type=email], input[type=date]{
     background-color: green;
     width: 100%;
 }
+
+.button_articles {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#postImage {
+    width : 50%;
+}
+
+p {
+    text-align: center;
+}
+
+.button_article_js {
+    text-align: center;
+}
+
+#update_comment_button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+li {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+

@@ -4,11 +4,12 @@ import { connect } from 'react-redux'
 import { addFollower, delFollower, dispatch } from './followingActions'
 
 const Follower = ({name, avatar, headline, dispatch}) => (
-    <div name="follower">
+    <div className="follower">
         <img className="followingImage" src={ avatar }/>
         <h3><strong>{ name }</strong></h3>
-        <div id="status"><em>{ headline }</em></div>
-        <span id="btn_unfollow" onClick={() => { dispatch(delFollower(name)) }}></span>
+        <em id="status">{ headline }</em><br/>
+        <input id="unfollow_btn" type="button" value="Unfollow" onClick={() => { dispatch(delFollower(name)) }}></input>
+        <br/><br/>
     </div>
 )
 

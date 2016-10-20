@@ -7,7 +7,7 @@ import ArticlesView from '../article/articlesView'
 const Main = () => (
 
     <div>
-
+    	<br/><br/><br/>
         <Headline/>
         <ArticlesView/>
         <Following/>

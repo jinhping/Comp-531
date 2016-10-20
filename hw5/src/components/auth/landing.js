@@ -25,7 +25,7 @@ ErrorMessage = connect((state) => {
 
 const Landing = () => (
     <div>
-        
+        <br/><br/><br/>
         <div class="card_index">
             <div class="container">
                 <h1><b>Welcome to RiceBook</b></h1> 

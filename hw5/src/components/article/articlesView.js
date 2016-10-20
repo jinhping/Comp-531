@@ -13,7 +13,6 @@ const ArticlesView = ({username, articles, dispatch}) => {
 
       <NewArticle/>
 
-
         <div id="search_area">
           <input id="search_box" type="text" placeholder="search your feed"
             ref={(node) => keyword = node }
@@ -21,7 +20,7 @@ const ArticlesView = ({username, articles, dispatch}) => {
         </div>
 
 
-      <div id = "card">
+      <div id="card">
       { articles.sort((a,b) => {
         if (a.date < b.date)
           return 1

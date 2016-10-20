@@ -19,20 +19,15 @@ class Article extends Component {
   render() {
     const date = moment(new Date(this.props.date))
     return (
-    <div className="row" name="article">
-      <div className="col-sm-11">
+    <div id="card_combo" name="article">
         <h3>
           <img className="followingImage" src={ this.props.avatar }/>
           {this.props.author} said
           on {date.format('MM-DD-YYYY')} at {date.format('HH:mm:ss')}
         </h3>
-
-        <div className="row">
-          <div className="col-sm-9">
-            <div className="media-left">
-              <img className="postImage" src={this.props.img}/>
-            </div>
-            <ContentEditable className="media-body" html={this.props.text}
+        
+         <p>
+          <ContentEditable html={this.props.text}
               contentEditable={this.props.username == this.props.author}
               tooltip={this.props.username == this.props.author ? 'click to edit' : ''}
               onChange={(e) => {
@@ -40,30 +35,33 @@ class Article extends Component {
                 this.disabled = this.props.text == this.newMessage
                 this.forceUpdate()
               }}/>
-          </div>
-        </div>
+        </p>
+        <br/>
+        <p>
+          <img id="postImage" src={this.props.img}/>
+        </p>  
 
-        <div className="btn-group btn-group-justified">
-          <div className="btn-group">
-            <label className="btn btn-warning"
+        <div className="button_article_js">
+            <label className="button_articles"
               onClick={() => {
                 this.hideComments = !this.hideComments
                 this.forceUpdate()
               }}>
               { this.hideComments ? 'Show' : 'Hide' } Comments ({ this.props.comments.length })
             </label>
-          </div>
+            
+            &nbsp;&nbsp;&nbsp;
 
-          <div className="btn-group">
-            <label className="btn btn-success"
+            
+            <label className="button_articles"
               onClick={() => { this.addComment = !this.addComment; this.forceUpdate() }}>
               { this.addComment ? 'Cancel' : 'Add a comment' }
             </label>
-          </div>
+
+            &nbsp;&nbsp;&nbsp;
 
         { this.props.author != this.props.username ? '' :
-          <div className="btn-group">
-            <label className="btn btn-primary"
+            <label className="button_articles"
               title="Click the text to edit your post"
               disabled={this.disabled}
               onClick={() => {
@@ -73,15 +71,12 @@ class Article extends Component {
               }}>
               Edit post
             </label>
-          </div>
         }
         </div>
 
-        <div className="btn-group btn-group-justified">
-          <div className="btn-group"></div>
+        <div>
         { !this.addComment ? '' :
-          <div className="btn-group">
-            <div>
+          <div>
               <textarea className="newPostText"
                 cols="80" rows="4" placeholder="your comment"
                 value={this.newComment}
@@ -90,7 +85,7 @@ class Article extends Component {
                   this.forceUpdate()
               }}>
               </textarea>
-              <label className="btn btn-success"
+              <label className="button_articles"
                 disabled={ this.newComment.length == 0 }
                 onClick={() => {
                   if (this.newComment.length > 0)
@@ -101,10 +96,8 @@ class Article extends Component {
                 }}>
                 Make the comment
               </label>
-            </div>
           </div>
         }
-          <div className="btn-group"></div>
         </div>
 
         { this.hideComments ? '' : this.props.comments.sort((a,b) => {
@@ -118,7 +111,6 @@ class Article extends Component {
               commentId={comment.commentId} author={comment.author} date={comment.date}
               text={comment.text} avatar={comment.avatar} />
         )}
-      </div>
     </div>
   )}
 }
