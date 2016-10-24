@@ -31605,8 +31605,6 @@
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	exports.filterFunction = filterFunction;
-	
 	var _react = __webpack_require__(/*! react */ 1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -31689,19 +31687,17 @@
 	  };
 	})(ArticlesView);
 	exports.PureArticlesView = ArticlesView;
-	function filterFunction(articles, keyword) {
-	  var articleList = Object.keys(articles).map(function (_id) {
-	    return articles[_id];
-	  }).sort(function (a, b) {
-	    return a.date === b.date ? 0 : a.date < b.date ? 1 : -1;
-	  });
-	  if (keyword && keyword.length !== 0) {
-	    articleList = articleList.filter(function (item) {
-	      return item.text.toLowerCase().indexOf(keyword.toLowerCase()) >= 0 || item.author.toLowerCase().indexOf(keyword.toLowerCase()) >= 0;
-	    });
-	  }
-	  return articleList;
-	}
+	
+	// export function filterFunction(articles, keyword){
+	//   let articleList = Object.keys(articles).map((_id)=> articles[_id]).sort((a,b)=>a.date===b.date?0:a.date<b.date?1:-1);
+	//   if(keyword && keyword.length !==0){
+	//     articleList = articleList.filter((item)=>{
+	//       return item.text.toLowerCase().indexOf(keyword.toLowerCase()) >=0 ||
+	//            item.author.toLowerCase().indexOf(keyword.toLowerCase()) >=0
+	//     })
+	//   }
+	//   return articleList;
+	// }
 
 /***/ },
 /* 219 */

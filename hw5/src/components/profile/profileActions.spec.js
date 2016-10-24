@@ -1,58 +1,57 @@
-// import { expect } from 'chai'
-// import mockery from 'mockery'
-// import fetch, { mock } from 'mock-fetch'
+import { expect } from 'chai'
+import mockery from 'mockery'
+import fetch, { mock } from 'mock-fetch'
 
-// import * as profileActions from './profileActions'
+import * as profileActions from './profileActions'
 
-// import {apiUrl}  from '../../actions'
 
-// let Action, actions
+let resource, url
 
-// beforeEach(() => {
-//   if (mockery.enable) {
-// 	 mockery.enable({warnOnUnregistered: false, useCleanCache:true})
-// 	 mockery.registerMock('node-fetch', fetch)
-// 	 require('node-fetch')
+describe('ProfileActions Test: ', () => {
+
+
+	beforeEach(() => {
+  		if (mockery.enable) {
+			mockery.enable({warnOnUnregistered: false, useCleanCache:true})
+			mockery.registerMock('node-fetch', fetch)
+			require('node-fetch')
+			url = require('../../actions')
+			resource = require('../../actions').default
+  		}
+	})
+
+	afterEach(() => {
+  		if (mockery.enable) {
+			mockery.deregisterMock('node-fetch')
+			mockery.disable()
+	  	}
+	})
+
+	it('should update the status message', (done) => {
   
-//   apiUrl = require('../../actions').url
-//   resource = require('../../actions').resource
-//   profileActions = require('./profileActions')
+  		// the result from the mocked AJAX call
+  		const username = 'sep1test'
+  		const headline = 'A new headline!'
 
-//   }
-//   Action = require('../../actions').default
-//   actions = require('../../actions')
-// })
+  		mock(`${url}/headline`, {
+  			method: 'PUT',
+  			headers: {'Content-Type':'application/json'},
+  			json: { username, headline }
+  		})
 
-// afterEach(() => {
-//   if (mockery.enable) {
-// 	mockery.deregisterMock('node-fetch')
-// 	mockery.disable()
-//   }
-// })
+  		// review how complex actions work in Redux
+  		// updateHeadline returns a complex action
+ 		// the complex action is called with dispatch as an argument
+  		// dispatch is then called with an action as an argument
 
-// it('should update the status message', (done) => {
-  
-//   // the result from the mocked AJAX call
-//   const username = 'sep1test'
-//   const headline = 'A new headline!'
+  		profileActions.updateHeadline('does not matter')(
+  			fn => fn(action => {
+	  		expect(action).to.eql({ 
+	  			headline, type:'UPDATE_PROFILE'
+	  		})
+	  		done()
+  		}))
 
-//   mock(`${apiUrl}/headline`, {
-//   	method: 'PUT',
-//   	headers: {'Content-Type':'application/json'},
-//   	json: { username, headline }
-//   })
+	})
+})
 
-//   // review how complex actions work in Redux
-//   // updateHeadline returns a complex action
-//   // the complex action is called with dispatch as an argument
-//   // dispatch is then called with an action as an argument
-
-//   profileActions.updateHeadline('does not matter')(
-//   	fn => fn(action => {
-// 	  expect(action).to.eql({ 
-// 	  	headline, type: actions.UPDATE_PROFILE
-// 	  })
-// 	  done()
-//   	}))
-
-// })

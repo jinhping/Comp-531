@@ -77,7 +77,7 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
 	})
 
 
-	it('should update error message (for displaying error mesage to user)', ()=>{
+	it('- should update error message (for displaying error mesage to user)', ()=>{
 		const msg = 'test error message';
 		const expectAction = {
 			type: Action.ERROR,
@@ -87,7 +87,7 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
 	})
 
 
-	it('should update success message (for displaying success message to user)', ()=>{
+	it('- should update success message (for displaying success message to user)', ()=>{
 		const msg = 'test success message';
 		const expectAction = {
 			type: Action.SUCCESS,
@@ -97,7 +97,7 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
 	})
 
 
-	it('should navigate (to profile, main, or landing)', ()=>{
+	it('- should navigate (to profile, main, or landing)', ()=>{
 		expect(navToOut()).to.eql({type: Action.NAV_OUT});
 		expect(navToMain()).to.eql({type: Action.NAV_MAIN});
 		expect(navToProfile()).to.eql({type: Action.NAV_PROFILE});
