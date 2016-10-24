@@ -20,8 +20,8 @@ const App = ({location}) => {
         view = <Landing/>
     }
     return (
+
         <div>
-            <Nav/>
             {view}
         </div>
     )

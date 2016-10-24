@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import ProfileForm from './profileForm'
 import Avatar from './avatar'
 
+import ProfileNav from './profileNav'
 
 const Messages_ = ({error, success}) => (
      <div>
@@ -34,6 +35,7 @@ const Profile = () => {
     return (
         <div>
             <br/><br/><br/>
+            <ProfileNav />
             <Avatar/>            
             <ProfileForm/>
             <Messages />
