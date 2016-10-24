@@ -20,5 +20,6 @@ const Nav = ({username,  dispatch}) => (
 export default connect(
   (state) => {
     return {
-      username: state.profile.username || ''}
+      username: state.profile.username || '',
+    }
   })(Nav)

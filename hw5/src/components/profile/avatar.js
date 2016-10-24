@@ -15,13 +15,11 @@ class Avatar extends Component {
 
     handleImageChange(e) {
         e.preventDefault()
-
         let reader = new FileReader();
         reader.onloadend = () => {
             this.preview = reader.result
             this.forceUpdate();
         }
-
         this.file = e.target.files[0];
         reader.readAsDataURL(this.file)
     }

@@ -25,7 +25,8 @@ class ProfileForm extends Component {
                 phone:this.phone.value,
                 zipcode:this.zipcode.value == this.oldZipcode ? '' : this.zipcode.value,
                 password:this.password.value,
-                pwconf:this.pwconf.value
+                pwconf:this.pwconf.value,
+                birth: this.birth.value
             }
             this.props.dispatch(updateProfile(payload))
         }}>
@@ -38,6 +39,10 @@ class ProfileForm extends Component {
                 Phone number: 
                 <input type="text" id="phone_number" pattern="\d\d\d-\d\d\d-\d\d\d\d" placeholder={this.props.phone}
                         ref={(node) => this.phone = node }/>
+                <br/><br/>
+                DOB:
+                <input type="date" name="DOB" placeholder={this.props.birth}
+                        ref={(node) => this.birth = node } id="birth"/>
                 <br/><br/>
                 Zipcode:
                 <input type="text" id="zipcode" pattern="\d\d\d\d\d" placeholder={this.props.oldZipcode}
@@ -65,7 +70,8 @@ ProfileForm.propTypes = {
     oldZipcode: PropTypes.number.isRequired,
     phone: PropTypes.string.isRequired,
     oldEmail: PropTypes.string.isRequired,
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    birth: PropTypes.string.isRequired
 }
 
 export default connect(

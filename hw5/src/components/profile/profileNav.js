@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { navToMain, navToProfile } from '../../actions'
 import { logout } from '../auth/authActions'
 
-const ProfileNav = ({username,  dispatch}) => (
+const ProfileNav = ({username, dispatch}) => (
       <div>
         { username.length == 0 ? '' :
           <div>
@@ -22,7 +22,8 @@ const ProfileNav = ({username,  dispatch}) => (
 export default connect(
   (state) => {
     return {
-      username: state.profile.username || ''}
+      username: state.profile.username || '', 
+    }
   })(ProfileNav)
 
               
