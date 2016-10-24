@@ -27,15 +27,9 @@ class Article extends Component {
         </h3>
         
          <p>
-          <ContentEditable html={this.props.text}
-              contentEditable={this.props.username == this.props.author}
-              tooltip={this.props.username == this.props.author ? 'click to edit' : ''}
-              onChange={(e) => {
-                this.newMessage = e.target.value
-                this.disabled = this.props.text == this.newMessage
-                this.forceUpdate()
-              }}/>
+            <div dangerouslySetInnerHTML={{__html: this.props.text}}></div>
         </p>
+        
         <br/>
         <p>
           <img id="postImage" src={this.props.img}/>
