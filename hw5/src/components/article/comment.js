@@ -2,7 +2,7 @@ import moment from 'moment'
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import ContentEditable from './contentEditable'
+//import ContentEditable from './contentEditable'
 import { editArticle } from './articleActions'
 
 class Comment extends Component {
@@ -16,6 +16,7 @@ class Comment extends Component {
         const date = moment(new Date(this.props.date))
         return (
         <div>
+                
                 <h4>
                     <img className="followingImage" src={ this.props.avatar }/>
                     {this.props.author} commented

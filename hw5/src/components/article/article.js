@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 import Comment from './comment'
-import ContentEditable from './contentEditable'
+//import ContentEditable from './contentEditable'
 import { editArticle } from './articleActions'
 
 class Article extends Component {
