@@ -37,7 +37,7 @@ class Following extends Component {
                             this.forceUpdate()
                         }}/>
                 { !(this.newFollower && this.newFollower.value && this.newFollower.value.length > 0) ? '' :
-                    <input className="btn btn-primary" type="button"
+                    <input type="button"
                         onClick={() => {
                             this.props.dispatch(addFollower(this.newFollower.value))
                             this.newFollower.value = ''
@@ -46,7 +46,7 @@ class Following extends Component {
                         value="add follower"/>
                 }
                 { this.props.error.length == 0 ? '' :
-                    <div className="alert alert-danger">
+                    <div>
                         { this.props.error }
                     </div>
                 }
@@ -70,8 +70,3 @@ export default connect(
     }
 )(Following)
 
-
-
-/** WEBPACK FOOTER **
- ** ./src/components/main/following.js
- **/

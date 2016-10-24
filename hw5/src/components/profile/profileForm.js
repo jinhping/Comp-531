@@ -51,7 +51,7 @@ class ProfileForm extends Component {
                 <input type="password" id="password2"  placeholder="password" ref={(node) => this.pwconf = node }/>
                 <br/><br/>
                 <div class="button">
-                    <button type="submit" id="submit" onclick="update()">Submit Changes</button>
+                    <button type="submit" id="submit" onClick="update()">Submit Changes</button>
                 </div>
             </div>
         </form>

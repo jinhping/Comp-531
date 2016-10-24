@@ -55,7 +55,3 @@ export function resource(method, endpoint, payload, submitJson = true) {
 }
 
 
-
-/** WEBPACK FOOTER **
- ** ./src/actions.js
- **/

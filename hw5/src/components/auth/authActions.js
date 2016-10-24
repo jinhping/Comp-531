@@ -6,7 +6,6 @@ import { fetchProfile, validateProfile } from '../profile/profileActions'
 
 export function initialVisit() {
     return (dispatch) => {
-        // try to log in
         resource('GET', 'headlines').then((response) => {
             dispatch(navToMain())
             dispatch({type: Action.UPDATE_HEADLINE,
@@ -17,7 +16,7 @@ export function initialVisit() {
             dispatch(fetchFollowers())
             dispatch(fetchArticles())
         }).catch((err) => {
-            // that's okay
+            
         })
     }
 }
@@ -29,7 +28,7 @@ export function localLogin(username, password) {
             dispatch({type: Action.LOGIN_LOCAL, username: response.username})
             dispatch(initialVisit())
         }).catch((err) => {
-            dispatch(updateError(`There was an error logging in as ${username}`))
+            dispatch(updateError(`Error appears when logging in as ${username}`))
         })
     }
 }
@@ -64,8 +63,3 @@ export function register({username, email, phone, birth, zipcode, password, pwco
     }
 }
 
-
-
-/** WEBPACK FOOTER **
- ** ./src/components/auth/authActions.js
- **/

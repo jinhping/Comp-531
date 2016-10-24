@@ -8,20 +8,24 @@ import Profile from './profile/profile'
 
 const App = ({location}) => {
 
-    // this is my routing solution
     let view
-    switch(location) {
-        case 'main': view = <Main/>; break;
-        case 'profile': view = <Profile/>; break;
-        default: view = <Landing/>; break;
-    }
 
+    if (location === 'main') {
+        view = <Main/>;
+    } 
+    else if (location === 'profile') {
+        view = <Profile/>;
+    } 
+    else{
+        view = <Landing/>
+    }
     return (
         <div>
             <Nav/>
-            { view }
+            {view}
         </div>
     )
+
 }
 
 export default connect((state) => {

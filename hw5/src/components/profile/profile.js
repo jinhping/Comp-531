@@ -4,12 +4,11 @@ import { connect } from 'react-redux'
 import ProfileForm from './profileForm'
 import Avatar from './avatar'
 
+
 const Messages_ = ({error, success}) => (
-     <div className="row">
+     <div>
         { error.length == 0 ? '' :
-            <div className="alert alert-danger">
-                <div id="errorMessage">{error}</div>
-            </div>
+            <div id="errorMessage">{error}</div> 
         }
         { success.length == 0 ? '' :
             <div id="successMessage">{success}</div>
@@ -37,7 +36,7 @@ const Profile = () => {
             <br/><br/><br/>
             <Avatar/>            
             <ProfileForm/>
-            <Messages/>
+            <Messages />
         </div>
     )
 }

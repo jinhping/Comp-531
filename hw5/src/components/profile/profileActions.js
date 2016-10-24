@@ -27,9 +27,8 @@ export function validateProfile({username, email, phone, zipcode, password, pwco
 
     if (password || pwconf) {
         if (password !== pwconf) {
-            return 'Password do not match'
+            return 'Password does not match'
         }
-        // enforce strong passwords!
     }
 
     return ''
@@ -107,9 +106,3 @@ export function uploadImage(file) {
         }
     }
 }
-
-
-
-/** WEBPACK FOOTER **
- ** ./src/components/profile/profileActions.js
- **/

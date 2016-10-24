@@ -44,7 +44,7 @@ export function fetchFollowers(method, name) {
                 dispatch({type: Action.FOLLOWER_UPDATE, followers})
             })
         }).catch((err) => {
-            dispatch(updateError(`There was an error getting your list of followed users ${err}`))
+            dispatch(updateError(`Error appears while getting your list of followed users ${err}`))
         })
     }
 }

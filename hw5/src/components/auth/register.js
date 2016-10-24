@@ -43,7 +43,7 @@ class Register extends Component {
             <input type="text" id="display_name" name="Display_Name"/>
             <br/>
             Email Address:<br/>
-            <input type="email" name="Email" placeholder="Email" ref={(node) => this.email = node} required/>
+            <input type="email" id="email" name="Email" placeholder="Email" ref={(node) => this.email = node} required/>
             <br/>
             Phone number:<br/>
             <input type="text" id="phone_number" name="Phone" placeholder="ddd-ddd-dddd"  pattern="\d\d\d-\d\d\d-\d\d\d\d" ref={(node) => this.phone = node} required/>
@@ -64,6 +64,17 @@ class Register extends Component {
             <input type="hidden" id="time_stamp" name="Time_stamp"/>
             <br/>
             <button id="btn_submit" type="submit">Register</button> 
+            <input id="landing_clear" type="button" value="Clear" onClick={()=>{
+                account_name.value=''
+                display_name.value=''
+                email.value=''
+                phone_number.value=''
+                birthday.value=''
+                zipcode.value=''
+                password.value=''
+                password_confirmation.value =''
+
+            }}/>
             </form>
 
         </div>

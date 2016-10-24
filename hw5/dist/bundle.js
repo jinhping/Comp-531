@@ -24655,10 +24655,6 @@
 	});
 	
 	exports.default = Reducer;
-	
-	/** WEBPACK FOOTER **
-	 ** ./src/reducers.js
-	 **/
 
 /***/ },
 /* 204 */
@@ -30969,10 +30965,6 @@
 	exports.default = (0, _reactRedux.connect)(function (state) {
 	    return { location: state.common.location };
 	})(App);
-	
-	/** WEBPACK FOOTER **
-	 ** ./src/components/app.js
-	 **/
 
 /***/ },
 /* 210 */
@@ -31004,61 +30996,43 @@
 	  var onProfile = _ref.onProfile;
 	  var dispatch = _ref.dispatch;
 	  return _react2.default.createElement(
-	    'nav',
-	    { className: 'navbar navbar-inverse navbar-fixed-top' },
-	    _react2.default.createElement(
+	    'div',
+	    null,
+	    username.length == 0 ? '' : _react2.default.createElement(
 	      'div',
-	      { className: 'container-fluid' },
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'navbar-header' },
-	        _react2.default.createElement('button', { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1', 'aria-expanded': 'false' }),
+	      null,
+	      onProfile ? _react2.default.createElement(
+	        'li',
+	        null,
 	        _react2.default.createElement(
 	          'a',
-	          { className: 'navbar-brand', href: '#' },
-	          'DH Inc.'
+	          { href: '#', onClick: function onClick() {
+	              dispatch((0, _actions.navToMain)());
+	            } },
+	          'Home'
+	        )
+	      ) : _react2.default.createElement(
+	        'li',
+	        null,
+	        _react2.default.createElement(
+	          'a',
+	          { href: '#', onClick: function onClick() {
+	              dispatch((0, _actions.navToProfile)());
+	            } },
+	          'Edit Your Profile'
 	        )
 	      ),
-	      username.length == 0 ? '' : _react2.default.createElement(
-	        'div',
-	        { className: 'nav navbar-nav navbar-right' },
+	      _react2.default.createElement(
+	        'li',
+	        null,
 	        _react2.default.createElement(
-	          'ul',
-	          { className: 'nav navbar-nav' },
-	          onProfile ? _react2.default.createElement(
-	            'li',
-	            null,
-	            _react2.default.createElement(
-	              'a',
-	              { href: '#', onClick: function onClick() {
-	                  dispatch((0, _actions.navToMain)());
-	                } },
-	              'Home'
-	            )
-	          ) : _react2.default.createElement(
-	            'li',
-	            null,
-	            _react2.default.createElement(
-	              'a',
-	              { href: '#', onClick: function onClick() {
-	                  dispatch((0, _actions.navToProfile)());
-	                } },
-	              'Edit Your Profile'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            _react2.default.createElement(
-	              'a',
-	              { href: '#', onClick: function onClick() {
-	                  dispatch((0, _authActions.logout)());
-	                } },
-	              'Log out ',
-	              username,
-	              ' '
-	            )
-	          )
+	          'a',
+	          { href: '#', onClick: function onClick() {
+	              dispatch((0, _authActions.logout)());
+	            } },
+	          'Log out ',
+	          username,
+	          ' '
 	        )
 	      )
 	    )
@@ -31070,10 +31044,6 @@
 	    username: state.profile.username || '',
 	    onProfile: state.common.location == 'profile' };
 	})(Nav);
-	
-	/** WEBPACK FOOTER **
-	 ** ./src/components/main/nav.js
-	 **/
 
 /***/ },
 /* 211 */
@@ -31249,10 +31219,6 @@
 	        });
 	    };
 	}
-	
-	/** WEBPACK FOOTER **
-	 ** ./src/components/main/followingActions.js
-	 **/
 
 /***/ },
 /* 213 */
@@ -31519,45 +31485,19 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Main = function Main() {
-	    return (
-	        // This is the main view.
-	        // On this view we display the user's avatar, their headline,
-	        // their feed of articles (with a search fiilter),
-	        // and their list of followers.
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'row' },
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'row' },
-	                '\xA0'
-	            ),
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'row' },
-	                '\xA0'
-	            ),
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'row' },
-	                '\xA0'
-	            ),
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'col-sm-3' },
-	                _react2.default.createElement(_headline2.default, null),
-	                _react2.default.createElement(_following2.default, null)
-	            ),
-	            _react2.default.createElement(_articlesView2.default, null)
-	        )
+	    return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(_headline2.default, null),
+	        _react2.default.createElement(_articlesView2.default, null),
+	        _react2.default.createElement(_following2.default, null)
 	    );
 	};
 	
 	exports.default = Main;
-	
-	/** WEBPACK FOOTER **
-	 ** ./src/components/main/main.js
-	 **/
 
 /***/ },
 /* 216 */
@@ -31609,68 +31549,31 @@
 	                null,
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'row' },
+	                    { id: 'user_info' },
+	                    _react2.default.createElement('img', { src: this.props.avatar, id: 'user_img' }),
 	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-sm-12' },
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'text-center' },
-	                            _react2.default.createElement(
-	                                'h4',
-	                                { id: 'username' },
-	                                this.props.username
-	                            )
-	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'row' },
-	                    _react2.default.createElement('div', { className: 'col-sm-2' }),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-sm-8' },
-	                        _react2.default.createElement('img', { width: '100%', src: this.props.avatar })
+	                        'h2',
+	                        null,
+	                        this.props.username
 	                    ),
-	                    _react2.default.createElement('div', { className: 'col-sm-2' })
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'row' },
 	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-sm-12' },
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'text-center' },
-	                            _react2.default.createElement(
-	                                'h4',
-	                                { id: 'headline' },
-	                                this.props.headline
-	                            )
-	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'row' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-sm-12' },
-	                        _react2.default.createElement('input', { className: 'form-control', id: 'headline', type: 'text',
-	                            placeholder: 'update your headline',
-	                            ref: function ref(node) {
-	                                _this2.newHeadline = node;
-	                            },
-	                            onChange: function onChange() {
-	                                return _this2.forceUpdate();
-	                            } })
+	                        'span',
+	                        { id: 'status' },
+	                        this.props.headline
 	                    ),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('input', { id: 'new_status', type: 'text',
+	                        placeholder: 'update your headline',
+	                        ref: function ref(node) {
+	                            _this2.newHeadline = node;
+	                        },
+	                        onChange: function onChange() {
+	                            return _this2.forceUpdate();
+	                        } }),
 	                    !(this.newHeadline && this.newHeadline.value.length > 0) ? '' : _react2.default.createElement(
 	                        'div',
-	                        { className: 'col-sm-12' },
-	                        _react2.default.createElement('input', { className: 'btn btn-primary',
+	                        null,
+	                        _react2.default.createElement('input', { id: 'btn_update_user_info',
 	                            type: 'button', value: 'Update your Headline',
 	                            onClick: function onClick() {
 	                                _this2.props.dispatch((0, _profileActions.updateHeadline)(_this2.newHeadline.value));
@@ -31692,10 +31595,6 @@
 	        avatar: state.profile.avatar
 	    };
 	})(Headline);
-	
-	/** WEBPACK FOOTER **
-	 ** ./src/components/main/headline.js
-	 **/
 
 /***/ },
 /* 217 */
@@ -31735,46 +31634,28 @@
 	    var dispatch = _ref.dispatch;
 	    return _react2.default.createElement(
 	        'div',
-	        { className: 'row', name: 'follower' },
+	        { className: 'follower' },
+	        _react2.default.createElement('img', { className: 'followingImage', src: avatar }),
 	        _react2.default.createElement(
-	            'div',
+	            'h3',
 	            null,
-	            '\xA0'
-	        ),
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'media-left' },
-	            _react2.default.createElement('img', { className: 'followingImage', src: avatar })
-	        ),
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'media-body' },
 	            _react2.default.createElement(
-	                'div',
+	                'strong',
 	                null,
-	                _react2.default.createElement(
-	                    'strong',
-	                    null,
-	                    name
-	                )
-	            ),
-	            _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    'em',
-	                    null,
-	                    headline
-	                )
+	                name
 	            )
 	        ),
 	        _react2.default.createElement(
-	            'div',
-	            { className: 'media-right' },
-	            _react2.default.createElement('span', { className: 'glyphicon glyphicon-remove', onClick: function onClick() {
-	                    dispatch((0, _followingActions.delFollower)(name));
-	                } })
-	        )
+	            'em',
+	            { id: 'status' },
+	            headline
+	        ),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('input', { id: 'unfollow_btn', type: 'button', value: 'Unfollow', onClick: function onClick() {
+	                dispatch((0, _followingActions.delFollower)(name));
+	            } }),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null)
 	    );
 	};
 	
@@ -31804,12 +31685,7 @@
 	                null,
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'col-sm-2' },
-	                    '\xA0'
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'col-sm-8' },
+	                    { id: 'following' },
 	                    Object.keys(this.props.followers).sort().map(function (f) {
 	                        return _this2.props.followers[f];
 	                    }).map(function (follower) {
@@ -31817,40 +31693,26 @@
 	                            name: follower.name, avatar: follower.avatar, headline: follower.headline,
 	                            dispatch: _this2.props.dispatch });
 	                    }),
-	                    _react2.default.createElement(
+	                    _react2.default.createElement('input', { id: 'add_new_follower', type: 'text',
+	                        placeholder: 'add a follower',
+	                        ref: function ref(node) {
+	                            return _this2.newFollower = node;
+	                        },
+	                        onChange: function onChange(e) {
+	                            _this2.forceUpdate();
+	                        } }),
+	                    !(this.newFollower && this.newFollower.value && this.newFollower.value.length > 0) ? '' : _react2.default.createElement('input', { className: 'btn btn-primary', type: 'button',
+	                        onClick: function onClick() {
+	                            _this2.props.dispatch((0, _followingActions.addFollower)(_this2.newFollower.value));
+	                            _this2.newFollower.value = '';
+	                            _this2.forceUpdate();
+	                        },
+	                        value: 'add follower' }),
+	                    this.props.error.length == 0 ? '' : _react2.default.createElement(
 	                        'div',
-	                        { className: 'row' },
-	                        '\xA0'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'row' },
-	                        _react2.default.createElement('input', { className: 'form-control', type: 'text',
-	                            placeholder: 'add a follower',
-	                            ref: function ref(node) {
-	                                return _this2.newFollower = node;
-	                            },
-	                            onChange: function onChange(e) {
-	                                _this2.forceUpdate();
-	                            } }),
-	                        !(this.newFollower && this.newFollower.value && this.newFollower.value.length > 0) ? '' : _react2.default.createElement('input', { className: 'btn btn-primary', type: 'button',
-	                            onClick: function onClick() {
-	                                _this2.props.dispatch((0, _followingActions.addFollower)(_this2.newFollower.value));
-	                                _this2.newFollower.value = '';
-	                                _this2.forceUpdate();
-	                            },
-	                            value: 'add follower' }),
-	                        this.props.error.length == 0 ? '' : _react2.default.createElement(
-	                            'div',
-	                            { className: 'alert alert-danger' },
-	                            this.props.error
-	                        )
+	                        { className: 'alert alert-danger' },
+	                        this.props.error
 	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'col-sm-2' },
-	                    '\xA0'
 	                )
 	            );
 	        }
@@ -31917,37 +31779,32 @@
 	  var keyword = '';
 	  return _react2.default.createElement(
 	    'div',
-	    { className: 'col-sm-9' },
+	    null,
 	    _react2.default.createElement(_newArticle2.default, null),
 	    _react2.default.createElement(
 	      'div',
-	      { className: 'row' },
-	      '\xA0'
+	      { id: 'search_area' },
+	      _react2.default.createElement('input', { id: 'search_box', type: 'text', placeholder: 'search your feed',
+	        ref: function ref(node) {
+	          return keyword = node;
+	        },
+	        onChange: function onChange() {
+	          dispatch((0, _articleActions.searchKeyword)(keyword.value));
+	        } })
 	    ),
 	    _react2.default.createElement(
 	      'div',
-	      { className: 'row' },
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'col-sm-7' },
-	        _react2.default.createElement('input', { className: 'form-control', type: 'text', placeholder: 'search your feed',
-	          ref: function ref(node) {
-	            return keyword = node;
-	          },
-	          onChange: function onChange() {
-	            dispatch((0, _articleActions.searchKeyword)(keyword.value));
-	          } })
-	      )
-	    ),
-	    articles.sort(function (a, b) {
-	      if (a.date < b.date) return 1;
-	      if (a.date > b.date) return -1;
-	      return 0;
-	    }).map(function (article) {
-	      return _react2.default.createElement(_article2.default, { key: article._id, _id: article._id, username: username, author: article.author,
-	        date: article.date, text: article.text, img: article.img, avatar: article.avatar,
-	        comments: article.comments });
-	    })
+	      { id: 'card' },
+	      articles.sort(function (a, b) {
+	        if (a.date < b.date) return 1;
+	        if (a.date > b.date) return -1;
+	        return 0;
+	      }).map(function (article) {
+	        return _react2.default.createElement(_article2.default, { key: article._id, _id: article._id, username: username, author: article.author,
+	          date: article.date, text: article.text, img: article.img, avatar: article.avatar,
+	          comments: article.comments });
+	      })
+	    )
 	  );
 	};
 	
@@ -31978,10 +31835,6 @@
 	  };
 	})(ArticlesView);
 	exports.PureArticlesView = ArticlesView;
-	
-	/** WEBPACK FOOTER **
-	 ** ./src/components/article/articlesView.js
-	 **/
 
 /***/ },
 /* 219 */
@@ -32051,132 +31904,109 @@
 	      var date = (0, _moment2.default)(new Date(this.props.date));
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'row', name: 'article' },
+	        { id: 'card_combo', name: 'article' },
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          _react2.default.createElement('img', { className: 'followingImage', src: this.props.avatar }),
+	          this.props.author,
+	          ' said on ',
+	          date.format('MM-DD-YYYY'),
+	          ' at ',
+	          date.format('HH:mm:ss')
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          _react2.default.createElement(_contentEditable2.default, { html: this.props.text,
+	            contentEditable: this.props.username == this.props.author,
+	            tooltip: this.props.username == this.props.author ? 'click to edit' : '',
+	            onChange: function onChange(e) {
+	              _this2.newMessage = e.target.value;
+	              _this2.disabled = _this2.props.text == _this2.newMessage;
+	              _this2.forceUpdate();
+	            } })
+	        ),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          _react2.default.createElement('img', { id: 'postImage', src: this.props.img })
+	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'col-sm-11' },
+	          { className: 'button_article_js' },
 	          _react2.default.createElement(
-	            'h3',
+	            'label',
+	            { className: 'button_articles',
+	              onClick: function onClick() {
+	                _this2.hideComments = !_this2.hideComments;
+	                _this2.forceUpdate();
+	              } },
+	            this.hideComments ? 'Show' : 'Hide',
+	            ' Comments (',
+	            this.props.comments.length,
+	            ')'
+	          ),
+	          '\xA0\xA0\xA0',
+	          _react2.default.createElement(
+	            'label',
+	            { className: 'button_articles',
+	              onClick: function onClick() {
+	                _this2.addComment = !_this2.addComment;_this2.forceUpdate();
+	              } },
+	            this.addComment ? 'Cancel' : 'Add a comment'
+	          ),
+	          '\xA0\xA0\xA0',
+	          this.props.author != this.props.username ? '' : _react2.default.createElement(
+	            'label',
+	            { className: 'button_articles',
+	              title: 'Click the text to edit your post',
+	              disabled: this.disabled,
+	              onClick: function onClick() {
+	                _this2.props.dispatch((0, _articleActions.editArticle)(_this2.props._id, _this2.newMessage));
+	                _this2.disabled = true;
+	                _this2.forceUpdate();
+	              } },
+	            'Edit post'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          !this.addComment ? '' : _react2.default.createElement(
+	            'div',
 	            null,
-	            _react2.default.createElement('img', { className: 'followingImage', src: this.props.avatar }),
-	            this.props.author,
-	            ' said on ',
-	            date.format('MM-DD-YYYY'),
-	            ' at ',
-	            date.format('HH:mm:ss')
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'row' },
+	            _react2.default.createElement('textarea', { className: 'newPostText',
+	              cols: '80', rows: '4', placeholder: 'your comment',
+	              value: this.newComment,
+	              onChange: function onChange(e) {
+	                _this2.newComment = e.target.value;
+	                _this2.forceUpdate();
+	              } }),
 	            _react2.default.createElement(
-	              'div',
-	              { className: 'col-sm-9' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'media-left' },
-	                _react2.default.createElement('img', { className: 'postImage', src: this.props.img })
-	              ),
-	              _react2.default.createElement(_contentEditable2.default, { className: 'media-body', html: this.props.text,
-	                contentEditable: this.props.username == this.props.author,
-	                tooltip: this.props.username == this.props.author ? 'click to edit' : '',
-	                onChange: function onChange(e) {
-	                  _this2.newMessage = e.target.value;
-	                  _this2.disabled = _this2.props.text == _this2.newMessage;
+	              'label',
+	              { className: 'button_articles',
+	                disabled: this.newComment.length == 0,
+	                onClick: function onClick() {
+	                  if (_this2.newComment.length > 0) _this2.props.dispatch((0, _articleActions.editArticle)(_this2.props._id, _this2.newComment, -1));
+	                  _this2.newComment = '';
+	                  _this2.addComment = false;
 	                  _this2.forceUpdate();
-	                } })
+	                } },
+	              'Make the comment'
 	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'btn-group btn-group-justified' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'btn-group' },
-	              _react2.default.createElement(
-	                'label',
-	                { className: 'btn btn-warning',
-	                  onClick: function onClick() {
-	                    _this2.hideComments = !_this2.hideComments;
-	                    _this2.forceUpdate();
-	                  } },
-	                this.hideComments ? 'Show' : 'Hide',
-	                ' Comments (',
-	                this.props.comments.length,
-	                ')'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'btn-group' },
-	              _react2.default.createElement(
-	                'label',
-	                { className: 'btn btn-success',
-	                  onClick: function onClick() {
-	                    _this2.addComment = !_this2.addComment;_this2.forceUpdate();
-	                  } },
-	                this.addComment ? 'Cancel' : 'Add a comment'
-	              )
-	            ),
-	            this.props.author != this.props.username ? '' : _react2.default.createElement(
-	              'div',
-	              { className: 'btn-group' },
-	              _react2.default.createElement(
-	                'label',
-	                { className: 'btn btn-primary',
-	                  title: 'Click the text to edit your post',
-	                  disabled: this.disabled,
-	                  onClick: function onClick() {
-	                    _this2.props.dispatch((0, _articleActions.editArticle)(_this2.props._id, _this2.newMessage));
-	                    _this2.disabled = true;
-	                    _this2.forceUpdate();
-	                  } },
-	                'Edit post'
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'btn-group btn-group-justified' },
-	            _react2.default.createElement('div', { className: 'btn-group' }),
-	            !this.addComment ? '' : _react2.default.createElement(
-	              'div',
-	              { className: 'btn-group' },
-	              _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement('textarea', { className: 'newPostText',
-	                  cols: '80', rows: '4', placeholder: 'your comment',
-	                  value: this.newComment,
-	                  onChange: function onChange(e) {
-	                    _this2.newComment = e.target.value;
-	                    _this2.forceUpdate();
-	                  } }),
-	                _react2.default.createElement(
-	                  'label',
-	                  { className: 'btn btn-success',
-	                    disabled: this.newComment.length == 0,
-	                    onClick: function onClick() {
-	                      if (_this2.newComment.length > 0) _this2.props.dispatch((0, _articleActions.editArticle)(_this2.props._id, _this2.newComment, -1));
-	                      _this2.newComment = '';
-	                      _this2.addComment = false;
-	                      _this2.forceUpdate();
-	                    } },
-	                  'Make the comment'
-	                )
-	              )
-	            ),
-	            _react2.default.createElement('div', { className: 'btn-group' })
-	          ),
-	          this.hideComments ? '' : this.props.comments.sort(function (a, b) {
-	            if (a.date < b.date) return 1;
-	            if (a.date > b.date) return -1;
-	            return 0;
-	          }).map(function (comment) {
-	            return _react2.default.createElement(_comment2.default, { key: comment.commentId, articleId: _this2.props._id, username: _this2.props.username,
-	              commentId: comment.commentId, author: comment.author, date: comment.date,
-	              text: comment.text, avatar: comment.avatar });
-	          })
-	        )
+	          )
+	        ),
+	        this.hideComments ? '' : this.props.comments.sort(function (a, b) {
+	          if (a.date < b.date) return 1;
+	          if (a.date > b.date) return -1;
+	          return 0;
+	        }).map(function (comment) {
+	          return _react2.default.createElement(_comment2.default, { key: comment.commentId, articleId: _this2.props._id, username: _this2.props.username,
+	            commentId: comment.commentId, author: comment.author, date: comment.date,
+	            text: comment.text, avatar: comment.avatar });
+	        })
 	      );
 	    }
 	  }]);
@@ -32195,10 +32025,6 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)()(Article);
-	
-	/** WEBPACK FOOTER **
-	 ** ./src/components/article/article.js
-	 **/
 
 /***/ },
 /* 220 */
@@ -46974,42 +46800,45 @@
 	            var date = (0, _moment2.default)(new Date(this.props.date));
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'row' },
-	                _react2.default.createElement('div', { className: 'col-sm-1' }),
+	                null,
 	                _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    _react2.default.createElement('img', { className: 'followingImage', src: this.props.avatar }),
+	                    this.props.author,
+	                    ' commented on ',
+	                    date.format('MM-DD-YYYY'),
+	                    ' at ',
+	                    date.format('HH:mm:ss')
+	                ),
+	                _react2.default.createElement(_contentEditable2.default, { html: this.props.text,
+	                    contentEditable: this.props.username == this.props.author,
+	                    tooltip: this.props.username == this.props.author ? 'click to edit' : '',
+	                    onChange: function onChange(e) {
+	                        _this2.newMessage = e.target.value;
+	                        _this2.disabled = _this2.props.text == _this2.newMessage;
+	                        _this2.forceUpdate();
+	                    } }),
+	                this.props.username != this.props.author ? '' : _react2.default.createElement(
 	                    'div',
-	                    { className: 'col-sm-8' },
+	                    null,
 	                    _react2.default.createElement(
-	                        'h4',
-	                        null,
-	                        _react2.default.createElement('img', { className: 'followingImage', src: this.props.avatar }),
-	                        this.props.author,
-	                        ' commented on ',
-	                        date.format('MM-DD-YYYY'),
-	                        ' at ',
-	                        date.format('HH:mm:ss')
-	                    ),
-	                    _react2.default.createElement(_contentEditable2.default, { className: 'media-body', html: this.props.text,
-	                        contentEditable: this.props.username == this.props.author,
-	                        tooltip: this.props.username == this.props.author ? 'click to edit' : '',
-	                        onChange: function onChange(e) {
-	                            _this2.newMessage = e.target.value;
-	                            _this2.disabled = _this2.props.text == _this2.newMessage;
-	                            _this2.forceUpdate();
-	                        } }),
-	                    this.props.username != this.props.author ? '' : _react2.default.createElement(
-	                        'div',
-	                        { className: 'media-right' },
+	                        'span',
+	                        {
+	                            title: 'Click the text to edit your comment',
+	                            disabled: this.disabled,
+	                            onClick: function onClick() {
+	                                _this2.props.dispatch((0, _articleActions.editArticle)(_this2.props.articleId, _this2.newMessage, _this2.props.commentId));
+	                                _this2.disabled = true;
+	                            } },
 	                        _react2.default.createElement(
-	                            'span',
-	                            { className: 'btn btn-primary',
-	                                title: 'Click the text to edit your comment',
-	                                disabled: this.disabled,
-	                                onClick: function onClick() {
-	                                    _this2.props.dispatch((0, _articleActions.editArticle)(_this2.props.articleId, _this2.newMessage, _this2.props.commentId));
-	                                    _this2.disabled = true;
-	                                } },
-	                            'Update comment'
+	                            'p',
+	                            null,
+	                            _react2.default.createElement(
+	                                'div',
+	                                { id: 'update_comment_button' },
+	                                'Update comment'
+	                            )
 	                        )
 	                    )
 	                )
@@ -47029,10 +46858,6 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)()(Comment);
-	
-	/** WEBPACK FOOTER **
-	 ** ./src/components/article/comment.js
-	 **/
 
 /***/ },
 /* 327 */
@@ -47108,10 +46933,6 @@
 	};
 	
 	exports.default = ContentEditable;
-	
-	/** WEBPACK FOOTER **
-	 ** ./src/components/article/contentEditable.js
-	 **/
 
 /***/ },
 /* 328 */
@@ -47176,57 +46997,41 @@
 	
 	            return _react2.default.createElement(
 	                'div',
-	                null,
+	                { id: 'add_stuff' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'row' },
+	                    null,
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'col-sm-12' },
-	                        _react2.default.createElement(
-	                            'div',
-	                            null,
-	                            'Say something...'
-	                        ),
-	                        _react2.default.createElement('textarea', { 'class': 'newPostBody',
-	                            cols: '80', rows: '4', placeholder: 'share what\'s new...',
-	                            value: this.message,
-	                            onChange: function onChange(e) {
-	                                _this3.message = e.target.value;
-	                                _this3.forceUpdate();
-	                            } })
-	                    )
+	                        null,
+	                        'Say something...'
+	                    ),
+	                    _react2.default.createElement('textarea', { id: 'textarea',
+	                        cols: '50', rows: '4', placeholder: 'share what\'s new...',
+	                        value: this.message,
+	                        onChange: function onChange(e) {
+	                            _this3.message = e.target.value;
+	                            _this3.forceUpdate();
+	                        } })
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'row' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-sm-5' },
-	                        'Add a picture',
-	                        _react2.default.createElement('input', { type: 'file', id: 'articleImage', accept: 'image/*', onChange: function onChange(e) {
-	                                return _this3.handleImageChange(e);
-	                            } })
-	                    ),
-	                    !this.file && !this.message ? '' : _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-sm-2' },
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'text-right' },
-	                            _react2.default.createElement('input', { className: 'btn btn-primary', type: 'button', value: 'Publish it',
-	                                onClick: function onClick() {
-	                                    _this3.props.dispatch((0, _articleActions.uploadArticle)(_this3.message, _this3.file));
-	                                    _this3.message = '';
-	                                    _this3.file = undefined;
-	                                    _this3.forceUpdate();
-	                                } })
-	                        )
-	                    )
+	                    null,
+	                    'Add a picture',
+	                    _react2.default.createElement('input', { type: 'file', id: 'add_img', accept: 'image/*', onChange: function onChange(e) {
+	                            return _this3.handleImageChange(e);
+	                        } }),
+	                    !this.file && !this.message ? '' : _react2.default.createElement('input', { type: 'button', value: 'Publish it',
+	                        onClick: function onClick() {
+	                            _this3.props.dispatch((0, _articleActions.uploadArticle)(_this3.message, _this3.file));
+	                            _this3.message = '';
+	                            _this3.file = undefined;
+	                            _this3.forceUpdate();
+	                        } })
 	                ),
 	                !this.file ? '' : _react2.default.createElement(
 	                    'div',
-	                    { className: 'row' },
+	                    null,
 	                    _react2.default.createElement('img', { className: 'postImage', src: this.preview }),
 	                    _react2.default.createElement(
 	                        'div',
@@ -47246,10 +47051,6 @@
 	}(_react.Component);
 	
 	exports.default = (0, _reactRedux.connect)()(NewArticle);
-	
-	/** WEBPACK FOOTER **
-	 ** ./src/components/article/newArticle.js
-	 **/
 
 /***/ },
 /* 329 */
@@ -47288,38 +47089,17 @@
 	        { className: 'row' },
 	        error.length == 0 ? '' : _react2.default.createElement(
 	            'div',
-	            { className: 'alert alert-danger' },
-	            _react2.default.createElement('div', { className: 'col-sm-1' }),
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'col-sm-10', id: 'errorMessage' },
-	                error
-	            ),
-	            _react2.default.createElement('div', { className: 'col-sm-1' }),
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'row' },
-	                '\xA0'
-	            )
+	            { className: 'col-sm-10', id: 'errorMessage' },
+	            error
 	        ),
 	        success.length == 0 ? '' : _react2.default.createElement(
 	            'div',
-	            { className: 'alert alert-success' },
-	            _react2.default.createElement('div', { className: 'col-sm-1' }),
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'col-sm-10', id: 'successMessage' },
-	                success
-	            ),
-	            _react2.default.createElement('div', { className: 'col-sm-1' }),
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'row' },
-	                '\xA0'
-	            )
+	            { className: 'col-sm-10', id: 'successMessage' },
+	            success
 	        )
 	    );
 	};
+	
 	ErrorMessage.propTypes = {
 	    error: _react.PropTypes.string.isRequired,
 	    success: _react.PropTypes.string.isRequired
@@ -47331,122 +47111,34 @@
 	var Landing = function Landing() {
 	    return _react2.default.createElement(
 	        'div',
-	        { className: 'container-fluid' },
+	        null,
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	            'div',
-	            { className: 'row' },
-	            '\xA0'
-	        ),
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'row' },
-	            '\xA0'
-	        ),
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'row' },
-	            '\xA0'
-	        ),
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'jumbotron' },
+	            { 'class': 'card_index' },
 	            _react2.default.createElement(
 	                'div',
-	                { className: 'container' },
+	                { 'class': 'container' },
 	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'row row-header' },
+	                    'h1',
+	                    null,
 	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'text-center' },
-	                        _react2.default.createElement(
-	                            'h1',
-	                            null,
-	                            _react2.default.createElement(
-	                                'strong',
-	                                null,
-	                                'Welcome to Ricebook!'
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            'Where amazing happens.'
-	                        )
+	                        'b',
+	                        null,
+	                        'Welcome to RiceBook'
 	                    )
 	                )
 	            )
 	        ),
 	        _react2.default.createElement(ErrorMessage, null),
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'container' },
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'row' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'col-xs-6 col-md-6' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'well' },
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'row' },
-	                            _react2.default.createElement('div', { className: 'col-sm-2' }),
-	                            _react2.default.createElement(_register2.default, null),
-	                            _react2.default.createElement('div', { className: 'col-sm-2' })
-	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'col-xs-6 col-md-6' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'well' },
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'row' },
-	                            _react2.default.createElement(
-	                                'div',
-	                                { className: 'col-sm-2' },
-	                                '\xA0'
-	                            ),
-	                            _react2.default.createElement(
-	                                'div',
-	                                { className: 'col-sm-8' },
-	                                _react2.default.createElement(
-	                                    'label',
-	                                    { id: 'indexLogin' },
-	                                    _react2.default.createElement(
-	                                        'font',
-	                                        { size: '5' },
-	                                        'User Login'
-	                                    )
-	                                ),
-	                                _react2.default.createElement('br', null),
-	                                _react2.default.createElement(_login2.default, null)
-	                            ),
-	                            _react2.default.createElement('div', { className: 'col-sm-2' })
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'row' },
-	                            '\xA0'
-	                        )
-	                    )
-	                )
-	            )
-	        )
+	        _react2.default.createElement(_register2.default, null),
+	        _react2.default.createElement(_login2.default, null)
 	    );
 	};
 	
 	exports.default = Landing;
-	
-	/** WEBPACK FOOTER **
-	 ** ./src/components/auth/landing.js
-	 **/
 
 /***/ },
 /* 330 */
@@ -47478,72 +47170,40 @@
 	        password = void 0;
 	    return _react2.default.createElement(
 	        'div',
-	        { className: 'row' },
+	        null,
 	        _react2.default.createElement(
-	            'div',
-	            { className: 'col-sm-9' },
+	            'h4',
+	            null,
 	            _react2.default.createElement(
-	                'div',
+	                'b',
 	                null,
-	                '\xA0'
-	            ),
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'form-group row' },
-	                _react2.default.createElement(
-	                    'label',
-	                    { className: 'col-sm-4 form-control-label', 'for': 'loginUsername' },
-	                    'username'
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'col-sm-8' },
-	                    _react2.default.createElement('input', { className: 'form-control', id: 'loginUsername', type: 'text', placeholder: 'username',
-	                        ref: function ref(node) {
-	                            username = node;
-	                        } })
-	                )
-	            ),
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'form-group row' },
-	                _react2.default.createElement(
-	                    'label',
-	                    { className: 'col-sm-4 form-control-label', 'for': 'loginPassword' },
-	                    'password'
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'col-sm-8' },
-	                    _react2.default.createElement('input', { className: 'form-control', id: 'loginPassword', type: 'password', placeholder: 'password',
-	                        ref: function ref(node) {
-	                            password = node;
-	                        } })
-	                )
-	            ),
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'form-group row' },
-	                _react2.default.createElement('span', { className: 'col-sm-4 form-control-label' }),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'col-sm-8' },
-	                    _react2.default.createElement('input', { className: 'btn btn-primary', type: 'button', value: 'Log In',
-	                        onClick: function onClick() {
-	                            dispatch((0, _authActions.localLogin)(username.value, password.value));
-	                        } })
-	                )
+	                'Login'
 	            )
 	        ),
-	        _react2.default.createElement('div', { className: 'col-sm-3' })
+	        _react2.default.createElement(
+	            'div',
+	            { id: 'index_login', action: 'main.html' },
+	            'Account Name:',
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('input', { type: 'text', id: 'account_name_login', name: 'Account_Name', placeholder: 'Required', ref: function ref(node) {
+	                    username = node;
+	                } }),
+	            _react2.default.createElement('br', null),
+	            'Password Confirmation:',
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('input', { type: 'password', id: 'password_login', name: 'PassComf', placeholder: 'Required', ref: function ref(node) {
+	                    password = node;
+	                } }),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('input', { id: 'landing_login_button', type: 'button', value: 'Log In',
+	                onClick: function onClick() {
+	                    dispatch((0, _authActions.localLogin)(username.value, password.value));
+	                } })
+	        )
 	    );
 	};
 	
 	exports.default = (0, _reactRedux.connect)()(Login);
-	
-	/** WEBPACK FOOTER **
-	 ** ./src/components/auth/login.js
-	 **/
 
 /***/ },
 /* 331 */
@@ -47604,20 +47264,19 @@
 	
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-sm-8' },
+	                null,
 	                _react2.default.createElement(
-	                    'label',
-	                    { id: 'indexRegister' },
+	                    'h4',
+	                    { id: 'register_title' },
 	                    _react2.default.createElement(
-	                        'font',
-	                        { size: '5' },
-	                        'Register Now'
+	                        'b',
+	                        null,
+	                        'Register'
 	                    )
 	                ),
-	                _react2.default.createElement('br', null),
 	                _react2.default.createElement(
 	                    'form',
-	                    { onSubmit: function onSubmit(e) {
+	                    { id: 'form_index', onSubmit: function onSubmit(e) {
 	                            e.preventDefault();
 	                            var payload = {
 	                                username: _this2.username.value,
@@ -47630,131 +47289,59 @@
 	                            };
 	                            _this2.props.dispatch((0, _authActions.register)(payload));
 	                        } },
+	                    'Account Name:',
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('input', { type: 'text', id: 'account_name', name: 'Account_Name', pattern: '[A-Za-z]+[0-9A-Za-z]*', ref: function ref(node) {
+	                            return _this2.username = node;
+	                        }, required: true }),
+	                    _react2.default.createElement('br', null),
+	                    'Display Name (optional):',
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('input', { type: 'text', id: 'display_name', name: 'Display_Name' }),
+	                    _react2.default.createElement('br', null),
+	                    'Email Address:',
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('input', { type: 'email', name: 'Email', placeholder: 'Email', ref: function ref(node) {
+	                            return _this2.email = node;
+	                        }, required: true }),
+	                    _react2.default.createElement('br', null),
+	                    'Phone number:',
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('input', { type: 'text', id: 'phone_number', name: 'Phone', placeholder: 'ddd-ddd-dddd', pattern: '\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d', ref: function ref(node) {
+	                            return _this2.phone = node;
+	                        }, required: true }),
+	                    _react2.default.createElement('br', null),
+	                    'Date of Birth:',
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('input', { type: 'date', id: 'birthday', name: 'DOB', ref: function ref(node) {
+	                            return _this2.birth = node;
+	                        }, required: true }),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('br', null),
+	                    'Zipcode: ',
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('input', { type: 'text', id: 'zipcode', name: 'Zipcode', placeholder: 'ddddd', pattern: '\\d\\d\\d\\d\\d', ref: function ref(node) {
+	                            return _this2.zipcode = node;
+	                        }, required: true }),
+	                    _react2.default.createElement('br', null),
+	                    'Password:',
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('input', { type: 'password', id: 'password', name: 'Pass', ref: function ref(node) {
+	                            return _this2.password = node;
+	                        }, required: true }),
+	                    _react2.default.createElement('br', null),
+	                    'Password Confirmation:',
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('input', { type: 'password', id: 'password_confirmation', name: 'PassComf', ref: function ref(node) {
+	                            return _this2.pwconf = node;
+	                        }, required: true }),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('input', { type: 'hidden', id: 'time_stamp', name: 'Time_stamp' }),
+	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-group row' },
-	                        _react2.default.createElement(
-	                            'label',
-	                            { className: 'col-sm-3 form-control-label', 'for': 'username' },
-	                            'Account Name'
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'col-sm-9' },
-	                            _react2.default.createElement('input', { className: 'form-control', id: 'username', type: 'text', ref: function ref(node) {
-	                                    return _this2.username = node;
-	                                }, placeholder: 'account name' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-group row' },
-	                        _react2.default.createElement(
-	                            'label',
-	                            { className: 'col-sm-3 form-control-label', 'for': 'email' },
-	                            'Email Address'
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'col-sm-9' },
-	                            _react2.default.createElement('input', { className: 'form-control', id: 'email', type: 'email', ref: function ref(node) {
-	                                    return _this2.email = node;
-	                                }, placeholder: 'email address' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-group row' },
-	                        _react2.default.createElement(
-	                            'label',
-	                            { className: 'col-sm-3 form-control-label', 'for': 'phone' },
-	                            'Phone Number'
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'col-sm-9' },
-	                            _react2.default.createElement('input', { className: 'form-control', id: 'phone', type: 'tel', ref: function ref(node) {
-	                                    return _this2.phone = node;
-	                                }, placeholder: '123-123-1234' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-group row' },
-	                        _react2.default.createElement(
-	                            'label',
-	                            { className: 'col-sm-3 form-control-label', 'for': 'birth' },
-	                            'Date of Birth'
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'col-sm-9' },
-	                            _react2.default.createElement('input', { className: 'form-control', id: 'birth', type: 'date', ref: function ref(node) {
-	                                    return _this2.birth = node;
-	                                }, placeholder: 'mm/dd/yyyy' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-group row' },
-	                        _react2.default.createElement(
-	                            'label',
-	                            { className: 'col-sm-3 form-control-label', 'for': 'zipcode' },
-	                            'Zipcode'
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'col-sm-9' },
-	                            _react2.default.createElement('input', { className: 'form-control', id: 'zipcode', type: 'zipcode', ref: function ref(node) {
-	                                    return _this2.zipcode = node;
-	                                }, placeholder: '77005' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-group row' },
-	                        _react2.default.createElement(
-	                            'label',
-	                            { className: 'col-sm-3 form-control-label', 'for': 'password' },
-	                            'Password'
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'col-sm-9' },
-	                            _react2.default.createElement('input', { className: 'form-control', id: 'password', type: 'password', ref: function ref(node) {
-	                                    return _this2.password = node;
-	                                }, placeholder: 'password' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-group row' },
-	                        _react2.default.createElement(
-	                            'label',
-	                            { className: 'col-sm-3 form-control-label', 'for': 'pwconf' },
-	                            'Confirmation'
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'col-sm-9' },
-	                            _react2.default.createElement('input', { className: 'form-control', id: 'pwconf', type: 'password', ref: function ref(node) {
-	                                    return _this2.pwconf = node;
-	                                }, placeholder: 'password confirmation' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-group row' },
-	                        _react2.default.createElement('span', { className: 'col-sm-3 form-control-label' }),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'col-sm-9' },
-	                            _react2.default.createElement(
-	                                'button',
-	                                { className: 'btn btn-primary', id: 'submitButton', type: 'submit' },
-	                                'Register'
-	                            )
-	                        )
+	                        'button',
+	                        { id: 'btn_submit', type: 'submit' },
+	                        'Register'
 	                    )
 	                )
 	            );
@@ -47765,10 +47352,6 @@
 	}(_react.Component);
 	
 	exports.default = (0, _reactRedux.connect)()(Register);
-	
-	/** WEBPACK FOOTER **
-	 ** ./src/components/auth/register.js
-	 **/
 
 /***/ },
 /* 332 */
@@ -47805,46 +47388,19 @@
 	    return _react2.default.createElement(
 	        'div',
 	        { className: 'row' },
-	        _react2.default.createElement(
+	        error.length == 0 ? '' : _react2.default.createElement(
 	            'div',
-	            { className: 'col-sm-10' },
-	            error.length == 0 ? '' : _react2.default.createElement(
+	            { className: 'alert alert-danger' },
+	            _react2.default.createElement(
 	                'div',
-	                { className: 'alert alert-danger' },
-	                _react2.default.createElement('div', { className: 'col-sm-1' }),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'col-sm-10', id: 'errorMessage' },
-	                    error
-	                ),
-	                _react2.default.createElement('div', { className: 'col-sm-1' }),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'row' },
-	                    '\xA0'
-	                )
-	            ),
-	            success.length == 0 ? '' : _react2.default.createElement(
-	                'div',
-	                { className: 'alert alert-success' },
-	                _react2.default.createElement('div', { className: 'col-sm-1' }),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'col-sm-10', id: 'successMessage' },
-	                    success
-	                ),
-	                _react2.default.createElement('div', { className: 'col-sm-1' }),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'row' },
-	                    '\xA0'
-	                )
+	                { id: 'errorMessage' },
+	                error
 	            )
 	        ),
-	        _react2.default.createElement(
+	        success.length == 0 ? '' : _react2.default.createElement(
 	            'div',
-	            { className: 'col-sm-2' },
-	            '\xA0'
+	            { id: 'successMessage' },
+	            success
 	        )
 	    );
 	};
@@ -47865,35 +47421,15 @@
 	    return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'row' },
-	            '\xA0'
-	        ),
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'row' },
-	            '\xA0'
-	        ),
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'row' },
-	            '\xA0'
-	        ),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(_avatar2.default, null),
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-5 col-md-5' },
-	            _react2.default.createElement(Messages, null),
-	            _react2.default.createElement(_profileForm2.default, null)
-	        )
+	        _react2.default.createElement(_profileForm2.default, null),
+	        _react2.default.createElement(Messages, null)
 	    );
 	};
 	exports.default = Profile;
-	
-	/** WEBPACK FOOTER **
-	 ** ./src/components/profile/profile.js
-	 **/
 
 /***/ },
 /* 333 */
@@ -47953,114 +47489,71 @@
 	            var _this2 = this;
 	
 	            return _react2.default.createElement(
-	                'form',
-	                { onSubmit: function onSubmit(e) {
-	                        if (e) e.preventDefault();
-	                        var payload = {
-	                            email: _this2.email.value == _this2.oldEmail ? '' : _this2.email.value,
-	                            phone: _this2.phone.value,
-	                            zipcode: _this2.zipcode.value == _this2.oldZipcode ? '' : _this2.zipcode.value,
-	                            password: _this2.password.value,
-	                            pwconf: _this2.pwconf.value
-	                        };
-	                        _this2.props.dispatch((0, _profileActions.updateProfile)(payload));
-	                    } },
+	                'div',
+	                null,
 	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'form-group row' },
-	                    _react2.default.createElement(
-	                        'label',
-	                        { className: 'col-sm-3 form-control-label', 'for': 'email' },
-	                        'email'
-	                    ),
+	                    'form',
+	                    { onSubmit: function onSubmit(e) {
+	                            if (e) e.preventDefault();
+	                            var payload = {
+	                                email: _this2.email.value == _this2.oldEmail ? '' : _this2.email.value,
+	                                phone: _this2.phone.value,
+	                                zipcode: _this2.zipcode.value == _this2.oldZipcode ? '' : _this2.zipcode.value,
+	                                password: _this2.password.value,
+	                                pwconf: _this2.pwconf.value
+	                            };
+	                            _this2.props.dispatch((0, _profileActions.updateProfile)(payload));
+	                        } },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'col-sm-6' },
-	                        _react2.default.createElement('input', { className: 'form-control', id: 'email', type: 'text', placeholder: this.props.oldEmail,
+	                        { id: 'input' },
+	                        _react2.default.createElement(
+	                            'h2',
+	                            null,
+	                            'Update Information'
+	                        ),
+	                        'Email Address:',
+	                        _react2.default.createElement('input', { type: 'email', name: 'Email', placeholder: this.props.oldEmail,
 	                            ref: function ref(node) {
 	                                return _this2.email = node;
-	                            } })
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'form-group row' },
-	                    _react2.default.createElement(
-	                        'label',
-	                        { className: 'col-sm-3 form-control-label', 'for': 'phone' },
-	                        'phone'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-sm-6' },
-	                        _react2.default.createElement('input', { className: 'form-control', id: 'phone', type: 'text', placeholder: this.props.phone,
+	                            }, id: 'email' }),
+	                        _react2.default.createElement('br', null),
+	                        _react2.default.createElement('br', null),
+	                        'Phone number:',
+	                        _react2.default.createElement('input', { type: 'text', id: 'phone_number', pattern: '\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d', placeholder: this.props.phone,
 	                            ref: function ref(node) {
 	                                return _this2.phone = node;
-	                            } })
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'form-group row' },
-	                    _react2.default.createElement(
-	                        'label',
-	                        { className: 'col-sm-3 form-control-label', 'for': 'zipcode' },
-	                        'zipcode'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-sm-6' },
-	                        _react2.default.createElement('input', { className: 'form-control', id: 'zipcode', type: 'text', placeholder: this.props.oldZipcode,
+	                            } }),
+	                        _react2.default.createElement('br', null),
+	                        _react2.default.createElement('br', null),
+	                        'Zipcode:',
+	                        _react2.default.createElement('input', { type: 'text', id: 'zipcode', pattern: '\\d\\d\\d\\d\\d', placeholder: this.props.oldZipcode,
 	                            ref: function ref(node) {
 	                                return _this2.zipcode = node;
-	                            } })
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'form-group row' },
-	                    _react2.default.createElement(
-	                        'label',
-	                        { className: 'col-sm-3 form-control-label', 'for': 'password' },
-	                        'password'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-sm-6' },
-	                        _react2.default.createElement('input', { className: 'form-control', id: 'password', type: 'password', placeholder: 'password',
+	                            } }),
+	                        _react2.default.createElement('br', null),
+	                        _react2.default.createElement('br', null),
+	                        'Password:',
+	                        _react2.default.createElement('input', { type: 'password', id: 'password', placeholder: 'password',
 	                            ref: function ref(node) {
 	                                return _this2.password = node;
-	                            } })
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'form-group row' },
-	                    _react2.default.createElement(
-	                        'label',
-	                        { className: 'col-sm-3 form-control-label', 'for': 'pwconf' },
-	                        'password confirmation'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-sm-6' },
-	                        _react2.default.createElement('input', { className: 'form-control', id: 'pwconf', type: 'password', placeholder: 'password',
-	                            ref: function ref(node) {
+	                            } }),
+	                        _react2.default.createElement('br', null),
+	                        _react2.default.createElement('br', null),
+	                        'Password Confirmation:',
+	                        _react2.default.createElement('input', { type: 'password', id: 'password2', placeholder: 'password', ref: function ref(node) {
 	                                return _this2.pwconf = node;
-	                            } })
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'form-group row' },
-	                    _react2.default.createElement('span', { className: 'col-sm-3 form-control-label' }),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-sm-9' },
+	                            } }),
+	                        _react2.default.createElement('br', null),
+	                        _react2.default.createElement('br', null),
 	                        _react2.default.createElement(
-	                            'button',
-	                            { className: 'btn btn-primary', type: 'submit' },
-	                            'Update'
+	                            'div',
+	                            { 'class': 'button' },
+	                            _react2.default.createElement(
+	                                'button',
+	                                { type: 'submit', id: 'submit', onclick: 'update()' },
+	                                'Submit Changes'
+	                            )
 	                        )
 	                    )
 	                )
@@ -48087,10 +47580,6 @@
 	    };
 	})(ProfileForm);
 	exports.PureProfileForm = ProfileForm;
-	
-	/** WEBPACK FOOTER **
-	 ** ./src/components/profile/profileForm.js
-	 **/
 
 /***/ },
 /* 334 */
@@ -48164,50 +47653,38 @@
 	
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-xs-5 col-md-5' },
-	                _react2.default.createElement('div', { className: 'col-sm-2' }),
+	                null,
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'User Profile'
+	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'col-sm-8' },
+	                    { id: 'current_info' },
+	                    _react2.default.createElement('img', { id: 'user_img', width: '100%', src: this.props.img }),
+	                    _react2.default.createElement('input', { id: 'add_img', type: 'file', accept: 'image/*', onChange: function onChange(e) {
+	                            return _this3.handleImageChange(e);
+	                        } }),
+	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'row' },
-	                        _react2.default.createElement('img', { width: '100%', src: this.props.img })
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'row' },
-	                        _react2.default.createElement(
-	                            'em',
-	                            null,
-	                            'Upload new profile avatar'
-	                        ),
-	                        _react2.default.createElement('input', { type: 'file', accept: 'image/*', onChange: function onChange(e) {
-	                                return _this3.handleImageChange(e);
-	                            } })
+	                        'em',
+	                        null,
+	                        'Upload new picture'
 	                    ),
 	                    !this.file ? '' : _react2.default.createElement(
 	                        'div',
 	                        null,
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'row' },
-	                            _react2.default.createElement('img', { width: '100%', src: this.preview })
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            null,
-	                            this.file.webkitRelativePath || this.file.name,
-	                            ' (',
-	                            parseInt(this.file.size / 1024 * 100) / 100.0,
-	                            ' kB)'
-	                        ),
-	                        _react2.default.createElement('input', { className: 'btn btn-primary', type: 'button', value: 'Upload', onClick: function onClick() {
+	                        _react2.default.createElement('img', { width: '100%', src: this.preview }),
+	                        this.file.webkitRelativePath || this.file.name,
+	                        ' (',
+	                        parseInt(this.file.size / 1024 * 100) / 100.0,
+	                        ' kB)',
+	                        _react2.default.createElement('input', { id: 'btn_update_new_picture', type: 'button', value: 'Upload', onClick: function onClick() {
 	                                _this3.props.dispatch((0, _profileActions.uploadImage)(_this3.file));
 	                            } })
 	                    )
-	                ),
-	                _react2.default.createElement('div', { className: 'col-sm-2' })
+	                )
 	            );
 	        }
 	    }]);
@@ -48220,10 +47697,6 @@
 	        img: state.profile.avatar
 	    };
 	})(Avatar);
-	
-	/** WEBPACK FOOTER **
-	 ** ./src/components/profile/avatar.js
-	 **/
 
 /***/ }
 /******/ ]);

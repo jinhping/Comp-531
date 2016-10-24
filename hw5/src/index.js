@@ -1,3 +1,8 @@
+/*
+	This page is for a high level logic for front-end application
+*/
+
+
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
@@ -25,7 +30,3 @@ render(
 )
 
 
-
-/** WEBPACK FOOTER **
- ** ./src/index.js
- **/

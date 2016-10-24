@@ -77,8 +77,3 @@ const Reducer = combineReducers({
 
 export default Reducer
 
-
-
-/** WEBPACK FOOTER **
- ** ./src/reducers.js
- **/
