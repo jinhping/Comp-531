@@ -6,19 +6,26 @@ import { fetchProfile, validateProfile } from '../profile/profileActions'
 
 export function initialVisit() {
     return (dispatch) => {
+        
+        let tmp1 = dispatch(fetchProfile())
+        let tmp3 = dispatch(fetchFollowers())
+        let tmp4 = dispatch(fetchArticles())
+        let tmp2;
+
         resource('GET', 'headlines').then((response) => {
+
+             tmp2 = dispatch({type: Action.UPDATE_HEADLINE,
+                 username: response.headlines[0].username,
+                 headline: response.headlines[0].headline
+             })
+        })
+        Promise.all([tmp1,tmp2,tmp3,tmp4]).then(()=>{
             dispatch(navToMain())
-            dispatch({type: Action.UPDATE_HEADLINE,
-                username: response.headlines[0].username,
-                headline: response.headlines[0].headline
-            })
-            dispatch(fetchProfile())
-            dispatch(fetchFollowers())
-            dispatch(fetchArticles())
-        }).catch((err) => {
-            
         })
     }
+
+
+
 }
 
 export function localLogin(username, password) {

@@ -1,37 +1,6 @@
 import { combineReducers } from 'redux'
 import Action from './actions'
 
-function followers(state = { followers: {} }, action) {
-    switch(action.type) {
-        case Action.FOLLOWER_UPDATE:
-            return { ...state, followers: action.followers }
-
-        default:
-            return state
-    }
-}
-
-function articles(state = { articles: {}, searchKeyword: '', avatars: {} }, action) {
-    switch(action.type) {
-        case Action.EDIT_ARTICLE:
-        case Action.ADD_ARTICLE:
-            const articles = { ...state.articles }
-            articles[action.article.id] = action.article
-            return { ...state, articles }
-
-        case Action.UPDATE_ARTICLES:
-            return { ...state, articles: action.articles }
-
-        case Action.SEARCH_KEYWORD:
-            return { ...state, searchKeyword: action.keyword }
-
-        case Action.UPDATE_AVATARS:
-            return { ...state, avatars: action.avatars }
-
-        default:
-            return state
-    }
-}
 
 function profile(state = { username:'', headline: '', avatar: '', zipcode: '', email: ''}, action) {
     switch (action.type) {
@@ -64,8 +33,10 @@ function common(state = { error:'', success:'', location:'' }, action) {
 
         case Action.NAV_PROFILE:
             return { ...state, ...clean, location: 'profile'}
+
         case Action.NAV_MAIN:
             return { ...state, ...clean, location: 'main' }
+
         case Action.NAV_OUT:
             return { ...state, ...clean, location: '' }
 
@@ -73,6 +44,40 @@ function common(state = { error:'', success:'', location:'' }, action) {
             return { ...state, ...clean }
     }
 }
+
+function followers(state = { followers: {} }, action) {
+    switch(action.type) {
+        case Action.FOLLOWER_UPDATE:
+            return { ...state, followers: action.followers }
+
+        default:
+            return state
+    }
+}
+
+function articles(state = { articles: {}, searchKeyword: '', avatars: {} }, action) {
+    switch(action.type) {
+        case Action.EDIT_ARTICLE:
+        case Action.ADD_ARTICLE:
+            const articles = { ...state.articles }
+            articles[action.article.id] = action.article
+            return { ...state, articles }
+
+        case Action.UPDATE_ARTICLES:
+            return { ...state, articles: action.articles }
+
+        case Action.SEARCH_KEYWORD:
+            return { ...state, searchKeyword: action.keyword }
+
+        case Action.UPDATE_AVATARS:
+            return { ...state, avatars: action.avatars }
+
+        default:
+            return state
+    }
+}
+
+
 
 const Reducer = combineReducers({
     articles, profile, followers, common
