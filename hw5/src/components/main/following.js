@@ -22,37 +22,36 @@ Follower.propTypes = {
 
 class Following extends Component {
     render() { return (
-        <div>
-                <div id ="following">
+            <div id ="following">
                 { Object.keys(this.props.followers).sort().map((f) => this.props.followers[f]).map((follower) =>
                     <Follower key={follower.name}
                         name={follower.name} avatar={follower.avatar} headline={follower.headline}
                         dispatch={this.props.dispatch} />
                 )}
               
-                    <input id="add_new_follower" type="text"
+                <input id="add_new_follower" type="text"
                         placeholder="add a follower"
                         ref={(node) => this.newFollower = node }
                         onChange={(e) => {
                             this.forceUpdate()
                         }}/>
-                { !(this.newFollower && this.newFollower.value && this.newFollower.value.length > 0) ? '' :
-                    <input type="button"
+                <br/><br/>
+
+                <input id="add_follower" type="button"
                         onClick={() => {
                             this.props.dispatch(addFollower(this.newFollower.value))
                             this.newFollower.value = ''
                             this.forceUpdate()
                         }}
                         value="add follower"/>
-                }
+                
                 { this.props.error.length == 0 ? '' :
                     <div>
                         { this.props.error }
                     </div>
                 }
-                </div>
+            </div>
 
-        </div>
     )}
 }
 
