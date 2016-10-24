@@ -5,19 +5,6 @@ import { uploadArticle } from './articleActions'
 
 class NewArticle extends Component {
 
-    handleImageChange(e) {
-        e.preventDefault()
-
-        let reader = new window.FileReader();
-        reader.onloadend = () => {
-            this.preview = reader.result
-            this.forceUpdate();
-        }
-
-        this.file = e.target.files[0];
-        if (typeof(this.file) == 'Blob')
-            reader.readAsDataURL(this.file)
-    }
 
     render() { return (
         <div id="add_stuff">
@@ -35,7 +22,7 @@ class NewArticle extends Component {
 
             <div>
                 Add a picture
-                <input type="file" id="add_img" accept="image/*" onChange={(e) => this.handleImageChange(e)}/>
+                <input type="file" id="add_img" accept="image/*" />
            
             { !this.file && !this.message ? '' :
                         <input type="button" value="Publish it"
@@ -48,15 +35,7 @@ class NewArticle extends Component {
             }
             </div>
 
-        { !this.file ? '' :
-            <div>
-                <img className="postImage" src={this.preview}/>
-                <div>
-                { this.file.webkitRelativePath || this.file.name }<br/>
-                ({ parseInt(this.file.size / 1024 * 100)/100.0 } kB)
-                </div>
-            </div>
-        }
+       
         </div>
     )}
 }

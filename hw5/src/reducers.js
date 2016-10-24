@@ -69,9 +69,7 @@ function articles(state = { articles: {}, searchKeyword: '', avatars: {} }, acti
         case Action.SEARCH_KEYWORD:
             return { ...state, searchKeyword: action.keyword }
 
-        case Action.UPDATE_AVATARS:
-            return { ...state, avatars: action.avatars }
-
+    
         default:
             return state
     }

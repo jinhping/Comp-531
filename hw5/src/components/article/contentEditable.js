@@ -4,7 +4,6 @@ class ContentEditable extends Component {
 
     constructor(props) {
         super(props)
-        this.emitChange = this.emitChange.bind(this)
     }
 
     render() {
@@ -17,17 +16,6 @@ class ContentEditable extends Component {
         ></div>;
     }
 
-    emitChange(e) {
-        const html = e.target.innerText
-        if (this.props.onChange && html !== this.lastHtml) {
-            this.props.onChange({
-                target: {
-                    value: html
-                }
-            });
-        }
-        this.lastHtml = html;
-    }
 }
 
 ContentEditable.propTypes = {

@@ -6,15 +6,12 @@ export const apiUrl = local ? 'http://localhost:8080' : 'https://webdev-dummy.he
 
 const Action = {
 
-     ADD_ARTICLE: 'ADD_ARTICLE'
     
-    ,UPDATE_ARTICLES: 'UPDATE_ARTICLES'
+    UPDATE_ARTICLES: 'UPDATE_ARTICLES'
     
-    ,EDIT_ARTICLE: 'EDIT_ARTICLE'
    
     ,SEARCH_KEYWORD: 'SEARCH_KEYWORD'
    
-    ,UPDATE_AVATARS: 'UPDATE_AVATARS'
     ,UPDATE_HEADLINE: 'UPDATE_HEADLINE'
     ,UPDATE_PROFILE: 'UPDATE_PROFILE'
     

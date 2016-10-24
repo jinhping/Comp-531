@@ -28,30 +28,6 @@ export function fetchArticles() {
     }
 }
 
-export function uploadArticle(message, file) {
-    return (dispatch) => {
-        const fd = new window.FormData()
-        fd.append('text', message)
-        fd.append('image', file)
-        resource('POST', 'article', fd, false)
-        .then((response) => {
-            const article = response.articles[0]
-            dispatch({ type: Action.ADD_ARTICLE, article})
-        })
-    }
-}
-
-export function editArticle(articleId, message, commentId) {
-    return (dispatch) => {
-        const payload = { text: message }
-        if (commentId) payload.commentId = commentId
-        resource('PUT', `articles/${articleId}`, payload)
-        .then((response) => {
-            const article = response.articles[0]
-            dispatch({ type: Action.EDIT_ARTICLE, article })
-        })
-    }
-}
 
 export function searchKeyword(keyword) {
     return { type: Action.SEARCH_KEYWORD, keyword }
