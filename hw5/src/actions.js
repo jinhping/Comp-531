@@ -67,6 +67,7 @@ export function resource(method, endpoint, payload, submitJson = true) {
             throw new Error(response.statusText)
         } 
     })
+    //.catch((error)=>{console.log(error)})
 }
 
 

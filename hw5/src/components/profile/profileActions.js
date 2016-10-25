@@ -13,7 +13,7 @@ export function fetchProfile() {
         dispatch(fetchField('avatars'))
         dispatch(fetchField('zipcode'))
         dispatch(fetchField('email'))
-        dispatch(fetchField('birth'))
+        //dispatch(fetchField('birth'))
     }
 }
 
@@ -45,8 +45,8 @@ function fetchField(field) {
                     action.email = response.email; break;
                 case 'zipcode':
                     action.zipcode = response.zipcode; break;
-                case 'birth' :
-                    action.birth = response.birth; break;
+              //  case 'birth' :
+                   // action.birth = response.birth; break;
             }
             dispatch(action)
         })

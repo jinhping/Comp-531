@@ -28,7 +28,7 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
 
 
 	it('- resource should be a resource (i.e., mock a request)', (done)=> {
-		mock(`${apiUrl}/login`, {
+		mock(`${apiUrl}/sample`, {
 			method: 'GET',
 			headers: {'Content-Type': 'application/json'},
 		})
@@ -42,7 +42,7 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
 
 
 	it('- resource should give me the http error', (done)=> {
-		const username = 'by8test'
+		const username = 'jp64'
 		const password = 'wrong password'
 		
 		mock(`${apiUrl}/login`, {
@@ -60,8 +60,8 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
 
 
 	it('- resource should be POSTable', (done)=> {
-		const username = 'by8test'
-		const password = 'river-tip-damage'
+		const username = 'jp64'
+		const password = 'calm-engine-cage'
 		
 		mock(`${apiUrl}/login`, {
 			method: 'POST',
@@ -70,7 +70,7 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
 		})
 
 		resource('POST', 'login', {username, password }).then((response) => {
-			expect(response).to.eql({username: "by8test", result: "success"})
+			expect(response).to.eql({username: "jp64", result: "success"})
 		})
 		.then(done)
 		.catch(done)

@@ -36,6 +36,7 @@ export function localLogin(username, password) {
 export function logout() {
     return (dispatch) => {
         resource('PUT', 'logout')
+        .then(dispatch({type:'NAV_OUT'}))
         .catch((err) => {
             dispatch({type: Action.LOGIN_LOCAL, username: undefined})
             dispatch(navToOut())

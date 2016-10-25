@@ -2,10 +2,9 @@ import { expect } from 'chai'
 import mockery from 'mockery'
 import fetch, { mock } from 'mock-fetch'
 
-import * as profileActions from './profileActions'
 
 
-let resource, url
+let resource, url, profileActions
 
 describe('ProfileActions Test: ', () => {
 
@@ -15,8 +14,9 @@ describe('ProfileActions Test: ', () => {
 			mockery.enable({warnOnUnregistered: false, useCleanCache:true})
 			mockery.registerMock('node-fetch', fetch)
 			require('node-fetch')
-			url = require('../../actions')
-			resource = require('../../actions').default
+			url = require('../../actions').apiUrl
+            resource = require('../../actions').resource
+            profileActions = require('./profileActions')
   		}
 	})
 
@@ -53,5 +53,66 @@ describe('ProfileActions Test: ', () => {
   		}))
 
 	})
+
+	it('should fetch the user profile information', (done) => {
+  
+  		const avatar = 'img'
+  		const zipcode = '48105'
+  		const email = 'xyz@gmail.com'
+  		//const birth = '07/04/1994'
+
+
+  		mock(`${url}/avatars`, {
+  			method: 'GET',
+  			headers: {'Content-Type':'application/json'},
+  			json: { avatars : [{avatar}] }
+  		})
+
+  		mock(`${url}/zipcode`, {
+  			method: 'GET',
+  			headers: {'Content-Type':'application/json'},
+  			json: { zipcode }
+  		})	
+  		
+  		mock(`${url}/email`, {
+  			method: 'GET',
+  			headers: {'Content-Type':'application/json'},
+  			json: { email }
+  		})
+
+      
+  		var tmp = 0;
+  		profileActions.fetchProfile()(
+  			fn => fn(action => {
+         
+
+                if (tmp == 0){
+                    expect(action).to.eql({
+                        avatar:avatar, type:'UPDATE_PROFILE'
+                    })
+                   	tmp++                 
+                }
+                else if (tmp == 1){
+
+                    expect(action).to.eql({
+                        zipcode, type:'UPDATE_PROFILE'
+                    })
+                    tmp++
+                }
+                else if (tmp == 2){
+
+                    expect(action).to.eql({
+                        email, type:'UPDATE_PROFILE'
+                    })
+                    tmp++
+                    done()
+                }
+                
+  		}))
+
+	})
+
 })
+
+
 
