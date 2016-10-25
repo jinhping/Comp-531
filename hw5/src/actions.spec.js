@@ -27,7 +27,7 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
 	})
 
 
-	it('- resource should be a resource (i.e., mock a request)', (done)=> {
+	it('resource should be a resource (i.e., mock a request)', (done)=> {
 		mock(`${apiUrl}/sample`, {
 			method: 'GET',
 			headers: {'Content-Type': 'application/json'},
@@ -38,6 +38,23 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
 		})
 		.then(done)
 		.catch(done)
+		// let headlines = [{username:'jp64', headline:'test'}]
+
+		// mock(`${apiUrl}/headlines`, {
+		// 	method: 'GET',
+		// 	headers: {'Content-Type':'application/json'},
+  //           json: {headline: "test"}
+		// })
+
+		// resource('GET', 'headlines').then((response) => {
+			
+
+ 	// 	   expect(response).to.eql({headline: "test"})
+  //          //expect(response.headline).to.eql(headlines.headline) 		
+  //      })
+		// .then(done)
+		// .catch(done)
+
 	})
 
 

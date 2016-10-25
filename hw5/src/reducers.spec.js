@@ -14,7 +14,9 @@ let initialState = {
 
 
 describe('Validate reducer (no fetch requests here)', ()=> {
-
+    it('should clear state when logout', ()=>{
+        expect(Reducer(undefined, {type:'NAV_OUT'})).to.eql(initialState)
+    })
 
 	it('should return the initial state', ()=>{
         expect(Reducer(undefined, {})).to.eql(initialState)
