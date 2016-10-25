@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import Action from './actions'
 
 
-function profile(state = { username:'', headline: '', avatar: '', zipcode: '', email: ''}, action) {
+function profile(state = { username:'', headline: '', avatar: '', zipcode: '', email: '',dob:''}, action) {
     switch (action.type) {
         case Action.UPDATE_HEADLINE:
         case Action.LOGIN_LOCAL:
@@ -17,6 +17,8 @@ function profile(state = { username:'', headline: '', avatar: '', zipcode: '', e
                 return { ...state, zipcode: parseInt(action.zipcode) }
             if (action.email) 
                 return { ...state, email: action.email }
+            if (action.dob) return {...state, dob: action.dob}
+
 
         default:
             return state

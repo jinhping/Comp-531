@@ -12,6 +12,8 @@ class ProfileForm extends Component {
             this.zipcode.value = null
             this.password.value = null
             this.pwconf.value = null
+            this.dob.value = null
+
         }
     }
 
@@ -22,11 +24,11 @@ class ProfileForm extends Component {
             if (e) e.preventDefault()
             const payload = {
                 email:this.email.value == this.oldEmail ? '' : this.email.value,
-                phone:this.phone.value,
+                phone:this.phone.value == this.oldPhone ? '' : this.phone.value,
                 zipcode:this.zipcode.value == this.oldZipcode ? '' : this.zipcode.value,
                 password:this.password.value,
                 pwconf:this.pwconf.value,
-                birth: this.birth.value
+                dob: this.dob.value
             }
             this.props.dispatch(updateProfile(payload))
         }}>
@@ -37,12 +39,12 @@ class ProfileForm extends Component {
                         ref={(node) => this.email = node } id="email"/>
                 <br/><br/>
                 Phone number: 
-                <input type="text" id="phone_number" pattern="\d\d\d-\d\d\d-\d\d\d\d" placeholder={this.props.phone}
+                <input type="text" id="phone_number" pattern="\d\d\d-\d\d\d-\d\d\d\d" placeholder={this.props.oldPhone}
                         ref={(node) => this.phone = node }/>
                 <br/><br/>
                 DOB:
-                <input type="date" name="DOB" placeholder={this.props.birth}
-                        ref={(node) => this.birth = node } id="birth"/>
+                <input type="text" name="DOB" placeholder={this.props.oldDob}
+                        ref={(node) => this.dob = node } id="birth"/>
                 <br/><br/>
                 Zipcode:
                 <input type="text" id="zipcode" pattern="\d\d\d\d\d" placeholder={this.props.oldZipcode}
@@ -68,10 +70,10 @@ class ProfileForm extends Component {
 ProfileForm.propTypes = {
     error: PropTypes.string.isRequired,
     oldZipcode: PropTypes.number.isRequired,
-    phone: PropTypes.string.isRequired,
+    oldPhone: PropTypes.string.isRequired,
     oldEmail: PropTypes.string.isRequired,
     dispatch: PropTypes.func.isRequired,
-    birth: PropTypes.string.isRequired
+    dob:PropTypes.string.isRequired
 }
 
 export default connect(
@@ -80,6 +82,8 @@ export default connect(
             error: state.common.error,
             oldZipcode: state.profile.zipcode,
             oldEmail: state.profile.email,
+            oldPhone: state.profile.phone,
+            oldDob: state.profile.dob,
         }
     }
 )(ProfileForm)

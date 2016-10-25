@@ -8,7 +8,7 @@ import {articles} from './reducers'
 let initialState = {
     common:{error:'', success: '',location: ''},
 	articles:{articles:{},searchKeyword:'', avatars: {} },
- 	profile: { username: '',headline: '',avatar: '',email: '',zipcode: ''},
+ 	profile: { username: '',headline: '',avatar: '',email: '',zipcode: '',dob: ''},
  	followers:{ followers: {}}
 }
 

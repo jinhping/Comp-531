@@ -24629,11 +24629,11 @@
 	    var action = arguments[1];
 	
 	    switch (action.type) {
-	        case _actions2.default.EDIT_ARTICLE:
-	        case _actions2.default.ADD_ARTICLE:
-	            var _articles = _extends({}, state.articles);
-	            _articles[action.article.id] = action.article;
-	            return _extends({}, state, { articles: _articles });
+	        //     case Action.EDIT_ARTICLE:
+	        // case Action.ADD_ARTICLE:
+	        //     const articles = { ...state.articles }
+	        //     articles[action.article.id] = action.article
+	        //     return { ...state, articles }
 	
 	        case _actions2.default.UPDATE_ARTICLES:
 	            return _extends({}, state, { articles: action.articles });
@@ -24746,6 +24746,7 @@
 	            throw new Error(response.statusText);
 	        }
 	    });
+	    //.catch((error)=>{console.log(error)})
 	}
 
 /***/ },
@@ -31083,7 +31084,7 @@
 	
 	function logout() {
 	    return function (dispatch) {
-	        (0, _actions.resource)('PUT', 'logout').catch(function (err) {
+	        (0, _actions.resource)('PUT', 'logout').then(dispatch({ type: 'NAV_OUT' })).catch(function (err) {
 	            dispatch({ type: _actions2.default.LOGIN_LOCAL, username: undefined });
 	            dispatch((0, _actions.navToOut)());
 	        });
@@ -31272,7 +31273,7 @@
 	        dispatch(fetchField('avatars'));
 	        dispatch(fetchField('zipcode'));
 	        dispatch(fetchField('email'));
-	        dispatch(fetchField('birth'));
+	        //dispatch(fetchField('birth'))
 	    };
 	}
 	
@@ -31301,8 +31302,8 @@
 	                    action.email = response.email;break;
 	                case 'zipcode':
 	                    action.zipcode = response.zipcode;break;
-	                case 'birth':
-	                    action.birth = response.birth;break;
+	                //  case 'birth' :
+	                // action.birth = response.birth; break;
 	            }
 	            dispatch(action);
 	        });
