@@ -59,7 +59,7 @@ describe('ProfileActions Test: ', () => {
   		let avatar = 'avatar'
   		let zipcode = '48105'
   		let  email = 'xyz@gmail.com'
-  		let dob = '07/04/1994'
+  		let dob = 'Sun Feb 25 2001'
 
 
   		mock(`${url}/avatars`, {
@@ -110,13 +110,11 @@ describe('ProfileActions Test: ', () => {
                         email, type:'UPDATE_PROFILE'
                     })
                     tmp++
-                    //done()
                  } 
                  else if (tmp == 3){
                     expect(action).to.eql({
                         dob, type:'UPDATE_PROFILE'
                     })
-                    tmp++
                     done()
                 }
                 

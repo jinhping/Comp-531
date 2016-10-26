@@ -46,7 +46,7 @@ function fetchField(field) {
                 case 'zipcode':
                     action.zipcode = response.zipcode; break;
                case 'dob':
-                    action.dob = response.dob; break;
+                    action.dob = new Date(response.dob).toDateString(); break;
             }
             dispatch(action)
         })
