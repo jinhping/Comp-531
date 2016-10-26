@@ -69,4 +69,13 @@ export default connect(
 
 export { ArticlesView as PureArticlesView }
 
-
+export function filterFunction(articles, keyword){
+  let articlesContainer = Object.keys(articles).map((_id)=> articles[_id]).sort((a,b)=>a.date===b.date?0:a.date<b.date?1:-1);
+  if(keyword && keyword.length !==0){
+    articlesContainer = articlesContainer.filter((item)=>{
+      return item.text.toLowerCase().indexOf(keyword.toLowerCase()) >=0 ||
+           item.author.toLowerCase().indexOf(keyword.toLowerCase()) >=0
+    })
+  }
+  return articlesContainer;
+}

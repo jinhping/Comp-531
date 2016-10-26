@@ -8,12 +8,15 @@ import Action, {apiUrl, updateError, updateSuccess, navToProfile, navToMain, nav
 
 describe('Validate actions (these are functions that dispatch actions)', () => {
 
-	let Action, actions
+	let Action, actions,url,resource
 	beforeEach(() => {
 		if(mockery.enable) {
 			mockery.enable({warnOnUnregistered: false, useCleanCache:true})
 			mockery.registerMock('node-fetch', fetch)
 			require('node-fetch')
+			resource = require('./actions').resource
+  			url = require('./actions').url
+		
   		}
   		Action = require('./actions').default
   		actions = require('./actions') 
@@ -46,17 +49,8 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
 
 
 	it('resource should give me the http error', (done)=> {
-		const username = 'jp64'
-		const password = 'wrong password'
-		
-		mock(`${apiUrl}/login`, {
-			method: 'POST',
-			headers: {'Content-Type': 'application/json'},
-			json: {username, password}
-		})
-
-		resource('POST', 'login', {username, password }).catch((err) => {
-			expect(err.toString()).to.eql('Error: Unauthorized')
+		resource('GET', 'wrong_http').catch((error) => {
+			expect(error).to.exist
 		})
 		.then(done)
 		.catch(done)
@@ -64,17 +58,18 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
 
 
 	it('resource should be POSTable', (done)=> {
-		const username = 'jp64'
-		const password = 'calm-engine-cage'
+		let username = 'jp'
+		let password = 'calm-engine-cage'
 		
 		mock(`${apiUrl}/login`, {
 			method: 'POST',
 			headers: {'Content-Type': 'application/json'},
-			json: {username, password}
+			json: {username, result:'success'}
 		})
 
 		resource('POST', 'login', {username, password }).then((response) => {
-			expect(response).to.eql({username: "jp64", result: "success"})
+			expect(response.username).to.eql(username)
+            expect(response.result).to.eql('success')
 		})
 		.then(done)
 		.catch(done)

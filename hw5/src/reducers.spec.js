@@ -4,6 +4,7 @@ import fetch, {mock} from 'mock-fetch'
 
 import Reducer from './reducers'
 import {articles} from './reducers'
+import {filterFunction} from './components/article/articlesView'
 
 let initialState = {
     common:{error:'', success: '',location: ''},
@@ -46,6 +47,14 @@ describe('Validate reducer (no fetch requests here)', ()=> {
         expect(Reducer(undefined, {type:'SEARCH_KEYWORD',keyword})).to.eql({...initialState, articles:{...initialState.articles, searchKeyword:keyword}})
     })
 
-   
+
+    it('should filter displayed articles by the search keyword',()=> {
+        let articles = {0:{_id:0, text:'hi test1', author:'jp64', date:'2016-10-26'},
+                          1:{_id:1, text:'hello test2', author:'jp64', date:'2016-10-26'}}
+        let keyword = 'hi'
+        expect(filterFunction(articles,keyword))
+        .to.eql([{_id:0, text:'hi test1', author:'jp64', date:'2016-10-26'}]);
+    })
+
 
 })
