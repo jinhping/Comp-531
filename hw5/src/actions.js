@@ -8,6 +8,8 @@ const Action = {
 
     
     UPDATE_ARTICLES: 'UPDATE_ARTICLES'
+
+    ,ADD_ARTICLE:'ADD_ARTICLE'
     
    
     ,SEARCH_KEYWORD: 'SEARCH_KEYWORD'

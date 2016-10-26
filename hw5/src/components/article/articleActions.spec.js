@@ -26,7 +26,7 @@ describe('articleActions Test ', () => {
 
 
     it('should fetch articles (mocked request)', (done)=>{
-        const State = {articles : {avatars:{}}}
+        let state = {articles : {avatars:{}}}
 
         mock(`${url}/articles`,{
             method:'GET',
@@ -42,7 +42,7 @@ describe('articleActions Test ', () => {
                 done()
             }
             ,
-            ()=>{return State}
+            ()=>{return state}
         )
 
     })

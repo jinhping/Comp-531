@@ -44,7 +44,7 @@ describe('ProfileActions Test: ', () => {
  		// the complex action is called with dispatch as an argument
   		// dispatch is then called with an action as an argument
 
-  		profileActions.updateHeadline('does not matter')(
+  		profileActions.updateHeadline('test test test')(
   			fn => fn(action => {
 	  		expect(action).to.eql({ 
 	  			headline, type:'UPDATE_PROFILE'
@@ -56,10 +56,10 @@ describe('ProfileActions Test: ', () => {
 
 	it('should fetch the user profile information', (done) => {
   
-  		const avatar = 'img'
-  		const zipcode = '48105'
-  		const email = 'xyz@gmail.com'
-  		//const birth = '07/04/1994'
+  		let avatar = 'avatar'
+  		let zipcode = '48105'
+  		let  email = 'xyz@gmail.com'
+  		let dob = '07/04/1994'
 
 
   		mock(`${url}/avatars`, {
@@ -80,7 +80,12 @@ describe('ProfileActions Test: ', () => {
   			json: { email }
   		})
 
-      
+      mock(`${url}/dob`, {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'},
+            json: {dob}
+        })
+
   		var tmp = 0;
   		profileActions.fetchProfile()(
   			fn => fn(action => {
@@ -103,6 +108,13 @@ describe('ProfileActions Test: ', () => {
 
                     expect(action).to.eql({
                         email, type:'UPDATE_PROFILE'
+                    })
+                    tmp++
+                    //done()
+                 } 
+                 else if (tmp == 3){
+                    expect(action).to.eql({
+                        dob, type:'UPDATE_PROFILE'
                     })
                     tmp++
                     done()

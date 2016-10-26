@@ -24567,7 +24567,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function profile() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { username: '', headline: '', avatar: '', zipcode: '', email: '' };
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { username: '', headline: '', avatar: '', zipcode: '', email: '', dob: '' };
 	    var action = arguments[1];
 	
 	    switch (action.type) {
@@ -24580,6 +24580,7 @@
 	            if (action.avatar) return _extends({}, state, { avatar: action.avatar });
 	            if (action.zipcode) return _extends({}, state, { zipcode: parseInt(action.zipcode) });
 	            if (action.email) return _extends({}, state, { email: action.email });
+	            if (action.dob) return _extends({}, state, { dob: action.dob });
 	
 	        default:
 	            return state;
@@ -24746,7 +24747,7 @@
 	            throw new Error(response.statusText);
 	        }
 	    });
-	    //.catch((error)=>{console.log(error)})
+	    // .catch((error)=>{console.log(error)})
 	}
 
 /***/ },
@@ -31273,7 +31274,7 @@
 	        dispatch(fetchField('avatars'));
 	        dispatch(fetchField('zipcode'));
 	        dispatch(fetchField('email'));
-	        //dispatch(fetchField('birth'))
+	        dispatch(fetchField('dob'));
 	    };
 	}
 	
@@ -31302,8 +31303,8 @@
 	                    action.email = response.email;break;
 	                case 'zipcode':
 	                    action.zipcode = response.zipcode;break;
-	                //  case 'birth' :
-	                // action.birth = response.birth; break;
+	                case 'dob':
+	                    action.dob = new Date(response.dob).toDateString();break;
 	            }
 	            dispatch(action);
 	        });
@@ -47225,6 +47226,7 @@
 	                this.zipcode.value = null;
 	                this.password.value = null;
 	                this.pwconf.value = null;
+	                this.dob.value = null;
 	            }
 	        }
 	    }, {
@@ -47241,11 +47243,11 @@
 	                            if (e) e.preventDefault();
 	                            var payload = {
 	                                email: _this2.email.value == _this2.oldEmail ? '' : _this2.email.value,
-	                                phone: _this2.phone.value,
+	                                phone: _this2.phone.value == _this2.oldPhone ? '' : _this2.phone.value,
 	                                zipcode: _this2.zipcode.value == _this2.oldZipcode ? '' : _this2.zipcode.value,
 	                                password: _this2.password.value,
 	                                pwconf: _this2.pwconf.value,
-	                                birth: _this2.birth.value
+	                                dob: _this2.dob.value
 	                            };
 	                            _this2.props.dispatch((0, _profileActions.updateProfile)(payload));
 	                        } },
@@ -47265,16 +47267,16 @@
 	                        _react2.default.createElement('br', null),
 	                        _react2.default.createElement('br', null),
 	                        'Phone number:',
-	                        _react2.default.createElement('input', { type: 'text', id: 'phone_number', pattern: '\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d', placeholder: this.props.phone,
+	                        _react2.default.createElement('input', { type: 'text', id: 'phone_number', pattern: '\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d', placeholder: this.props.oldPhone,
 	                            ref: function ref(node) {
 	                                return _this2.phone = node;
 	                            } }),
 	                        _react2.default.createElement('br', null),
 	                        _react2.default.createElement('br', null),
 	                        'DOB:',
-	                        _react2.default.createElement('input', { type: 'date', name: 'DOB', placeholder: this.props.birth,
+	                        _react2.default.createElement('input', { type: 'text', name: 'DOB', placeholder: this.props.oldDob,
 	                            ref: function ref(node) {
-	                                return _this2.birth = node;
+	                                return _this2.dob = node;
 	                            }, id: 'birth' }),
 	                        _react2.default.createElement('br', null),
 	                        _react2.default.createElement('br', null),
@@ -47319,17 +47321,19 @@
 	ProfileForm.propTypes = {
 	    error: _react.PropTypes.string.isRequired,
 	    oldZipcode: _react.PropTypes.number.isRequired,
-	    phone: _react.PropTypes.string.isRequired,
+	    oldPhone: _react.PropTypes.string.isRequired,
 	    oldEmail: _react.PropTypes.string.isRequired,
 	    dispatch: _react.PropTypes.func.isRequired,
-	    birth: _react.PropTypes.string.isRequired
+	    dob: _react.PropTypes.string.isRequired
 	};
 	
 	exports.default = (0, _reactRedux.connect)(function (state) {
 	    return {
 	        error: state.common.error,
 	        oldZipcode: state.profile.zipcode,
-	        oldEmail: state.profile.email
+	        oldEmail: state.profile.email,
+	        oldPhone: state.profile.phone,
+	        oldDob: state.profile.dob
 	    };
 	})(ProfileForm);
 	exports.PureProfileForm = ProfileForm;

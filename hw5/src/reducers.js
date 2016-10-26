@@ -59,11 +59,10 @@ function followers(state = { followers: {} }, action) {
 
 function articles(state = { articles: {}, searchKeyword: '', avatars: {} }, action) {
     switch(action.type) {
-   //     case Action.EDIT_ARTICLE:
-        // case Action.ADD_ARTICLE:
-        //     const articles = { ...state.articles }
-        //     articles[action.article.id] = action.article
-        //     return { ...state, articles }
+       case Action.ADD_ARTICLE:
+          const articles = { ...state.articles }
+           articles[action.article.id] = action.article
+           return { ...state, articles }
 
         case Action.UPDATE_ARTICLES:
             return { ...state, articles: action.articles }
@@ -71,7 +70,7 @@ function articles(state = { articles: {}, searchKeyword: '', avatars: {} }, acti
         case Action.SEARCH_KEYWORD:
             return { ...state, searchKeyword: action.keyword }
 
-    
+        
         default:
             return state
     }

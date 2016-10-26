@@ -40,8 +40,12 @@ describe('Validate reducer (no fetch requests here)', ()=> {
 		.to.eql({...initialState, articles: {...initialState.articles, articles}})
 	})
 
+   
 	let keyword = 'keyword'
     it('should set the search keyword', ()=>{
         expect(Reducer(undefined, {type:'SEARCH_KEYWORD',keyword})).to.eql({...initialState, articles:{...initialState.articles, searchKeyword:keyword}})
     })
+
+   
+
 })

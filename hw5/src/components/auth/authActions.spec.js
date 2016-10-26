@@ -80,7 +80,7 @@ describe('Validate authenticate actions', () => {
     })
 
 
-    it('should log out a user (state should be cleared)', (done)=>{
+    it('should log out a user (state should be cleared, this is tested in another test case)', (done)=>{
         mock(`${url}/logout`,{
             method: 'PUT',
             headers: {'Content-Type':'application/json'}

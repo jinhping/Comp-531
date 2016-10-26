@@ -31,34 +31,21 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
 		mock(`${apiUrl}/sample`, {
 			method: 'GET',
 			headers: {'Content-Type': 'application/json'},
+			json: {sample:'test'}
+
 		})
 
 		resource('GET', 'sample').then((response) => {
-			expect(response.articles).to.exist;
+			expect(response.sample).to.exist;
+			done()
 		})
-		.then(done)
-		.catch(done)
-		// let headlines = [{username:'jp64', headline:'test'}]
 
-		// mock(`${apiUrl}/headlines`, {
-		// 	method: 'GET',
-		// 	headers: {'Content-Type':'application/json'},
-  //           json: {headline: "test"}
-		// })
-
-		// resource('GET', 'headlines').then((response) => {
-			
-
- 	// 	   expect(response).to.eql({headline: "test"})
-  //          //expect(response.headline).to.eql(headlines.headline) 		
-  //      })
-		// .then(done)
-		// .catch(done)
+		.catch((err)=>{console.log(err);done()})
 
 	})
 
 
-	it('- resource should give me the http error', (done)=> {
+	it('resource should give me the http error', (done)=> {
 		const username = 'jp64'
 		const password = 'wrong password'
 		
@@ -76,7 +63,7 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
 	})
 
 
-	it('- resource should be POSTable', (done)=> {
+	it('resource should be POSTable', (done)=> {
 		const username = 'jp64'
 		const password = 'calm-engine-cage'
 		
@@ -94,27 +81,27 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
 	})
 
 
-	it('- should update error message (for displaying error mesage to user)', ()=>{
-		const msg = 'test error message';
+	it('should update error message (for displaying error mesage to user)', ()=>{
+		const text = 'error message';
 		const expectAction = {
 			type: Action.ERROR,
-			error: msg
+			error: text
 		}
-		expect(updateError(msg)).to.eql(expectAction);
+		expect(updateError(text)).to.eql(expectAction);
 	})
 
 
-	it('- should update success message (for displaying success message to user)', ()=>{
-		const msg = 'test success message';
+	it('should update success message (for displaying success message to user)', ()=>{
+		const text = 'success message';
 		const expectAction = {
 			type: Action.SUCCESS,
-			success: msg
+			success: text
 		}
-		expect(updateSuccess(msg)).to.eql(expectAction);
+		expect(updateSuccess(text)).to.eql(expectAction);
 	})
 
 
-	it('- should navigate (to profile, main, or landing)', ()=>{
+	it('should navigate (to profile, main, or landing)', ()=>{
 		expect(navToOut()).to.eql({type: Action.NAV_OUT});
 		expect(navToMain()).to.eql({type: Action.NAV_MAIN});
 		expect(navToProfile()).to.eql({type: Action.NAV_PROFILE});
