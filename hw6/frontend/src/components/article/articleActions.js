@@ -45,3 +45,15 @@ export function uploadArticle(message, file) {
         })
     }
 }
+
+export function editArticle(articleId, message, commentId) {
+    return (dispatch) => {
+        const payload = { text: message }
+        if (commentId) payload.commentId = commentId
+        resource('PUT', `articles/${articleId}`, payload)
+        .then((response) => {
+            const article = response.articles[0]
+            dispatch({ type: Action.EDIT_ARTICLE, article })
+        })
+    }
+}

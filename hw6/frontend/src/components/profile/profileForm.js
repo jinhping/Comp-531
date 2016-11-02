@@ -8,14 +8,14 @@ class ProfileForm extends Component {
     componentDidUpdate() {
         if (this.props.error.length == 0) {
             this.email.value = null
-            this.phone.value = null
+           // this.phone.value = null
             this.zipcode.value = null
             this.password.value = null
             this.pwconf.value = null
-            this.dob.value = null
-
+          //  this.dob.value = null
         }
     }
+
 
     render() { return (
 
@@ -24,23 +24,24 @@ class ProfileForm extends Component {
             if (e) e.preventDefault()
             const payload = {
                 email:this.email.value == this.oldEmail ? '' : this.email.value,
-                phone:this.phone.value == this.oldPhone ? '' : this.phone.value,
+           //     phone:this.phone.value,
                 zipcode:this.zipcode.value == this.oldZipcode ? '' : this.zipcode.value,
                 password:this.password.value,
                 pwconf:this.pwconf.value,
-                dob: this.dob.value
+            //    dob: this.dob.value
             }
             this.props.dispatch(updateProfile(payload))
+            this.email.value = ''
+            this.zipcode.value = ''
+            this.password.value = ''
+            this.pwconf.value = ''
+            this.forceUpdate()
         }}>
             <div id="input">
                 <h2>Update Information</h2>
                 Email Address:
                 <input type="email" name="Email" placeholder={this.props.oldEmail}
                         ref={(node) => this.email = node } id="email"/>
-                <br/><br/>
-                Phone number: 
-                <input type="text" id="phone_number" pattern="\d\d\d-\d\d\d-\d\d\d\d" placeholder={this.props.oldPhone}
-                        ref={(node) => this.phone = node }/>
                 <br/><br/>
                 DOB:
                 <input type="text" name="DOB" placeholder={this.props.oldDob}
@@ -58,7 +59,7 @@ class ProfileForm extends Component {
                 <input type="password" id="password2"  placeholder="password" ref={(node) => this.pwconf = node }/>
                 <br/><br/>
                 <div class="button">
-                    <button type="submit" id="submit" onClick="update()">Submit Changes</button>
+                    <button type="submit" id="submit">Submit Changes</button>
                 </div>
             </div>
         </form>
@@ -70,7 +71,6 @@ class ProfileForm extends Component {
 ProfileForm.propTypes = {
     error: PropTypes.string.isRequired,
     oldZipcode: PropTypes.number.isRequired,
-    oldPhone: PropTypes.string.isRequired,
     oldEmail: PropTypes.string.isRequired,
     dispatch: PropTypes.func.isRequired,
     dob:PropTypes.string.isRequired
@@ -82,7 +82,7 @@ export default connect(
             error: state.common.error,
             oldZipcode: state.profile.zipcode,
             oldEmail: state.profile.email,
-            oldPhone: state.profile.phone,
+//            oldPhone: state.profile.phone,
             oldDob: state.profile.dob,
         }
     }

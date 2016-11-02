@@ -49,5 +49,11 @@ export function fetchFollowers(method, name) {
     }
 }
 
+export function delFollower(name) { 
+    return fetchFollowers('DELETE', name) 
+}
 
+export function addFollower(name) { 
+    return fetchFollowers('PUT', name) 
+}
 
