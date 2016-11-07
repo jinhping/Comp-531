@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 
 const app = express()
 app.use(bodyParser.json())
-require('./profile')(app)
+require('./auth')(app)
 require('./articles')(app)
 
 // Get the port from the environment, i.e., Heroku sets it
