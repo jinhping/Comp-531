@@ -20,7 +20,7 @@ class NewArticle extends Component {
     }
 
     render() { return (
-        <div id="add_stuff">
+        <div id="add_stuff" className="originalArticle">
             <div>
                     <div>Say something...</div>
                     <textarea  id="textarea"
@@ -39,7 +39,7 @@ class NewArticle extends Component {
                     onChange={(e) => this.handleImageChange(e)} />
            
             { !this.file && !this.message ? '' :
-                        <input type="button" value="Publish it"
+                        <input type="button" id='publish' value="Publish it"
                             onClick={() => {
                                 this.props.dispatch(uploadArticle(this.message, this.file))
                                 this.message = ''

@@ -11,7 +11,7 @@ const ProfileNav = ({username, dispatch}) => (
              
             <li><a href="#" onClick={() => { dispatch(navToMain()) }}>Home</a></li> 
               
-            <li><a href="#" onClick={() => { dispatch(logout()) }}>Log out {username} </a></li>
+            <li><a id='e2elogout'  href="#" onClick={() => { dispatch(logout()) }}>Log out {username} </a></li>
             
           </div>
         }

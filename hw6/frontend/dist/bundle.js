@@ -31171,7 +31171,7 @@
 	        null,
 	        _react2.default.createElement(
 	          'a',
-	          { href: '#', onClick: function onClick() {
+	          { href: '#', id: 'profile', onClick: function onClick() {
 	              dispatch((0, _actions.navToProfile)());
 	            } },
 	          'Edit Your Profile'
@@ -31182,7 +31182,7 @@
 	        null,
 	        _react2.default.createElement(
 	          'a',
-	          { href: '#', onClick: function onClick() {
+	          { href: '#', id: 'e2elogout', onClick: function onClick() {
 	              dispatch((0, _authActions.logout)());
 	            } },
 	          'Log out ',
@@ -32053,7 +32053,7 @@
 	      var date = (0, _moment2.default)(new Date(this.props.date));
 	      return _react2.default.createElement(
 	        'div',
-	        { id: 'card_combo', name: 'article' },
+	        { id: 'card_combo', name: 'article', className: 'originalArticle' },
 	        _react2.default.createElement(
 	          'h3',
 	          null,
@@ -47146,7 +47146,7 @@
 	
 	            return _react2.default.createElement(
 	                'div',
-	                { id: 'add_stuff' },
+	                { id: 'add_stuff', className: 'originalArticle' },
 	                _react2.default.createElement(
 	                    'div',
 	                    null,
@@ -47171,7 +47171,7 @@
 	                        onChange: function onChange(e) {
 	                            return _this3.handleImageChange(e);
 	                        } }),
-	                    !this.file && !this.message ? '' : _react2.default.createElement('input', { type: 'button', value: 'Publish it',
+	                    !this.file && !this.message ? '' : _react2.default.createElement('input', { type: 'button', id: 'publish', value: 'Publish it',
 	                        onClick: function onClick() {
 	                            _this3.props.dispatch((0, _articleActions.uploadArticle)(_this3.message, _this3.file));
 	                            _this3.message = '';
@@ -47915,7 +47915,7 @@
 	        null,
 	        _react2.default.createElement(
 	          'a',
-	          { href: '#', onClick: function onClick() {
+	          { id: 'e2elogout', href: '#', onClick: function onClick() {
 	              dispatch((0, _authActions.logout)());
 	            } },
 	          'Log out ',

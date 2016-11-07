@@ -19,7 +19,7 @@ class Article extends Component {
   render() {
     const date = moment(new Date(this.props.date))
     return (
-    <div id="card_combo" name="article">
+    <div id="card_combo" name="article" className="originalArticle">
         <h3>
           <img className="followingImage" src={ this.props.avatar }/>
           {this.props.author} said

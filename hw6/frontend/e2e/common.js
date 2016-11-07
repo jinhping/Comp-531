@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { findId, sleep } from './selenium'
+import { findId, sleep, findCSS} from './selenium'
 
 // TODO add your test user credentials here!
 exports.creds = {
@@ -9,24 +9,21 @@ exports.creds = {
 
 exports.login = () => 
     sleep(500)
-    .then(findId('username').clear())
-    .then(findId('password').clear())
-    .then(findId('username').sendKeys(exports.creds.username))
-    .then(findId('password').sendKeys(exports.creds.password))
-    .then(findId('login').click())
+    .then(findId('account_name_login').clear())
+    .then(findId('password_login').clear())
+    .then(findId('account_name_login').sendKeys(exports.creds.username))
+    .then(findId('password_login').sendKeys(exports.creds.password))
+    .then(findId('landing_login_button').click())
     .then(sleep(2000))
 
 exports.logout = () =>
     sleep(500)
-    .then(findId('logout').click())
+    .then(findId('e2elogout').click())
     // IMPLEMENT ME
     // validate the message says: 'You have logged out'
     .then(sleep(1000))
 
-    .then(findId('message').getText().then(
-        text => {
-            expect(text).to.equal('You have logged out')
-        })
-    )
+    .then(expect(findId('account_name_login')).to.be.ok)
+
     .then(sleep(500))
 
