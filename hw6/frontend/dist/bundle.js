@@ -31547,7 +31547,6 @@
 	        dispatch(updateField('email', email));
 	        dispatch(updateField('zipcode', zipcode));
 	        dispatch(updateField('password', password));
-	        //   dispatch(updateField('dob', dob))
 	    };
 	}
 	
@@ -47575,38 +47574,11 @@
 	
 	var _profileNav2 = _interopRequireDefault(_profileNav);
 	
+	var _errorMessage = __webpack_require__(/*! ../errorMessage */ 338);
+	
+	var _errorMessage2 = _interopRequireDefault(_errorMessage);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Messages_ = function Messages_(_ref) {
-	    var error = _ref.error,
-	        success = _ref.success;
-	    return _react2.default.createElement(
-	        'div',
-	        null,
-	        error.length == 0 ? '' : _react2.default.createElement(
-	            'div',
-	            { id: 'errorMessage' },
-	            error
-	        ),
-	        success.length == 0 ? '' : _react2.default.createElement(
-	            'div',
-	            { id: 'successMessage' },
-	            success
-	        )
-	    );
-	};
-	
-	Messages_.propTypes = {
-	    error: _react.PropTypes.string.isRequired,
-	    success: _react.PropTypes.string.isRequired
-	};
-	
-	var Messages = (0, _reactRedux.connect)(function (state) {
-	    return {
-	        error: state.common.error,
-	        success: state.common.success
-	    };
-	})(Messages_);
 	
 	var Profile = function Profile() {
 	    return _react2.default.createElement(
@@ -47618,7 +47590,7 @@
 	        _react2.default.createElement(_profileNav2.default, null),
 	        _react2.default.createElement(_avatar2.default, null),
 	        _react2.default.createElement(_profileForm2.default, null),
-	        _react2.default.createElement(Messages, null)
+	        _react2.default.createElement(_errorMessage2.default, null)
 	    );
 	};
 	exports.default = Profile;
@@ -47669,18 +47641,10 @@
 	        value: function componentDidUpdate() {
 	            if (this.props.error.length == 0) {
 	                this.email.value = null;
-	                this.phone.value = null;
 	                this.zipcode.value = null;
 	                this.password.value = null;
 	                this.pwconf.value = null;
-	                //  this.dob.value = null
 	            }
-	        }
-	    }, {
-	        key: '_update',
-	        value: function _update() {
-	            update();
-	            this.forceUpdate();
 	        }
 	    }, {
 	        key: 'render',
@@ -47696,12 +47660,16 @@
 	                            if (e) e.preventDefault();
 	                            var payload = {
 	                                email: _this2.email.value == _this2.oldEmail ? '' : _this2.email.value,
-	                                //     phone:this.phone.value,
 	                                zipcode: _this2.zipcode.value == _this2.oldZipcode ? '' : _this2.zipcode.value,
 	                                password: _this2.password.value,
 	                                pwconf: _this2.pwconf.value
 	                            };
 	                            _this2.props.dispatch((0, _profileActions.updateProfile)(payload));
+	                            _this2.email.value = '';
+	                            _this2.zipcode.value = '';
+	                            _this2.password.value = '';
+	                            _this2.pwconf.value = '';
+	                            _this2.forceUpdate();
 	                        } },
 	                    _react2.default.createElement(
 	                        'div',
@@ -47750,7 +47718,7 @@
 	                            { 'class': 'button' },
 	                            _react2.default.createElement(
 	                                'button',
-	                                { type: 'submit', id: 'submit', onClick: '_update()' },
+	                                { type: 'submit', id: 'submit' },
 	                                'Submit Changes'
 	                            )
 	                        )
@@ -47776,7 +47744,6 @@
 	        error: state.common.error,
 	        oldZipcode: state.profile.zipcode,
 	        oldEmail: state.profile.email,
-	        //            oldPhone: state.profile.phone,
 	        oldDob: state.profile.dob
 	    };
 	})(ProfileForm);

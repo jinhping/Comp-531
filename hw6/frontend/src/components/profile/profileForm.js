@@ -8,11 +8,9 @@ class ProfileForm extends Component {
     componentDidUpdate() {
         if (this.props.error.length == 0) {
             this.email.value = null
-           // this.phone.value = null
             this.zipcode.value = null
             this.password.value = null
             this.pwconf.value = null
-          //  this.dob.value = null
         }
     }
 
@@ -24,11 +22,9 @@ class ProfileForm extends Component {
             if (e) e.preventDefault()
             const payload = {
                 email:this.email.value == this.oldEmail ? '' : this.email.value,
-           //     phone:this.phone.value,
                 zipcode:this.zipcode.value == this.oldZipcode ? '' : this.zipcode.value,
                 password:this.password.value,
                 pwconf:this.pwconf.value,
-            //    dob: this.dob.value
             }
             this.props.dispatch(updateProfile(payload))
             this.email.value = ''
@@ -82,7 +78,6 @@ export default connect(
             error: state.common.error,
             oldZipcode: state.profile.zipcode,
             oldEmail: state.profile.email,
-//            oldPhone: state.profile.phone,
             oldDob: state.profile.dob,
         }
     }

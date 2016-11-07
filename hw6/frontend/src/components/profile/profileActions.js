@@ -75,7 +75,6 @@ export function updateProfile({email, zipcode, password, pwconf}) {
         dispatch(updateField('email', email))
         dispatch(updateField('zipcode', zipcode))
         dispatch(updateField('password', password))
-     //   dispatch(updateField('dob', dob))
     }
 }
 
