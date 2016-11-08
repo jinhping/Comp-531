@@ -3,43 +3,27 @@ const cookieParser = require('cookie-parser')
 
 var cookieKey = 'sid'
 
-var users = {
-	users: [{username: "jp64",
-			 email:'abc@xyz.com', 
-			 zipcode: '77030', 
-			 dob :  new Date().getTime()}]
+var User = {
+	users: [{username: "", salt: "", hash: ""}]
 }
 
 const register = (req, res) => {
+
 	var username = req.body.username;
 	var password = req.body.password;
-	var email = req.body.email
-	var dob = req.body.dob
-	var zipcode = req.body.zipcode
 
-	if (getUser(username)) {
-        res.status(409).send(`${username} has already been registered.`)
-        return
-    }
+	if (!username || !password) {
+		res.sendStatus(400)
+		return
+	}
 
-    var userObj = { username, email, dob, zipcode}
-    userObj.salt = Math.random()*1000
-    userObj.hash = md5(userObj.salt + password)
-    users.users.push(userObj)
-
-    var msg = {username : username, result : "success"}
-    res.send(msg)
+	var salt = Math.random()*1000;
+	var hash = md5(password + salt)
+	User.users.push({username : username, salt : salt, hash: hash});
+	res.send({users: [{username: username, salt: salt, hash: hash}]})
 }
 
 
-const getUser = (username) => {
-    const result = users.users.filter((user) => user.username === username)
-    if (result.length == 0) {
-        return
-    } else {
-        return result[0]
-    }
-}
 
 function isAuthorized(req, userObj) {
 	var salt = userObj.salt
@@ -57,7 +41,7 @@ const login = (req, res) => {
 		res.sendStatus(400)
 		return
 	}
-	var userObj = getUser(username)
+	var userObj = User.users.filter(s => { return s.username == ''+ username})[0]
 	if(!userObj || !isAuthorized(req, userObj)) {
 		res.sendStatus(401)
 		return
@@ -73,18 +57,22 @@ const login = (req, res) => {
 
 }
 
-const logout = (req, res) => {
 
+
+const logout = (req, res) => {
+	res.send('OK')
 }
 
 const putPassword = (req,res) => {
-	const msg = { message : "passwords will not change"}
+	const msg = {username:'jp64', 
+	        	  status:'will not change'
+	    }
     res.send(msg)
 }
 
 module.exports = app => {
      app.post('/register', register)
      app.post('/login', login)
-     app.put('/logout', isLoggedIn, logout)
+     app.put('/logout', logout)
      app.put('/password', putPassword)
 }

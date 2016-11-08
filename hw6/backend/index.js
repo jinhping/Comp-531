@@ -1,7 +1,10 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 
 const app = express()
+app.use(cookieParser());
+
 app.use(bodyParser.json())
 require('./src/auth')(app)
 require('./src/articles')(app)

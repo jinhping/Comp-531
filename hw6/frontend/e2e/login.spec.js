@@ -5,7 +5,7 @@ import common from './common'
 const webdriver = require('selenium-webdriver')
 
 
-describe('Test HW5 Frontend', () => {
+describe('Test HW5 Frontend when login and after login ', () => {
 
     const preamble = 'you are logged in as'
 
