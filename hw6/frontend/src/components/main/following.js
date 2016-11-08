@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { addFollower, delFollower, dispatch } from './followingActions'
 
 const Follower = ({name, avatar, headline, dispatch}) => (
-    <div className="follower">
+    <div className="follower" name="follower">
         <img className="followingImage" src={ avatar }/>
         <h3><strong>{ name }</strong></h3>
         <em id="status">{ headline }</em><br/>

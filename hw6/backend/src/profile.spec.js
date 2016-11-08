@@ -29,7 +29,7 @@ describe('Validate Profile functionality', () => {
             return fetch(url("/headline"), {
                 "headers": {'Content-Type': 'application/json'},
                 "method": 'PUT',
-                "body": JSON.stringify({"headline": newheadline})
+                "body": JSON.stringify({"headline": newheadline + oldheadline})
             })            
         })
 		.then(res=>{
@@ -37,7 +37,7 @@ describe('Validate Profile functionality', () => {
             return res.json()
         })
         .then((res)=>{
-            expect(res.headline).to.equal(newheadline)
+            expect(res.headline).to.equal(newheadline + oldheadline)
         })
 
         .then(_=>{
@@ -51,8 +51,8 @@ describe('Validate Profile functionality', () => {
             return res.json()
         })
         .then(res => {
-            expect(res.headlines[0].headline).to.equal(newheadline)
-            expect(res.headlines[0].headline).to.not.equal(oldheadline)
+            expect(res.headlines[0].headline).to.equal(newheadline + oldheadline)
+            expect(newheadline + oldheadline).to.not.equal(oldheadline)
         })
 
 		.then(done)

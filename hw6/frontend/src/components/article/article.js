@@ -22,12 +22,12 @@ class Article extends Component {
     <div id="card_combo" name="article" className="originalArticle">
         <h3>
           <img className="followingImage" src={ this.props.avatar }/>
-          {this.props.author} said
+          <em className="authorname">{this.props.author}</em> said
           on {date.format('MM-DD-YYYY')} at {date.format('HH:mm:ss')}
         </h3>
         
          <p>
-           <ContentEditable html={this.props.text}
+           <ContentEditable className="contentId" html={this.props.text}
               contentEditable={this.props.username == this.props.author}
               tooltip={this.props.username == this.props.author ? 'click to edit' : ''}
               onChange={(e) => {

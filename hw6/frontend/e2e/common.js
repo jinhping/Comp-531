@@ -3,8 +3,8 @@ import { findId, sleep, findCSS} from './selenium'
 
 // TODO add your test user credentials here!
 exports.creds = {
-    username: "jp64",
-    password: "calm-engine-cage"
+    username: "jp64test",
+    password: "universe-courage-taste"
 }
 
 exports.login = () => 
