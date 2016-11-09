@@ -39,11 +39,27 @@ const postArticles = (req, res) =>{
 }
 
 const putArticles = (req, res) => {
+	var text = req.body.text;
+	if(req.params.id > articles.length){
+		res.status(401).send("User id not found!")
+		return
+	}
+
+	if(!req.body.commentId){
+		articles[req.params.id - 1].text = req.body.text
+	}
+	else{
+		articles[req.params.id - 1].comments.push({commentId:req.body.commentId, text: req.body.text})
+	}
+	
+	res.send({articles : [articles[req.params.id - 1]]});
 
 }
 
+
+
 module.exports = app => {
     app.get('/articles/:id*?', getArticles)
- // 	app.put('/articles/:id', putArticles)
+ 	app.put('/articles/:id', putArticles)
     app.post('/article', postArticles)
 }

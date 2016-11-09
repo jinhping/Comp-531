@@ -2,8 +2,8 @@
 > RiceBookServer@0.0.0 test /Users/jinhping/Desktop/Rice/Rice Courses/Comp-531/hw6/backend
 > mocha --opts mocha.opts src/**/*.spec.js "-R" "xunit"
 
-<testsuite name="Mocha Tests" tests="3" failures="0" errors="0" skipped="0" timestamp="Tue, 08 Nov 2016 07:39:40 GMT" time="0.069">
-<testcase classname="Validate Article functionality" name="should give me three or more articles" time="0.024"/>
-<testcase classname="Validate Article functionality" name="should adding an article successfully" time="0.01"/>
+<testsuite name="Mocha Tests" tests="3" failures="0" errors="0" skipped="0" timestamp="Wed, 09 Nov 2016 03:22:46 GMT" time="0.09">
+<testcase classname="Validate Article functionality" name="should give me three or more articles" time="0.034"/>
+<testcase classname="Validate Article functionality" name="should adding an article successfully" time="0.025"/>
 <testcase classname="Validate Profile functionality" name="PUT headline updates the headline message," time="0.007"/>
 </testsuite>

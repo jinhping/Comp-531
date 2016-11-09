@@ -1,9 +1,21 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser')
+
+
+
+const middleware = (req, res, next) => {
+    res.header('Access-Control-Allow-Origin',req.headers.origin)
+  	res.header("Access-Control-Allow-Headers", "Authorization, Content-Type, X-Request");
+    res.header('Access-Control-Allow-Methods','GET,PUT,POST,DELETE')
+    res.header('Access-Control-Allow-Credentials',true)
+  	next();
+
+ }
+
+
 
 const app = express()
-app.use(cookieParser());
+app.use(middleware)
 
 app.use(bodyParser.json())
 require('./src/auth')(app)

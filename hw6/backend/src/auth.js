@@ -11,16 +11,21 @@ const register = (req, res) => {
 
 	var username = req.body.username;
 	var password = req.body.password;
+	var email = req.body.email;
+	var dob = req.body.dob;
+	var zipcode = req.body.zipcode;
 
-	if (!username || !password) {
-		res.sendStatus(400)
-		return
+	if(!username || !password || !email || !dob || !zipcode){
+		res.status(400).send({result:"Missing inputs"});
+		return;
 	}
-
 	var salt = Math.random()*1000;
 	var hash = md5(password + salt)
 	User.users.push({username : username, salt : salt, hash: hash});
-	res.send({users: [{username: username, salt: salt, hash: hash}]})
+	res.status(200).send({
+		 	result:'success',
+			username:username
+	});
 }
 
 
