@@ -6,16 +6,13 @@ var cookieParser = require('cookie-parser')
 var session =require('express-session')
 var passport = require('passport')
 var FacebookStrategy = require('passport-facebook').Strategy;
+var users = [];
 
 const config = { clientSecret: '4555ae0c597c29ea3d35b96ee35c7660', 
 					clientID: '1714799665505350', 
 					callbackURL: 'http://localhost:3000/auth/callback' }
 
-app = express()
-app.use(session({secret:'thisIsMySecretMessage'}))
-app.use(passport.initialize())
-app.use(passport.session())
-app.use(cookieParser())
+
 
 
 // serilarize the user for the session
@@ -112,6 +109,10 @@ module.exports = app => {
     app.post('/register', register)
     app.put('/password',putPassword)
 
+    app.use(session({secret:'thisIsMySecretMessage'}))
+	app.use(passport.initialize())
+	app.use(passport.session())
+app.use(cookieParser())
 
 	app.use('/login/facebook', passport.authenticate('facebook', {scope:'email'}))
 	app.use('/auth/callback', passport.authenticate('facebook', {successRedirect:'/profile', failureRedirect:'/fail'}))
