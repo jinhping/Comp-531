@@ -1,6 +1,8 @@
 const md5 = require('md5')
 const cookieParser = require('cookie-parser')
 
+var models = require('./model.js')
+
 var cookieKey = 'sid'
 
 var User = {
