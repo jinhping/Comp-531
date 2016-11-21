@@ -90,7 +90,7 @@ class Article extends Component {
                 disabled={ this.newComment.length == 0 }
                 onClick={() => {
                   if (this.newComment.length > 0)
-                    this.props.dispatch(editArticle(this.props._id, this.newComment, -1))
+                    this.props.dispatch(editArticle(this.props._id, this.newComment, "-1"))
                     this.newComment = ''
                     this.addComment = false
                     this.forceUpdate()

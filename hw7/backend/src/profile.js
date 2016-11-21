@@ -1,149 +1,192 @@
-const profiles = {
-	profiles : {
-		'jp64' : {
-			email : 'a@b.com',
-			zipcode: 11111,
-			avatar: 'image1.jpg',
-			dob: Date.parse('1994-07-04')
-		},
-		'jp64test' : {
-			dob: Date.parse('1999-02-02'),
-			email : 'c@d.com',
-			zipcode: 22222,
-			avatar: 'image2.jpg'
-		},
-		'sep1' : {
-			dob: Date.parse('1993-01-04'),
-			email : 'e@f.com',
-			zipcode: 33333,
-			avatar: 'image3.jpg'
-		}
-	},
-	headlines : {
-		'jp64' : 'headline test 1',
-		'jp64test' : 'headline test 2',
-		'sep1' : 'headline test 3'
-	}
-	
-}
-
-
-
+const Profiles = require('./model.js').Profiles
 
 const getHeadline = (req, res) => {
-	if (!req.user) {
-		req.user = 'jp64'
-	} 
-	var users
-	if (req.params.users) {
+	var users;
+	if (req.params.users != null) {
 		users = req.params.users.split(',')
 	} else {
-		users = [req.user]
-	}	
-	var headlines = users.map(r => {
-		return {
-			username: r,
-			headline: profiles.headlines[r]
+		users = [req.username];
+	}
+
+	Profiles.find({username: {$in: users}}).exec(function(err, profiles){
+		var headlines = [];
+		if (profiles.length == 0) {
+			res.status(400).send("No users in database was supplied")
+			return
 		}
+
+		profiles.forEach(r => {
+			headlines.push({
+				username : r.username,
+				headline: r.headline
+			})
+		})
+		res.status(200).send({headlines: headlines})
 	})
-	res.send({headlines})
 }
+
 
 const putHeadline = (req, res) => {
-	if (!req.user) req.user = 'jp64'
-	profiles.headlines[req.user] = req.body.headline
-	
-	res.send({
-		username : req.user,
-		headline : req.body.headline || 'not applied'
-	})
+	const username = req.username
+	const headline = req.body.headline
+
+	if (headline == null) {
+		res.status(400).send('Headline is not supplied in the body')
+	}
+
+	Profiles.update(
+		{username: username}, 
+		{ $set: { headline: headline }}, 
+		{ new: true }, 
+		function(err, profile){
+        	res.status(200).send({username: username, headline: headline
+        });
+    }) 
+
 }
+
+
 
 const getEmail = (req, res) => {
-	var username = req.params.user
-	if (!username) {
-		username = 'jp64'
-	}
-	res.send({
-			username : username,
-			email : profiles.profiles[username].email
+	const username = req.params.user ? req.params.user : req.username
+	Profiles.find({username: username}).exec(function(err, profiles){
+		if (profiles.length == 0) {
+			res.status(400).send("User is not in the database")
+            return
 		}
-	)
+		const profileObj = profiles[0]
+		res.status(200).send({
+			username: username, 
+			email: profileObj.email
+		})
+	})
+
 }
+
 
 const putEmail = (req, res) => {
-	if (!req.user) {
-		req.user = 'jp64'
-	}
-	profiles.profiles[req.user].email = req.body.email
 
-	res.send({
-		username : req.user,
-		email : req.body.email || 'not applied'
-	})
+	const username = req.username
+	const newEmail = req.body.email
+
+	if (newEmail == null) {
+		res.status(400).send('New email is not supplied')
+	}
+
+	Profiles.update(
+		{username: username},
+		{ $set: { email: newEmail}},
+		{ new: true },
+		function(err, profile){
+        	res.status(200).send({
+        		username: username, 
+        		email: newEmail
+        	})
+    	})
 }
 
+
+
 const getZipcode = (req, res) => {
-	var username = req.params.user
-	if (!username) {
-		username = 'jp64'
-	}
-	res.send({
-			username : username,
-			zipcode : profiles.profiles[username].zipcode
+
+	const username = req.params.user ? req.params.user : req.username
+	Profiles.find({username: username}).exec(function(err, profiles){
+		if (profiles.length == 0) {
+			res.status(400).send("User is not in the database")
+            return
 		}
-	)
+		const profileObj = profiles[0]
+		res.status(200).send({
+			username: username, 
+			email: profileObj.zipcode
+		})
+	})
 }
 
 const putZipcode = (req, res) => { 
-	if (!req.user) {
-		req.user = 'jp64'
-	}
-	profiles.profiles[req.user].zipcode = req.body.zipcode
+	const username = req.username
+	const newZipcode = req.body.zipcode
 
-	res.send({
-		username : req.user,
-		zipcode : req.body.zipcode || 'not applied'
-	})
+	if (newZipcode == null) {
+		res.status(400).send('New zipcode is not supplied')
+	}
+
+	Profiles.update(
+		{username: username},
+		{ $set: { zipcode: newZipcode}},
+		{ new: true },
+		function(err, profile){
+        	res.status(200).send({
+        		username: username, 
+        		zipcode: newZipcode
+        	})
+    	})
 }
 
 const getAvatar = (req, res) => { 
-	if (!req.user) req.user = 'jp64'
-	const user = req.params.user ? req.params.user : req.user
+	var users;
+	if (req.params.user != null) {
+		users = req.params.user.split(',')
+	} else {
+		users = [req.username];
+	}
 
-	res.send({
-		avatars:[{
-			username : user,
-			avatar: profiles.profiles[user].avatar	
-		}]
+
+	Profiles.find({username :{$in: users}}).exec(function(err, profiles){
+		var avatars = []
+		
+		if (profiles.length == 0) {
+			res.status(400).send("none user is supplied in the database")
+            return
+		}
+
+		profiles.forEach(r => {
+			avatars.push({
+				username : r.username,
+				avatar: r.avatar
+			})
+		})
+		res.status(200).send({avatars:avatars})
 	})
 }
 
-const putAvatar = (req, res) =>  {
-	if (!req.user) {
-		req.user = 'jp64'
-	}
-	profiles.profiles[req.user].avatar = req.body.img
 
-	res.send({
-		username : req.user,
-		avatar: req.body.img || 'not applied'
-	})
+
+const putAvatar = (req, res) =>  {
+	const username = req.username
+	const newAvatar = req.fileurl
+
+	if (newAvatar == null) {
+		res.status(400).send('New avatar is not supplied')
+	}
+
+	Profiles.update(
+		{username: username},
+		{ $set: { avatar: newAvatar}},
+		{ new: true },
+		function(err, profiles){
+        	res.status(200).send({
+        		username: username, 
+        		avatar: newAvatar
+        	})
+    	})
 	
 }
 
-
 const getdob = (req, res) => {
-	var username = req.params.user
-	if (!username) {
-		username = 'jp64'
-	}
-	res.send({
-			username : username,
-			dob : profiles.profiles[username].dob
-		}
-	)
+	var username = req.username
+	
+	Profiles.find({username : username}).exec(function(err, profiles){
+		const profileObj = profiles[0];
+		
+		res.status(200).send({
+			username: username, 
+			dob: profileObj.dob
+		})
+
+	})
 }
+
 
 module.exports = app => {
 

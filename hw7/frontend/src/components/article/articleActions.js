@@ -57,3 +57,17 @@ export function editArticle(articleId, message, commentId) {
         })
     }
 }
+
+
+export function uploadArticleHW7(message, file) {
+    return (dispatch) => {
+        const payload = { text: message }
+
+        resource('POST', 'article', payload)
+        
+        .then((response) => {
+            const article = response.articles[0]
+            dispatch({ type: Action.ADD_ARTICLE, article })
+        })
+    }
+}

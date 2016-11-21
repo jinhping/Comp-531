@@ -26,7 +26,7 @@ function updateField(field, value) {
                 const action = { type: Action.UPDATE_PROFILE }                
                 action[field] = response[field]
                 if (field == 'password')
-                    dispatch(updateError('will not change password'))
+                    dispatch(updateError('password is changed in the database'))
                 else
                     dispatch(action)
             })

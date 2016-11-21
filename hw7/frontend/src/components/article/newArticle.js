@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import { uploadArticle } from './articleActions'
+import { uploadArticle, uploadArticleHW7} from './articleActions'
 
 class NewArticle extends Component {
 
@@ -41,7 +41,7 @@ class NewArticle extends Component {
             { !this.file && !this.message ? '' :
                         <input type="button" id='publish' value="Publish it"
                             onClick={() => {
-                                this.props.dispatch(uploadArticle(this.message, this.file))
+                                this.props.dispatch(uploadArticleHW7(this.message, this.file))
                                 this.message = ''
                                 this.file = undefined
                                 this.forceUpdate()

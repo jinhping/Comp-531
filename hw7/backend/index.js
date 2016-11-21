@@ -5,11 +5,14 @@ const bodyParser = require('body-parser')
 
 const middleware = (req, res, next) => {
     res.header('Access-Control-Allow-Origin',req.headers.origin)
-  	res.header("Access-Control-Allow-Headers", "Authorization, Content-Type, X-Request");
+  	res.header("Access-Control-Allow-Headers", "Authorization, Content-Type, X-Request-With, X-Session-Id");
     res.header('Access-Control-Allow-Methods','GET,PUT,POST,DELETE')
     res.header('Access-Control-Allow-Credentials',true)
-  	next();
-
+	if(req.method === 'OPTIONS') {
+    	res.status(200).send("OK")
+    } else {
+    	next()
+    }
  }
 
 

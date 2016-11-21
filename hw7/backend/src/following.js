@@ -1,43 +1,73 @@
-const followings = {
-	followings : {
-	    'loggedInUser' : ['test1', 'test2'],
-		'jp64': ['jp64test', 'sep1','test1'],
-		'jp64test' : ['test1', 'jp64']
-	}
-	
-} 
+const Profiles = require('./model.js').Profiles
+
 
 const putFollowing = (req, res) => {
-	if (!req.user) req.user = 'loggedInUser'
-	var user = req.params.user;
-	if (followings.followings[req.user].indexOf(user) == -1) {
-		followings.followings[req.user].push(user);
-	}
-	res.send({
-		username : req.user,
-		following : followings.followings[req.user]
-	});
+    const userid = req.params.user
+    const username = req.username
+    if (userid == null) {
+		res.status(400).send('no folloower is supplied')
+    }
+
+    Profiles.find({username: userid}).exec(function(err, profiles){
+        if (profiles.length == 0) {
+            res.status(400).send('This userid is not in the database')
+            return
+        } else {
+            Profiles.findOneAndUpdate(
+                {username: username}, 
+                {$addToSet: { following: userid }}, 
+                {upsert: true, new: true}, 
+                function(err, profile){})
+
+            Profiles.find({username: username}).exec(function(err, profiles){
+                const profileObj = profiles[0]
+                res.status(200).send({
+                username: username, 
+                following: profileObj.following})
+            })
+        }   
+    })
+
+
 }
 
 const getFollowing = (req, res) => {
-	var userid = req.params.user || 'loggedInUser'
-    res.send({
-    	username: userid,
-    	following : followings.followings[userid]
+    const userid = req.params.user ? req.params.user : req.username
+
+    Profiles.find({username : userid}).exec(function(err, profiles) {
+    	if (profiles.length == 0) {
+    		res.status(400).send("User doesn't exist in database")
+            return
+    	}
+    	const profileObj = profiles[0]
+    	res.status(200).send({username: userid, following: profileObj.following})
     })
 }
 
 const deleteFollowing = (req, res) => {
-	if (!req.user) {
-		req.user = 'loggedInUser'
+
+    const userid = req.params.user
+	const username = req.username
+
+	if (userid == null) {
+		res.status(400).send('userid not supplied')
 	}
-	var follower = req.params.user 
-	followings.followings[req.user] = followings.followings[req.user].filter(
-		r => r != follower)
-    res.send({
-    	username: req.user,
-    	following : followings.followings[req.user]
-    })
+
+	Profiles.findOneAndUpdate(
+		{username: username}, 
+		{ $pull: { following: userid}}, 
+		{new: true }, 
+		function(err, profile){
+            if (err) {
+                return console.log(err)
+            }
+        })
+
+	
+    Profiles.find({username: username}).exec(function(err, profiles){
+		const profileObj = profiles[0]
+		res.status(200).send({username: username, following: profileObj.following})
+	})
 }
 
 

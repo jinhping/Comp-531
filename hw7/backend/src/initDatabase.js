@@ -1,4 +1,3 @@
-
 // This script logs into the dummy server and logs into your server
 // it pulls data from the dummy server and pushes it into your server
 
@@ -6,7 +5,7 @@ var fs = require('fs')
 var request = require('request').defaults({jar: true})
 
 var cred = {}
-fs.readFile('./cred.json', function(err, data) {	
+fs.readFile('./src/cred.json', function(err, data) {	
 	var d = JSON.parse(data)	
 	Object.keys(d).forEach(function(key) {
 		cred[key] = d[key]
@@ -22,19 +21,19 @@ function login() {
 			console.error("There was an error logging into the dummy server with credentials: " + cred, err)
 			process.exit(1)
 		}		
-		getPosts()
+		getArticles()
 	})
 }
 
-var postsToPost;
-function getPosts(cookie) {	
-	request({ url: cred.dummy_url + '/posts', method: 'GET', json:true }, function(err, res, body) {
+var articlesToPost;
+function getArticles(cookie) {	
+	request({ url: cred.dummy_url + '/articles', method: 'GET', json:true }, function(err, res, body) {
 		if (err) {
-			console.error("There was an error grabbing posts from the dummy server", err)
+			console.error("There was an error grabbing articles from the dummy server", err)
 			process.exit(1)
 		}		
-		postsToPost = body.posts
-		console.log("Read " + postsToPost.length + " posts from dummy server")
+		articlesToPost = body.articles
+		console.log("Read " + articlesToPost.length + " articles from dummy server")
 		loginToSite()
 	})
 }
@@ -47,34 +46,34 @@ function loginToSite() {
 			console.error("There was an error logging into YOUR server with credentials: " + cred, err)
 			process.exit(1)
 		}		
-		getPostCount(sendPosts)
+		getArticleCount(sendArticles)
 	})
 }
 
-function sendPosts() {	
-	var post = postsToPost.pop()
-	if (post) {		
-		request({ url: cred.site_url + '/post', method: 'POST', json: post }, function(err, res, body) {
+function sendArticles() {	
+	var article = articlesToPost.pop()
+	if (article) {		
+		request({ url: cred.site_url + '/article', method: 'POST', json: article }, function(err, res, body) {
 			if (err) {
-				console.error("There was an error making a post to YOUR server.  post=" + post, err)
+				console.error("There was an error POSTing an article to YOUR server.  article=" + article, err)
 				process.exit(1)
 			}
-			sendPosts()
+			sendArticles()
 		})
 	} else {
-		getPostCount(function() {
+		getArticleCount(function() {
 			console.log('You now have some data in your database!')
 		})
 	}
 }
 
-function getPostCount(next) {
-	request({ url: cred.site_url + '/posts', method: 'GET', json:true }, function(err, res, body) {
+function getArticleCount(next) {
+	request({ url: cred.site_url + '/articles', method: 'GET', json:true }, function(err, res, body) {
 		if (err) {
-			console.error("There was an error grabbing posts from YOUR server", err)
+			console.error("There was an error grabbing articles from YOUR server", err)
 			process.exit(1)
 		}		
-		console.log("Read " + body.posts.length + " posts from YOUR server")
+		console.log("Read " + body.articles.length + " articles from YOUR server")
 		if (next) {
 			next()
 		}

@@ -1,61 +1,159 @@
-var articles = [
-	{id: 1,author:"author1", text:"text1", date: new Date(), comments : ["comment1"]},
-    {id: 2,author:"author2", text:"text2", date: new Date(), comments : ["comment2"]},
-    {id: 3,	author:"author3", text:"text3", date: new Date(), comments : ["comment3"]},
-    {id: 4,	author:"author4", text:"text4", date: new Date(), comments : ["comment4"]},
-    {id: 5,	author:"author5", text:"text5", date: new Date(), comments : ["comment5"]}
-]
+const md5 = require('md5')
 
-var numId = 5;
+const Article = require('./model.js').Article
+const Comment = require('./model.js').Comment
 
 const getArticles = (req, res) => {
- 	if(req.params.id){
-		var target = articles.filter((item)=>{return item.id == req.params.id })
-		if(target.length!==0){
-			res.send(target);
-		}
-		else{
-			res.send([])
-		}
-	}
-	else{
-		res.send(articles);
-	}
+ 	if(req.params.id != null){
+		Article.find({_id:req.params.id}).exec(function(err, articles){
+
+            if (articles.length == 0){
+                res.status(401).send("Article with this id is not found!")
+                return
+            }
+
+            const articlesObj = articles[0]
+            res.status(200).send({articles: articlesObj})
+	   })}
+	   else{
+ 		    Article.find({}).exec(function(err, articles){
+                if (err) {
+                    return console.log(err)
+                }
+        	    res.status(200).send({articles: articles})
+    	   })	
+        }
+    
 }
 
+
 const postArticles = (req, res) =>{
-	if (!req.user  ) {
-		req.user = 'jp64'
-	}
-	numId++;
-    var newarticle = {id:numId, 
+	if(req.body.text == null){
+    	res.status(400).send("Miss text");
+    	return;
+    }
+
+    var newarticle = {
     	date: new Date(), 
-    	text: req.body.text || 'not supplied', 
-    	author: req.user, 
-    	comment: [],
+    	text: req.body.text,
+    	author: req.username, 
+    	img: "https://yt3.ggpht.com/-7vlMbImLh68/AAAAAAAAAAI/AAAAAAAAAAA/REw0_Tv05mQ/s900-c-k-no-mo-rj-c0xffffff/photo.jpg",
+    	comments: [],
     	}
-    articles.push(newarticle)
-    res.send({'articles' : [newarticle]})
+
+    new Article(newarticle).save(function (err, usr){
+        if(err) {
+            return console.log(err)
+        }
+    })
+    res.status(200).send({articles: [newarticle]})
+}
+
+
+const postArticle = (req, res) => {
+    if(!req.body.text){
+        res.status(400).send("text is missing");
+        return;
+    }
+    const articleObj = {text: req.body.text, author: req.username, img:null, date:new Date(), comments:[]}
+    new Article(articleObj).save(function (err, articles){
+        if(err) return console.log(err)
+        res.status(200).send({articles: [articles]})
+    })
 }
 
 const putArticles = (req, res) => {
-	var text = req.body.text;
-	if(req.params.id > articles.length){
-		res.status(401).send("User id not found!")
-		return
-	}
+	if (req.params.id == null) {
+    	res.status(400).send('id is not supplied')
+    	return
+    }
+    Article.find({_id:req.params.id}).exec(function(err, articles){
+        if (articles.length == 0) {
+            res.status(401).send("the article id is not in the database")
+            return
+        }
+        if (req.body.commentId == "-1") {
 
-	if(!req.body.commentId){
-		articles[req.params.id - 1].text = req.body.text
-	}
-	else{
-		articles[req.params.id - 1].comments.push({commentId:req.body.commentId, text: req.body.text})
-	}
-	
-	res.send({articles : [articles[req.params.id - 1]]});
+            var commentid = md5(req.username + new Date().getTime())
+            var newComment = new Comment({
+                    commentId: commentid, 
+                    author: req.username, 
+                    date: new Date(), 
+                    text: req.body.text})
+            //put into database
+            new Comment(newComment).save(function (err, comments){
+                if(err) { 
+                    return console.log(err)
+                }
+            })      
 
+            Article.findByIdAndUpdate(
+                req.params.id, 
+                { $addToSet: {comments: newComment}}, 
+                {upsert: true, new: true},  
+                function(err, articles){
+                   
+                })
+
+            Article.find({_id : req.params.id}).exec(function(err,articles){
+                 res.status(200).send({articles: articles});
+            })
+            return
+        }
+
+        if (!req.body.commentId) {
+            if (articles[0].author != req.username) {
+                res.status(401).send("Article is not owned")
+                return
+            }
+            Article.findByIdAndUpdate(
+                req.params.id, 
+                { $set: { text: req.body.text }}, 
+                { new: true }, 
+                function(err, articles){
+                    res.status(200).send({articles: articles})
+            })
+
+        } else {
+            Comment.find({commentId: req.body.commentId}).exec(function(err, comments){
+                if (comments.length == 0) {
+                    res.status(401).send("comment id is not correct.")
+                    return
+                }
+                
+                if(comments[0].author != req.username) {
+                    res.status(401).send("comment is not owned")
+                    return
+                }
+                    Comment.update(
+                        {commentId: req.body.commentId}, 
+                        { $set: { text: req.body.text }}, 
+                        { new: true }, 
+                        function(err, comments){
+                            if (err) {
+                                return console.log(err)
+                            }
+                        })
+
+                    Article.update(
+                        {_id: req.params.id, 'comments.commentId': req.body.commentId}, 
+                        { $set: { 'comments.$.text': req.body.text }}, 
+                        { new: true },
+                        function(err, articles){
+                            if (err) {
+                                return console.log(err)
+                            }
+                        })
+
+                    Article.find({_id :req.params.id}).exec(function(err, articles){
+                        res.status(200).send({articles: articles})
+                    })
+                
+            })  
+        }
+
+    })
 }
-
 
 
 module.exports = app => {
