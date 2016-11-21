@@ -5,7 +5,7 @@ const putFollowing = (req, res) => {
     const userid = req.params.user
     const username = req.username
     if (userid == null) {
-		res.status(400).send('no folloower is supplied')
+		res.status(400).send('no follower is supplied')
     }
 
     Profiles.find({username: userid}).exec(function(err, profiles){
@@ -17,14 +17,17 @@ const putFollowing = (req, res) => {
                 {username: username}, 
                 {$addToSet: { following: userid }}, 
                 {upsert: true, new: true}, 
-                function(err, profile){})
+                function(err, profile){
+                    if (err) {
+                        return console.log(err)
+                    }
+                })
 
             Profiles.find({username: username}).exec(function(err, profiles){
-                const profileObj = profiles[0]
                 res.status(200).send({
-                username: username, 
-                following: profileObj.following})
-            })
+                    username: username, 
+                    following: profiles[0].following})
+                })
         }   
     })
 
@@ -39,8 +42,10 @@ const getFollowing = (req, res) => {
     		res.status(400).send("User doesn't exist in database")
             return
     	}
-    	const profileObj = profiles[0]
-    	res.status(200).send({username: userid, following: profileObj.following})
+        if (err) {
+            return console.log(err)
+        }
+    	res.status(200).send({username: userid, following: profiles[0].following})
     })
 }
 
@@ -65,8 +70,10 @@ const deleteFollowing = (req, res) => {
 
 	
     Profiles.find({username: username}).exec(function(err, profiles){
-		const profileObj = profiles[0]
-		res.status(200).send({username: username, following: profileObj.following})
+        if (err) {
+            return console.log(err)
+        }
+		res.status(200).send({username: username, following: profiles[0].following})
 	})
 }
 

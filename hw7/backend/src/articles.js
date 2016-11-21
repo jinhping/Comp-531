@@ -50,18 +50,6 @@ const postArticles = (req, res) =>{
 }
 
 
-const postArticle = (req, res) => {
-    if(!req.body.text){
-        res.status(400).send("text is missing");
-        return;
-    }
-    const articleObj = {text: req.body.text, author: req.username, img:null, date:new Date(), comments:[]}
-    new Article(articleObj).save(function (err, articles){
-        if(err) return console.log(err)
-        res.status(200).send({articles: [articles]})
-    })
-}
-
 const putArticles = (req, res) => {
 	if (req.params.id == null) {
     	res.status(400).send('id is not supplied')

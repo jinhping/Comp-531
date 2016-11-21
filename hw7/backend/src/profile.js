@@ -38,7 +38,10 @@ const putHeadline = (req, res) => {
 		{username: username}, 
 		{ $set: { headline: headline }}, 
 		{ new: true }, 
-		function(err, profile){
+		function(err, profiles){
+			if (err) {
+                return console.log(err)
+            }
         	res.status(200).send({username: username, headline: headline
         });
     }) 
@@ -54,10 +57,9 @@ const getEmail = (req, res) => {
 			res.status(400).send("User is not in the database")
             return
 		}
-		const profileObj = profiles[0]
 		res.status(200).send({
 			username: username, 
-			email: profileObj.email
+			email: profiles[0].email
 		})
 	})
 
@@ -77,7 +79,11 @@ const putEmail = (req, res) => {
 		{username: username},
 		{ $set: { email: newEmail}},
 		{ new: true },
-		function(err, profile){
+		function(err, profiles){
+			if (err) {
+                return console.log(err)
+            }
+
         	res.status(200).send({
         		username: username, 
         		email: newEmail
@@ -95,10 +101,9 @@ const getZipcode = (req, res) => {
 			res.status(400).send("User is not in the database")
             return
 		}
-		const profileObj = profiles[0]
 		res.status(200).send({
 			username: username, 
-			email: profileObj.zipcode
+			email: profiles[0].zipcode
 		})
 	})
 }
@@ -115,7 +120,11 @@ const putZipcode = (req, res) => {
 		{username: username},
 		{ $set: { zipcode: newZipcode}},
 		{ new: true },
-		function(err, profile){
+		function(err, profiles){
+			if (err) {
+                return console.log(err)
+            }
+
         	res.status(200).send({
         		username: username, 
         		zipcode: newZipcode
@@ -139,6 +148,10 @@ const getAvatar = (req, res) => {
 			res.status(400).send("none user is supplied in the database")
             return
 		}
+
+		if (err) {
+            return console.log(err)
+        }
 
 		profiles.forEach(r => {
 			avatars.push({
@@ -177,6 +190,10 @@ const getdob = (req, res) => {
 	var username = req.username
 	
 	Profiles.find({username : username}).exec(function(err, profiles){
+		if (err) {
+            return console.log(err)
+        }
+
 		const profileObj = profiles[0];
 		
 		res.status(200).send({
