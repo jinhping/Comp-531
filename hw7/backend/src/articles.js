@@ -33,13 +33,13 @@ const postArticles = (req, res) =>{
     	return;
     }
 
-    var newarticle = {
+    var newarticle = new Article({
     	date: new Date(), 
     	text: req.body.text,
     	author: req.username, 
     	img: "https://yt3.ggpht.com/-7vlMbImLh68/AAAAAAAAAAI/AAAAAAAAAAA/REw0_Tv05mQ/s900-c-k-no-mo-rj-c0xffffff/photo.jpg",
-    	comments: [],
-    	}
+    	comments: []
+    	})
 
     new Article(newarticle).save(function (err, usr){
         if(err) {
