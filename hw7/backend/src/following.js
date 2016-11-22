@@ -4,7 +4,7 @@ const Profiles = require('./model.js').Profiles
 const putFollowing = (req, res) => {
     const userid = req.params.user
     const username = req.username
-    if (userid == null) {
+    if (!userid) {
 		res.status(400).send('no follower is supplied')
     }
 
@@ -49,7 +49,7 @@ const deleteFollowing = (req, res) => {
     const userid = req.params.user
 	const username = req.username
 
-	if (userid == null) {
+	if (!userid) {
 		res.status(400).send('userid not supplied')
 	}
 

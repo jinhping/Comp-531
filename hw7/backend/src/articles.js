@@ -4,7 +4,7 @@ const Article = require('./model.js').Article
 const Comment = require('./model.js').Comment
 
 const getArticles = (req, res) => {
- 	if(req.params.id != null){
+ 	if(req.params.id){
 		Article.find({_id:req.params.id}).exec(function(err, articles){
 
             if (articles.length == 0){
@@ -28,30 +28,32 @@ const getArticles = (req, res) => {
 
 
 const postArticles = (req, res) =>{
-	if(req.body.text == null){
+	if(!req.body.text){
     	res.status(400).send("Miss text");
     	return;
     }
+    else {
+        var newarticle = new Article({
+        date: new Date(), 
+        text: req.body.text,
+        author: req.username, 
+        img: "https://yt3.ggpht.com/-7vlMbImLh68/AAAAAAAAAAI/AAAAAAAAAAA/REw0_Tv05mQ/s900-c-k-no-mo-rj-c0xffffff/photo.jpg",
+        comments: []
+        })
 
-    var newarticle = new Article({
-    	date: new Date(), 
-    	text: req.body.text,
-    	author: req.username, 
-    	img: "https://yt3.ggpht.com/-7vlMbImLh68/AAAAAAAAAAI/AAAAAAAAAAA/REw0_Tv05mQ/s900-c-k-no-mo-rj-c0xffffff/photo.jpg",
-    	comments: []
-    	})
-
-    new Article(newarticle).save(function (err, usr){
-        if(err) {
-            return console.log(err)
-        }
-    })
-    res.status(200).send({articles: [newarticle]})
+        new Article(newarticle).save(function (err, usr){
+            if(err) {
+                return console.log(err)
+            }
+        })
+        res.status(200).send({articles: [newarticle]}) 
+    }
+   
 }
 
 
 const putArticles = (req, res) => {
-	if (req.params.id == null) {
+	if (!req.params.id) {
     	res.status(400).send('id is not supplied')
     	return
     }

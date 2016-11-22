@@ -2,7 +2,7 @@ const Profiles = require('./model.js').Profiles
 
 const getHeadline = (req, res) => {
 	var users;
-	if (req.params.users != null) {
+	if (req.params.users) {
 		users = req.params.users.split(',')
 	} else {
 		users = [req.username];
@@ -30,7 +30,7 @@ const putHeadline = (req, res) => {
 	const username = req.username
 	const headline = req.body.headline
 
-	if (headline == null) {
+	if (!headline ) {
 		res.status(400).send('Headline is not supplied in the body')
 	}
 
@@ -69,7 +69,7 @@ const putEmail = (req, res) => {
 	const username = req.username
 	const newEmail = req.body.email
 
-	if (newEmail == null) {
+	if (!newEmail ) {
 		res.status(400).send('New email is not supplied')
 	}
 
@@ -108,7 +108,7 @@ const putZipcode = (req, res) => {
 	const username = req.username
 	const newZipcode = req.body.zipcode
 
-	if (newZipcode == null) {
+	if (!newZipcode ) {
 		res.status(400).send('New zipcode is not supplied')
 	}
 
@@ -161,7 +161,7 @@ const putAvatar = (req, res) =>  {
 	const username = req.username
 	const newAvatar = req.fileurl
 
-	if (newAvatar == null) {
+	if (!newAvatar ) {
 		res.status(400).send('New avatar is not supplied')
 	}
 
