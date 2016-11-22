@@ -18,9 +18,6 @@ const putFollowing = (req, res) => {
                 {$addToSet: { following: userid }}, 
                 {upsert: true, new: true}, 
                 function(err, profile){
-                    if (err) {
-                        return console.log(err)
-                    }
                 })
 
             Profiles.find({username: username}).exec(function(err, profiles){
@@ -42,9 +39,7 @@ const getFollowing = (req, res) => {
     		res.status(400).send("User doesn't exist in database")
             return
     	}
-        if (err) {
-            return console.log(err)
-        }
+       
     	res.status(200).send({username: userid, following: profiles[0].following})
     })
 }
@@ -70,9 +65,7 @@ const deleteFollowing = (req, res) => {
 
 	
     Profiles.find({username: username}).exec(function(err, profiles){
-        if (err) {
-            return console.log(err)
-        }
+    
 		res.status(200).send({username: username, following: profiles[0].following})
 	})
 }

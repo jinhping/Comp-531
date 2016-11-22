@@ -56,7 +56,9 @@ const putArticles = (req, res) => {
     	return
     }
     Article.find({_id:req.params.id}).exec(function(err, articles){
-        if (articles.length == 0) {
+
+
+        if (articles == undefined || articles.length == 0) {
             res.status(401).send("the article id is not in the database")
             return
         }
@@ -142,6 +144,8 @@ const putArticles = (req, res) => {
 
     })
 }
+
+
 
 
 module.exports = app => {

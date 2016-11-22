@@ -39,9 +39,7 @@ const putHeadline = (req, res) => {
 		{ $set: { headline: headline }}, 
 		{ new: true }, 
 		function(err, profiles){
-			if (err) {
-                return console.log(err)
-            }
+			
         	res.status(200).send({username: username, headline: headline
         });
     }) 
@@ -80,9 +78,7 @@ const putEmail = (req, res) => {
 		{ $set: { email: newEmail}},
 		{ new: true },
 		function(err, profiles){
-			if (err) {
-                return console.log(err)
-            }
+			
 
         	res.status(200).send({
         		username: username, 
@@ -121,9 +117,7 @@ const putZipcode = (req, res) => {
 		{ $set: { zipcode: newZipcode}},
 		{ new: true },
 		function(err, profiles){
-			if (err) {
-                return console.log(err)
-            }
+		
 
         	res.status(200).send({
         		username: username, 
@@ -149,9 +143,7 @@ const getAvatar = (req, res) => {
             return
 		}
 
-		if (err) {
-            return console.log(err)
-        }
+	
 
 		profiles.forEach(r => {
 			avatars.push({
@@ -190,9 +182,7 @@ const getdob = (req, res) => {
 	var username = req.username
 	
 	Profiles.find({username : username}).exec(function(err, profiles){
-		if (err) {
-            return console.log(err)
-        }
+		
 
 		const profileObj = profiles[0];
 		
