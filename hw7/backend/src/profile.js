@@ -99,7 +99,7 @@ const getZipcode = (req, res) => {
 		}
 		res.status(200).send({
 			username: username, 
-			email: profiles[0].zipcode
+			zipcode: profiles[0].zipcode
 		})
 	})
 }
