@@ -43,12 +43,12 @@ const login = (req, res) => {
 	var username = req.body.username
 	var password = req.body.password
 	if(!username || !password) {
-		res.sendStatus(400)
+		res.status(400).send("Missing input")
 		return
 	}
 	var userObj = User.users.filter(s => { return s.username == ''+ username})[0]
 	if(!userObj || !isAuthorized(req, userObj)) {
-		res.sendStatus(401)
+		res.status(401).send("does not have this user")
 		return
 	}
 
