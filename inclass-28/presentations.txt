@@ -1,0 +1,12 @@
+1. Which presentation was the most polished and delivered, and why?
+
+Database one is most polished and delivered. The author gives out advantages and disadvantages of RelationalDB and NoSQL database and also shows us when to use which one. I think his talk is very clear and covers most important points. His conclusion is insightful on when to choose the right database.
+
+
+2. Which topic did you learn the most from and what did you learn?
+
+Redis or Memcached. I learned more about redis which some materials are not included in class. I learned the structure of Redis and some commons between Redis and Memcached. 
+
+3. Which talk did you like the best and why?
+
+Typescript is an interesting one. It shows me reasons why typeScript exists by showing limited sides of javascripts. Also, it shows me why typeScript offers such as OOP elements, static type check. I feel this topic is useful.
