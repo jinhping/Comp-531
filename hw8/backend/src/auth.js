@@ -24,7 +24,7 @@ const config = { clientSecret: '4555ae0c597c29ea3d35b96ee35c7660',
 
 				}
 
-var frontendUrl = '' 
+let frontendUrl = '' 
 
 const register = (req, res) => {
 	var username = req.body.username;
@@ -226,7 +226,7 @@ const errorFunction = (err,req,res,next) => {
 
 
 const return2Frontend = (req, res, next) => {
-	if(frontendUrl == ''){
+	if(frontendUrl === ''){
 		frontendUrl = req.headers.referer
 	}
 	next()
